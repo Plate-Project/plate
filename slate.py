@@ -26,14 +26,17 @@ from flask import make_response
 from flask import jsonify
 from flask import render_template
 
-
-from jsonobject import JsonObject
-from convmd2html import * 
-from syntax_highlighting import *
 from bs4 import BeautifulSoup
-from watch_api_doc import * 
-from document_trace_queue import * 
-from alogger import ALogger 
+
+from common.jsonobject import JsonObject
+from convmd2html import * 
+from common.syntax_highlighting import *
+from common.alogger import ALogger
+
+
+from watchdocs.watch_api_doc import *
+from watchdocs.document_trace_queue import *
+
 
 import server   
 
@@ -150,6 +153,7 @@ def craete_api_docs():
             
             docs[os.path.split(doc_file)[1]] = (modifyHtml(highlightSyntax(reordering(html))))
 
+
     return docs
 
 
@@ -193,6 +197,7 @@ def total_reload_docs():
     g_doc_index = None 
     g_doc_index = read_conf(os.path.join(g_config.API_DOC_PATH, \
                                     g_config.API_DOC_INDEX_PATH))
+
     g_docs = None
     g_docs = craete_api_docs()
 
