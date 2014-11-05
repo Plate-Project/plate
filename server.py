@@ -12,12 +12,11 @@ import optparse
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-sys.path.append('./common')
 
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop 
-from alogger import ALogger
+from common.alogger import ALogger
 
 
 def start(app, port=8080):

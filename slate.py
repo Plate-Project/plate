@@ -156,7 +156,6 @@ def craete_api_docs():
             html = conv_md2html(f.read())
             docs[os.path.split(doc_file)[1]] = (modifyHtml(highlightSyntax(reordering(html))))
 
-
     return docs
 
 
