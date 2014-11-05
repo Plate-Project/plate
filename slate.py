@@ -17,6 +17,7 @@ sys.setdefaultencoding('utf-8')
 sys.path.append('./common')
 sys.path.append('./watchdocs')
 
+from collections import OrderedDict
 from flask import Flask 
 from flask import redirect
 from flask import url_for
@@ -102,7 +103,7 @@ def admin():
     config = pp.pformat(g_config.__dict__).replace("u'", "'")
     return render_template("admin.html",
                            config_json= config,
-                           indexes=g_doc_index.ORDER)
+                           indexes=g_doc_index["ORDER"])
 
 
 @app.route('/documents/<file_name>')
@@ -121,7 +122,10 @@ def documents(file_name):
 def read_conf(config_path=None): 
     with open(config_path, 'r') as f:
         return json.loads(f.read(), object_hook=JsonObject)
-    
+
+def read_conf_with_order(config_path=None):
+    return json.load(open(config_path), object_pairs_hook=OrderedDict)
+
 
 def reordering(html):
     soup = BeautifulSoup(html)
@@ -145,12 +149,11 @@ def reordering(html):
 def craete_api_docs():
     global g_doc_index
     global g_config 
-    docs = dict() 
-    for doc_file in g_doc_index.ORDER:
+    docs = OrderedDict()
+    for doc_file in g_doc_index["ORDER"]:
         doc_file = os.path.join(g_config.API_DOC_PATH, doc_file)
         with open(doc_file, 'r') as f:
-            html = conv_md2html(f.read()) 
-            
+            html = conv_md2html(f.read())
             docs[os.path.split(doc_file)[1]] = (modifyHtml(highlightSyntax(reordering(html))))
 
 
@@ -195,11 +198,12 @@ def total_reload_docs():
     global g_docs
 
     g_doc_index = None 
-    g_doc_index = read_conf(os.path.join(g_config.API_DOC_PATH, \
+    g_doc_index = read_conf_with_order(os.path.join(g_config.API_DOC_PATH, \
                                     g_config.API_DOC_INDEX_PATH))
 
     g_docs = None
     g_docs = craete_api_docs()
+
 
 
 def partial_reload_docs(file_name):
@@ -207,10 +211,11 @@ def partial_reload_docs(file_name):
 
     global g_docs
     global g_doc_index
-    global g_config 
+    global g_config
+
     
-    for doc_file in g_doc_index.ORDER: 
-        if file_name == os.path.split(doc_file)[1]: 
+    for doc_file in g_doc_index["ORDER"]:
+        if file_name == os.path.split(doc_file)[1]:
 
             doc_file = os.path.join(g_config.API_DOC_PATH, doc_file)
             with open(doc_file, 'r') as f:
@@ -222,7 +227,7 @@ def partial_reload_docs(file_name):
 def watch_doc_start():
     global s_dtq
     s_dtq = DocumentTraceQueue()
-    start_watch(g_config.API_DOC_PATH, g_config.API_DOC_INDEX_PATH, g_doc_index.ORDER)
+    start_watch(g_config.API_DOC_PATH, g_config.API_DOC_INDEX_PATH, g_doc_index["ORDER"])
 
 
 def start_test_server():
