@@ -5,8 +5,7 @@ import os
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
- 
-from watchdog.observers import Observer
+
 from watchdog.events import FileSystemEventHandler
 from document_trace_queue import DocumentTraceQueue
  

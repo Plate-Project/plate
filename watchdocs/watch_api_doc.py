@@ -7,8 +7,8 @@ import time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 sys.path.append('../common')
- 
-from alogger import ALogger
+
+from common.alogger import ALogger
 
  
 from watchdog.observers import Observer

@@ -10,8 +10,8 @@ sys.path.append('../common')
 from watchdog.observers import Observer
 from watchdog.observers.api import EventQueue 
 
-from singleton import Singleton
-from alogger import ALogger 
+from common.singleton import Singleton
+from common.alogger import ALogger
 
 class DocumentTraceQueue(object):
     __metaclass__ = Singleton
@@ -32,10 +32,7 @@ class DocumentTraceQueue(object):
         else:
             event = copy.deepcopy(self.eventQueue[0])
             self.eventQueue.remove(self.eventQueue[0])
-            return event
-        
-        
+            return
 
-
-if __name__ == '__main__':
-    dtq = DocumentTraceQueue() 
+    def clear(self):
+         self.eventQueue = []
