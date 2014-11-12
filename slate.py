@@ -18,12 +18,7 @@ sys.path.append('./common')
 sys.path.append('./watchdocs')
 
 from collections import OrderedDict
-from flask import Flask 
-from flask import redirect
-from flask import url_for
-from flask import session
-from flask import request
-from flask import make_response
+from flask import Flask
 from flask import jsonify
 from flask import render_template
 
@@ -68,12 +63,8 @@ def index():
 
 
     if not s_dtq.empty():
-        event, is_index_file= s_dtq.dequeue() 
-        
-        if is_index_file:
-            total_reload_docs()
-        else:
-            partial_reload_docs(os.path.split(event.src_path)[1])
+        total_reload_docs()
+        s_dtq.clear()
 
     temp = list()
     [temp.append(str(lang)) for lang in g_config.SUPPORT_LANG]
@@ -236,9 +227,9 @@ def start_test_server():
         stop_watch()
 
 
-def start_service_server():
+def start_service_server(port=8080):
     try:
-        server.start(app, port=8080)
+        server.start(app, port=port)
     except KeyboardInterrupt:
         stop_watch()
         server.stop()
@@ -262,7 +253,7 @@ if __name__ == '__main__':
     if options.mode == 'test':
         start_test_server()
     else:
-        start_service_server()
+        start_service_server(g_config.PORT)
     
     
     
