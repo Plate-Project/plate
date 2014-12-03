@@ -1,9 +1,10 @@
 {
-    "PORT"               : 8099,
+    "PORT"               : 8888,
     "TITLE"              : "API Document", 
-    "LOGO_TITLE"         : "CPAPI Document",
+    "LOGO_TITLE"         : "API Document",
     "SEARCH_ON"          : true, 
-    "SUPPORT_LANG"       : ["shell", "python", "csharp"],
+    "SUPPORT_LANG"       : ["shell", "python"],
     "API_DOC_PATH"       : "./document",
-    "API_DOC_INDEX_PATH" : "index.json"
+    "API_DOC_INDEX_PATH" : "index.json",
+    "COPYRIGHT"          : "© 2014 slate-flask"
 }

@@ -1,19 +1,9 @@
 {
     "ORDER":
     [
+        "Introduction.md",
         "Signin.md",
-        "Signup.md",
-        "Notice.md",
-        "Sharecalendar_GET.md",
-        "Sharecalendar_POST.md",
-        "CalendarIcon.md",
-        "SharecalendarSummary.md",
-        "FriendsList.md",
-        "Sharecalendar_me_GET.md",
-        "Friend_Sharecalendar.md",
-        "Friend_Apply.md",
-        "Profile_GET.md",
-        "Profile_POST.md"
+        "Signup.md"
     ]
 
 }

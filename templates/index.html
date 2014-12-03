@@ -1,31 +1,21 @@
 <!doctype html>
 <html>
-
-
 <head>
 {% include 'head.html' %}
-
 </head>
 
 <body class="index">
-
-
-
     <div class="tocify-wrapper">
 
         <a class="api-title" href="/">
-
             {% if LOGO_IMG %}
-        
                 <img src="{{ url_for('static', filename='/images/') }}{{ LOGO_IMG }}" />
-
             {% elif LOGO_TITLE %}
 
                 <h2> {{ LOGO_TITLE }} </h2>
             {% else %}
                 <h2> API Document </h2>
             {% endif %}
-
         </a>
 
         {% if SUPPORT_LANGUAGES %}
@@ -49,8 +39,7 @@
 
 
         <ul class="toc-footer">
-
-            <li> &nbsp;<a class="list-group-item" href="/admin"><i class="fa fa-cog fa-fw"></i> Admin</a></li>
+            <li> {{COPYRIGHT}}</li>
         </ul>
     </div>
 
@@ -62,8 +51,7 @@
           {% autoescape false %}
             {{ DOC }}
           {% endautoescape  %}
-        {% endfor %}  
-
+        {% endfor %}
 
         </div>
         <!-- content -->

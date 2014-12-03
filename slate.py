@@ -85,30 +85,9 @@ def index():
         LOGO_TITLE=logo_title,
         LOGO_IMG=logo_img,
         SUPPORT_LANGUAGES=g_config.SUPPORT_LANG,
-        DOCS = g_docs.values()
+        DOCS = g_docs.values(),
+        COPYRIGHT=g_config.COPYRIGHT
         )
-
-@app.route('/admin')
-def admin():
-    pp = pprint.PrettyPrinter(indent=4, depth=4)
-    config = pp.pformat(g_config.__dict__).replace("u'", "'")
-    return render_template("admin.html",
-                           config_json= config,
-                           indexes=g_doc_index["ORDER"])
-
-
-@app.route('/documents/<file_name>')
-def documents(file_name):
-    global g_config
-
-    doc_file = os.path.join(g_config.API_DOC_PATH, file_name)
-    body = None
-    with open(doc_file, 'r') as f:
-        body = f.read().replace('\n', '<br/>')
-
-    return jsonify({'file_name':file_name, 'text':body})
-
-
 
 def read_conf(config_path=None): 
     with open(config_path, 'r') as f:
