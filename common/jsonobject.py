@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 '''
-Created on 2013. 11. 2.
-@author: seonghyunan
+Created on 2014. 12. 03
+@author: AhnSeongHyun
 '''
 
  

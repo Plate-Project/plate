@@ -1,5 +1,8 @@
 # -*- coding:utf-8 -*-
-__author__ = 'ash84'
+'''
+Created on 2014. 12. 03
+@author: AhnSeongHyun
+'''
 
 import os
 import sys

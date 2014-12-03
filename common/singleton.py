@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
 '''
-Created on 2014. 8. 19.
-@author: seonghyunan
+Created on 2014. 12. 03
+@author: AhnSeongHyun
 '''
+
 
 class Singleton(type):
     _instances = {}

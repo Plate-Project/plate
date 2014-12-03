@@ -1,9 +1,8 @@
 # -*- coding:utf-8 -*-
 '''
-Created on 2014. 8. 19.
-@author: seonghyunan
+Created on 2014. 12. 03
+@author: AhnSeongHyun
 '''
-
 import markdown
 
 def conv_md2html(md_text):
