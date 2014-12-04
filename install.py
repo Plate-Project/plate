@@ -34,7 +34,7 @@ def decorate_red(msg):
 print decorate_yellow("\nWelcome slate-flask v0.1.")
 print decorate_yellow("Let's start your API Document system.")
 
-project_name = str(raw_input('\nTyping API document name :'))
+project_name = str(raw_input(decorate_yellow('\nTyping API document name :')))
 print  "what is API document name? is" + decorate_red("\"" + project_name + "\"") + "."
 
 
@@ -42,19 +42,20 @@ project_path = "../" + project_name
 
 print "Rename slate-flask to  " + decorate_red("\"" + project_name + "\"") +"..."
 current_dir = os.path.abspath("./")
-#shutil.move(current_dir, os.path.join(os.path.dirname(current_dir), project_name))
+shutil.move(current_dir, os.path.join(os.path.dirname(current_dir), project_name))
 
 
 from pip.req import parse_requirements
 import pip
-print "Install requirements.txt"
+print decorate_yellow("Install requirements.txt")
 
 install_reqs = parse_requirements("./requirements.txt")
 reqs = [str(ir.req) for ir in install_reqs]
 for req in reqs:
     pip.main(["install", req])
+    pip.logger.consumers = []
 
 
 
-print decorate_yellow( "Complete. Enjoy developing.")
+print decorate_yellow( "Complete. Enjoy Developing.")
 
