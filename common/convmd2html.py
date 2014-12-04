@@ -5,7 +5,6 @@ Created on 2014. 12. 03
 '''
 
 import markdown
-import codecs
 
 def conv_md2html(md_text):
     return markdown.markdown(md_text, extensions=["fenced_code", "tables"])

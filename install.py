@@ -8,20 +8,52 @@ Created on 2014. 12. 03
 import os
 import shutil
 
+import platform
+is_windows = False
+if str.lower(platform.uname()[0]) == "windows":
+    is_windows = True
 
-def output(msg):
-    print "\033[1;33m" + msg + "\033[1;m"
 
-output("\nWelcome slate-flask v0.1. ")
-output( "Let's start your API Document system.")
+
+def decorate_yellow(msg):
+    if is_windows:
+        return msg
+    else:
+        return "\033[1;33m" + msg + "\033[1;m"
+
+def decorate_red(msg):
+    if is_windows:
+        return msg
+    else:
+        return "\033[1;41m" + msg + "\033[1;m"
+
+
+
+
+
+print decorate_yellow("\nWelcome slate-flask v0.1.")
+print decorate_yellow("Let's start your API Document system.")
 
 project_name = str(raw_input('\nTyping API document name :'))
-print  "what is API document name? is \033[1;41m\"" + project_name +"\"\033[1;m."
+print  "what is API document name? is" + decorate_red("\"" + project_name + "\"") + "."
+
+
 project_path = "../" + project_name
 
-output( "\nRename slate-flask to \033[1;41m\""+ project_name +"\"\033[1;m ..." )
+print "Rename slate-flask to  " + decorate_red("\"" + project_name + "\"") +"..."
 current_dir = os.path.abspath("./")
-shutil.move(current_dir, os.path.join(os.path.dirname(current_dir), project_name))
+#shutil.move(current_dir, os.path.join(os.path.dirname(current_dir), project_name))
 
-output( "Complete. Enjoy developing." )
+
+from pip.req import parse_requirements
+import pip
+print "Install requirements.txt"
+
+install_reqs = parse_requirements("./requirements.txt")
+reqs = [str(ir.req) for ir in install_reqs]
+pip.main(["install", reqs[0]])
+
+
+
+print decorate_yellow( "Complete. Enjoy developing.")
 
