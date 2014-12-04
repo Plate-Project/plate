@@ -51,7 +51,8 @@ print "Install requirements.txt"
 
 install_reqs = parse_requirements("./requirements.txt")
 reqs = [str(ir.req) for ir in install_reqs]
-pip.main(["install", reqs[0]])
+for req in reqs:
+    pip.main(["install", req])
 
 
 
