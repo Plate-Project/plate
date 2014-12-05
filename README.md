@@ -47,7 +47,7 @@ Getting Start
     > python install.py 
     ...
     Welcome slate-flask v0.1. 
-    Let's start your API Document system.
+    Let`s start your API Document system.
     
     Typing API document name :<Typing your project>
     what is API document name? is "<yout project>"
