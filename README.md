@@ -47,7 +47,7 @@ Getting Start
     > python install.py 
     ...
     Welcome slate-flask v0.1. 
-    Let`s start your API Document system.
+    Start your API Document system.
     
     Typing API document name :<Typing your project>
     what is API document name? is "<yout project>"
@@ -60,7 +60,7 @@ Getting Start
     ```
 
 ### config.json(configuration file)
-- 
+- path : ./config.json
 ```json
 {
     "PORT"               : 8888,

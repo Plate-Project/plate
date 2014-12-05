@@ -28,7 +28,7 @@ def red(msg):
         return "\033[1;41m" + msg + "\033[1;m"
 
 print yellow("\nWelcome slate-flask v0.1.")
-print yellow("Let's start your API Document system.")
+print yellow("Start your API Document system.")
 
 project_name = str(raw_input(yellow('\nTyping API document name :')))
 print "what is API document name? is" + red("\"" + project_name + "\"") + "."
