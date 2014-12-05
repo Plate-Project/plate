@@ -5,7 +5,7 @@ slate-flask is the converting [Slate](http://tripit.github.io/slate) based on Ru
   
 ![slate-flask](https://farm9.staticflickr.com/8562/15916154516_b5aacc6790_c.jpg) 
  
-Example site is [here](http://ash84.net/slate-flask)
+Example site is [here](http://ash84.net:8888)
 
 
 Features
@@ -13,16 +13,14 @@ Features
 (It's only differences from original [Slate](http://tripit.github.io/slate), confirm the original features at [Slate](http://tripit.github.io/slate))
 
 
-- **설정파일(config.json)**
-: JSON 기반의 설정 파일을 통해서 TITLE 을 지정할수 있고, 예제 프로그래밍 언어를 설정할수 있다. 또한 API 문서의 위치와 목차 파일을 지정할수가 있다. 
+- **Configuration File(config.json)**
+: Set title, programming language for example codes using config.json base on JSON Format. Also set the path of the API documents and TOC(Table of contents).
 
-- **멀티 API 도큐먼트 시스템 지원**
-: 기존의 SLATE 는 하나의 MARKDOWN 기반의 API 문서를 지원한다. 그러나 slate-flask 에서는 API 문서의 양과 효율적인 관리를 위해서 목차를 통해서 여러 마크다운 기반의 API 문서를 사용할수 있도록 지원한다. 
+- **Support Multi-API documents**
+: Original [Slate](http://tripit.github.io/slate) support one API document based on Markdown format. But [slate-flask](https://github.com/AhnSeongHyun/slate-flask) support multi-API documents for efficient management and amount of documents using TOC(index.json).
 
-- **문서내용 변경 동적 반영**
-: 문서의 변경을 서버를 재시작 하지 않고 반영할수 있다. 다음 새로고침시 수정된 문서를 다시 로드해서 보여주기 떄문에 사용자는 오직 markdown 기반의 API 문서 작성만 신경쓰면 된다. 
- 
-
+- **Support dynamic changes of documents**
+: You can reflect the changes of API documents without restarting server. When web page refresh, if exist changes, [slate-flask](https://github.com/AhnSeongHyun/slate-flask) reload API documents. Users only focus on writing API documents.
  
 
 Getting Start
@@ -42,11 +40,8 @@ Getting Start
  2. `cd slate-flask`
  4. Install your API document webpagse using `install.py`. 
  5. Start the server: `python slate.py`
-     
-     
 
-      
-    ```
+    ```shell
     > git clone https://github.com/AhnSeongHyun/slate-flask.git
     > cd slate-flask 
     > python install.py 
@@ -64,11 +59,49 @@ Getting Start
     > python slate.py 
     ```
 
+### config.json(configuration file)
+- 
+```json
+{
+    "PORT"               : 8888,
+    "TITLE"              : "API Document", 
+    "LOGO_TITLE"         : "API Document",
+    "SEARCH_ON"          : true, 
+    "SUPPORT_LANG"       : ["shell", "python"],
+    "API_DOC_PATH"       : "./document",
+    "API_DOC_INDEX_PATH" : "index.json",
+    "COPYRIGHT"          : "© 2014 slate-flask"
+}
+```
 
+### index.json(Table of contents)
+- path : ./docuemnt/index.json
+```json
+{
+    "ORDER":
+    [
+        "Introduction.md",
+        "Signup.md",
+        "Signin.md"
+    ]
+}
+```
 
-
-Bugs/New Features
+Contributor
 --------------------
-Just [submit a issue](https://github.com/AhnSeongHyun/slate-flask/issues). 
+slate-flask was built by [@sh84ahn](https://twitter.com/sh84ahn) using [Slate](http://tripit.github.io/slate)
 
+Contributing(Bugs/New Features)
+--------------------
+Any suggestions [submit a issue](https://github.com/AhnSeongHyun/slate-flask/issues). 
+
+License
+--------------------
+Copyright 2008-2013 Concur Technologies, Inc.  
+modified by AhnSeongHyun(All python codes)
+
+Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+
+
+**If any probelms realated license, contact [@sh84ahn](https://twitter.com/sh84ahn).**
 

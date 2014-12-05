@@ -2,9 +2,8 @@
     "ORDER":
     [
         "Introduction.md",
-        "Signin.md",
-        "Signup.md"
+        "Signup.md",
+        "Signin.md"
     ]
-
 }
 
