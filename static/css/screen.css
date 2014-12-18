@@ -684,7 +684,7 @@ html,body {
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ccc;
     margin-bottom: 21px;
-    margin-top: 2em;
+    #margin-top: 2em;
     border-top: 1px solid #ddd;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff), color-stop(100%, #f9f9f9));
     background-image: -webkit-linear-gradient(top, #fff, #f9f9f9);
@@ -832,7 +832,7 @@ html,body {
 .content pre,.content blockquote {
     background-color: #292929;
     color: #fff;
-    padding: 2em 28px;
+    padding: 1em 28px;
     margin: 0;
     width: 50%;
     float: right;
