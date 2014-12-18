@@ -1,0 +1,10 @@
+
+*.pyc
+
+*.xml
+
+*.iml
+
+*.xml
+
+.idea/workspace.xml
