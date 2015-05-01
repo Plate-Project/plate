@@ -5,10 +5,16 @@ Created on 2014. 12. 03
 '''
 
 import sys
-import copy 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-sys.path.append('../common') 
+import copy
+
+
+try:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+    sys.path.append('../common')
+except NameError:
+    pass
+
 
 from watchdog.observers import Observer
 from watchdog.observers.api import EventQueue 

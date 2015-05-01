@@ -9,9 +9,11 @@ import sys
 import json
 import traceback
 import optparse
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
+try:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+except NameError:
+    pass
 
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer

@@ -9,11 +9,16 @@ import sys
 import json
 import optparse
 
+try:
+    reload(sys)
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-sys.path.append('./common')
-sys.path.append('./watchdocs')
+    sys.setdefaultencoding('utf-8')
+    sys.path.append('./common')
+    sys.path.append('./watchdocs')
+except NameError:
+    pass
+
+
 
 from collections import OrderedDict
 from flask import Flask
@@ -26,12 +31,7 @@ from common.convmd2html import conv_md2html
 from common.syntax_highlighting import syntax_highlight
 from common.alogger import ALogger
 
-
-from watchdocs.watch_api_doc import start_watch
-from watchdocs.watch_api_doc import stop_watch
-from watchdocs.document_trace_queue import DocumentTraceQueue
-
-
+import watchdocs
 import server
 
 app = Flask(__name__, static_url_path = "", static_folder = "static")

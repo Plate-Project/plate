@@ -6,11 +6,15 @@ Created on 2014. 12. 03
 
 import os
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+
+try:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+except NameError:
+    pass
 
 from watchdog.events import FileSystemEventHandler
-from document_trace_queue import DocumentTraceQueue
+from .document_trace_queue import DocumentTraceQueue
  
 
 class DocumentTraceHandler(FileSystemEventHandler):

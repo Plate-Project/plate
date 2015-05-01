@@ -7,16 +7,19 @@ Created on 2014. 12. 03
 import sys
 import time
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-sys.path.append('../common')
+try:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+    sys.path.append('../common')
+except NameError:
+    pass
 
 from common.alogger import ALogger
 
  
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
-from document_trace_handler import DocumentTraceHandler
+from .document_trace_handler import DocumentTraceHandler
 
 g_observer = None
 def start_watch(doc_path, doc_index_path, filter_docs):
