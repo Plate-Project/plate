@@ -53,5 +53,3 @@ class DocumentTraceHandler(FileSystemEventHandler):
             return True
         else:
             return False
-
-     

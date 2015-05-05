@@ -14,9 +14,7 @@ try:
 except NameError:
     pass
 
-from common.alogger import ALogger
-
- 
+from common import ALogger
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 from .document_trace_handler import DocumentTraceHandler

@@ -19,15 +19,14 @@ except NameError:
 from watchdog.observers import Observer
 from watchdog.observers.api import EventQueue 
 
-from common.singleton import Singleton
-from common.alogger import ALogger
+from common import Singleton
 
 class DocumentTraceQueue(object):
     __metaclass__ = Singleton
     eventQueue = list()
 
     def empty(self):
-        if len(self.eventQueue) >0:
+        if len(self.eventQueue) > 0:
             return False
         else:
             return True

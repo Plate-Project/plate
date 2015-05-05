@@ -26,7 +26,8 @@ def start(app, port=8080):
     http_server = HTTPServer(WSGIContainer(app))
     http_server.listen(port)
     IOLoop.instance().start()
-    
+
+
 def stop():
     ALogger.INFO('Server Stop..')
     IOLoop.instance().stop()
