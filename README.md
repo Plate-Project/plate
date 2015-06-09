@@ -1,5 +1,7 @@
 slate-flask 
 ========
+
+[![Join the chat at https://gitter.im/AhnSeongHyun/slate-flask](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AhnSeongHyun/slate-flask?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
   
 slate-flask is the converting [Slate](http://tripit.github.io/slate) based on Ruby to Python-Flask base. And add some different functions for usages. 
   
