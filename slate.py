@@ -9,29 +9,26 @@ import sys
 import json
 import optparse
 
+try:
+    reload(sys)
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-sys.path.append('./common')
-sys.path.append('./watchdocs')
+    sys.setdefaultencoding('utf-8')
+    sys.path.append('./common')
+    sys.path.append('./watchdocs')
+except NameError:
+    pass
 
 from collections import OrderedDict
 from flask import Flask
 from flask import render_template
-
 from bs4 import BeautifulSoup
 
-from common.jsonobject import JsonObject
-from common.convmd2html import conv_md2html
-from common.syntax_highlighting import syntax_highlight
-from common.alogger import ALogger
+from common import ALogger
+from common import conv_md2html
+from common import syntax_highlight
+from common import JsonObject
 
-
-from watchdocs.watch_api_doc import start_watch
-from watchdocs.watch_api_doc import stop_watch
-from watchdocs.document_trace_queue import DocumentTraceQueue
-
-
+import watchdocs
 import server
 
 app = Flask(__name__, static_url_path = "", static_folder = "static")
@@ -75,13 +72,13 @@ def index():
         logo_title = g_config.LOGO_TITLE
 
     return render_template("index.html",
-        API_TITLE=g_config.TITLE,
-        IS_SEARCH=g_config.SEARCH_ON,
-        LOGO_TITLE=logo_title,
-        LOGO_IMG=logo_img,
+        API_TITLE = g_config.TITLE,
+        IS_SEARCH = g_config.SEARCH_ON,
+        LOGO_TITLE = logo_title,
+        LOGO_IMG = logo_img,
         SUPPORT_LANGUAGES=g_config.SUPPORT_LANG,
         DOCS = g_docs.values(),
-        COPYRIGHT=g_config.COPYRIGHT
+        COPYRIGHT = g_config.COPYRIGHT
         )
 
 
@@ -109,11 +106,10 @@ def reordering(html):
             if prev.name == 'h2':
                 prev.insert_after(up_tag)
                 break
-
     return soup
 
 
-def craete_api_docs():
+def create_api_docs():
     global g_doc_index
     global g_config 
     docs = OrderedDict()
@@ -121,12 +117,12 @@ def craete_api_docs():
         doc_file = os.path.join(g_config.API_DOC_PATH, doc_file)
         with open(doc_file, 'r') as f:
             html = conv_md2html(f.read())
-            docs[os.path.split(doc_file)[1]] = (modifyHtml(highlightSyntax(reordering(html))))
+            docs[os.path.split(doc_file)[1]] = (modify_html(highlight_syntax(reordering(html))))
 
     return docs
 
 
-def modifyHtml(soup):
+def modify_html(soup):
     tags = list()
     [tags.extend(soup.find_all(title_tag)) for title_tag in TITLE_TAGS]
 
@@ -141,7 +137,7 @@ def modifyHtml(soup):
     return soup.prettify(formatter=None)
 
 
-def highlightSyntax(soup):
+def highlight_syntax(soup):
     code_tags = soup.find_all('code')
 
     for code in code_tags:
@@ -165,7 +161,7 @@ def total_reload_docs():
     g_doc_index = read_conf_with_order(os.path.join(g_config.API_DOC_PATH, g_config.API_DOC_INDEX_PATH))
 
     g_docs = None
-    g_docs = craete_api_docs()
+    g_docs = create_api_docs()
 
 
 def partial_reload_docs(file_name):
@@ -181,29 +177,27 @@ def partial_reload_docs(file_name):
             doc_file = os.path.join(g_config.API_DOC_PATH, doc_file)
             with open(doc_file, 'r') as f:
                 html = conv_md2html(f.read())
-                g_docs[file_name] = modifyHtml(highlightSyntax(reordering(html)))
+                g_docs[file_name] = modify_html(highlight_syntax(reordering(html)))
 
 
 def watch_doc_start():
     global s_dtq
-    s_dtq = DocumentTraceQueue()
-    start_watch(g_config.API_DOC_PATH,
-                g_config.API_DOC_INDEX_PATH,
-                g_doc_index["ORDER"])
+    s_dtq = watchdocs.DocumentTraceQueue()
+    watchdocs.start_watch(g_config.API_DOC_PATH, g_config.API_DOC_INDEX_PATH, g_doc_index["ORDER"])
 
 
 def start_test_server():
     try:
         app.run(debug=True)
     except KeyboardInterrupt:
-        stop_watch()
+        watchdocs.stop_watch()
 
 
 def start_service_server(port=8080):
     try:
         server.start(app, port=port)
     except KeyboardInterrupt:
-        stop_watch()
+        watchdocs.stop_watch()
         server.stop()
 
 if __name__ == '__main__':

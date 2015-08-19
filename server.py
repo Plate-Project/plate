@@ -9,9 +9,11 @@ import sys
 import json
 import traceback
 import optparse
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
+try:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+except NameError:
+    pass
 
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
@@ -24,7 +26,8 @@ def start(app, port=8080):
     http_server = HTTPServer(WSGIContainer(app))
     http_server.listen(port)
     IOLoop.instance().start()
-    
+
+
 def stop():
     ALogger.INFO('Server Stop..')
     IOLoop.instance().stop()
