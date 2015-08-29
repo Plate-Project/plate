@@ -34,7 +34,7 @@ Getting Start
 
 ### Prerequisites
  
- - **requirements.txt** have all librarys for running slate-flask
+ - **requirements.txt** have all libraries for running slate-flask
  - If you install using `install.py`, automatically install all librarys. 
 
 ### QuickStart 
@@ -78,7 +78,7 @@ Getting Start
 ```
 
 ### index.json(Table of contents)
-- path : ./docuemnt/index.json
+- path : ./document/index.json
 ```json
 {
     "ORDER":
@@ -106,5 +106,5 @@ modified by AhnSeongHyun(All python codes)
 Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
 
 
-**If any probelms realated license, contact [@sh84ahn](https://twitter.com/sh84ahn).**
+**If any problems related license, contact [@sh84ahn](https://twitter.com/sh84ahn).**
 

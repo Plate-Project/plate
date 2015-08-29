@@ -3,7 +3,7 @@
     "TITLE"              : "API Document", 
     "LOGO_TITLE"         : "API Document",
     "SEARCH_ON"          : true, 
-    "SUPPORT_LANG"       : ["shell", "python"],
+    "SUPPORT_LANG"       : ["shell", "python", "java"],
     "API_DOC_PATH"       : "./document",
     "API_DOC_INDEX_PATH" : "index.json",
     "COPYRIGHT"          : "© 2014 slate-flask"

@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+
 '''
 Created on 2014. 12. 03
 @author: AhnSeongHyun
@@ -7,6 +8,7 @@ Created on 2014. 12. 03
 
 class Singleton(type):
     _instances = {}
+
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)

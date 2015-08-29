@@ -16,10 +16,11 @@ except NameError:
 
 from common import ALogger
 from watchdog.observers import Observer
-from watchdog.events import LoggingEventHandler
 from .document_trace_handler import DocumentTraceHandler
 
 g_observer = None
+
+
 def start_watch(doc_path, doc_index_path, filter_docs):
     global g_observer
     event_handler = DocumentTraceHandler(doc_index_path, filter_docs)
@@ -31,7 +32,8 @@ def start_watch(doc_path, doc_index_path, filter_docs):
     g_observer.schedule(event_handler, doc_path, recursive=True)
     g_observer.start()
     ALogger.INFO("Start watchdocs..")
-    
+
+
 def stop_watch():
     global g_observer
     ALogger.INFO("Stop watchdocs..")

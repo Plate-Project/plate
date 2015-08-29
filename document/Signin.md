@@ -20,11 +20,19 @@
 curl http://127.0.0.1/api/signin?id=test@gmail.com&password=1234 
 ```
 
- 
 ```python
 import requests
 r = requests.get("http://127.0.0.1/api/signin?id=test@gmail.com&password=1234")
 ```
+
+```java
+HttpClient httpclient = new DefaultHttpClient();
+HttpGet httpget = new HttpGet("http://127.0.0.1/api/signin?id=test@gmail.com&password=1234");
+HttpResponse response = httpclient.execute(httpget);
+```
+
+
+
 
 
 

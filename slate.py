@@ -26,19 +26,12 @@ from bs4 import BeautifulSoup
 from common import ALogger
 from common import conv_md2html
 from common import syntax_highlight
-from common import JsonObject
+from common import Config
 
 import watchdocs
 import server
 
-app = Flask(__name__, static_url_path = "", static_folder = "static")
-
-# HTTP_METHOD
-GET = 'GET'
-POST = 'POST'
-PUT = 'PUT'
-DELETE = 'DELETE'
-HEAD = 'HEAD'
+app = Flask(__name__, static_url_path="", static_folder="static")
 
 g_config = None
 g_doc_index = None
@@ -84,7 +77,7 @@ def index():
 
 def read_conf(config_path=None):
     with open(config_path, 'r') as f:
-        return json.loads(f.read(), object_hook=JsonObject)
+        return json.loads(f.read(), object_hook=Config)
 
 
 def read_conf_with_order(config_path=None):
@@ -186,9 +179,9 @@ def watch_doc_start():
     watchdocs.start_watch(g_config.API_DOC_PATH, g_config.API_DOC_INDEX_PATH, g_doc_index["ORDER"])
 
 
-def start_test_server():
+def start_test_server(port=5000):
     try:
-        app.run(debug=True)
+        app.run(debug=True, host='0.0.0.0', port=port)
     except KeyboardInterrupt:
         watchdocs.stop_watch()
 
@@ -216,6 +209,6 @@ if __name__ == '__main__':
     watch_doc_start()
 
     if options.mode == 'test':
-        start_test_server()
+        start_test_server(g_config.PORT)
     else:
         start_service_server(g_config.PORT)

@@ -7,7 +7,6 @@ Created on 2014. 12. 03
 import sys
 import copy
 
-
 try:
     reload(sys)
     sys.setdefaultencoding('utf-8')
@@ -16,12 +15,8 @@ except NameError:
     pass
 
 
-from watchdog.observers import Observer
-from watchdog.observers.api import EventQueue 
-
-from common import Singleton
-
 class DocumentTraceQueue(object):
+    from common import Singleton
     __metaclass__ = Singleton
     eventQueue = list()
 
@@ -43,4 +38,4 @@ class DocumentTraceQueue(object):
             return
 
     def clear(self):
-         self.eventQueue = []
+        self.eventQueue = []

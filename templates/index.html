@@ -1,79 +1,79 @@
 <!doctype html>
 <html>
 <head>
-{% include 'head.html' %}
+    {% include 'head.html' %}
 </head>
 
 <body class="index">
-   <a href="#" id="nav-button">
+<a href="#" id="nav-button">
       <span>
         <img src="images/navbar.png" />
       </span>
+</a>
+<div class="tocify-wrapper">
+
+    <a class="api-title" href="/">
+        {% if LOGO_IMG %}
+            <img src="{{ url_for('static', filename='/images/') }}{{ LOGO_IMG }}" />
+        {% elif LOGO_TITLE %}
+
+            <h2> {{ LOGO_TITLE }} </h2>
+        {% else %}
+            <h2> API Document </h2>
+        {% endif %}
     </a>
-    <div class="tocify-wrapper">
 
-        <a class="api-title" href="/">
-            {% if LOGO_IMG %}
-                <img src="{{ url_for('static', filename='/images/') }}{{ LOGO_IMG }}" />
-            {% elif LOGO_TITLE %}
-
-                <h2> {{ LOGO_TITLE }} </h2>
-            {% else %}
-                <h2> API Document </h2>
-            {% endif %}
-        </a>
-
-        {% if SUPPORT_LANGUAGES %}
+    {% if SUPPORT_LANGUAGES %}
         <div class="lang-selector">
             {% for LANG in SUPPORT_LANGUAGES %}
                 <a href="#" data-language-name="{{ LANG }}">{{ LANG }}</a>
             {% endfor %}
         </div>
-        {% endif %} 
+    {% endif %}
 
-        {% if IS_SEARCH %}
+    {% if IS_SEARCH %}
         <div class="search">
             <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
-        {% endif %}
+    {% endif %}
 
 
-        <div id="toc">
-        </div>
-
-
-        <ul class="toc-footer">
-            <li> {{COPYRIGHT}}</li>
-        </ul>
+    <div id="toc">
     </div>
 
-    <div class="page-wrapper">
-        <div class="dark-box"></div>
-        <div class="content">
+
+    <ul class="toc-footer">
+        <li> {{COPYRIGHT}}</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
 
         {% for DOC in DOCS %}
-          {% autoescape false %}
-            {{ DOC }}
-          {% endautoescape  %}
+        {% autoescape false %}
+        {{ DOC }}
+        {% endautoescape  %}
         {% endfor %}
 
-        </div>
-        <!-- content -->
-
-        <div class="dark-box">
-            {% if SUPPORT_LANGUAGES %}
-                <div class="lang-selector">
-                    {% for LANG in SUPPORT_LANGUAGES %}
-                       <a href="#" data-language-name="{{ LANG }}">{{ LANG }}</a>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-        <!-- dark-box -->
     </div>
-    <!-- page-wrapper -->
+    <!-- content -->
 
- 
+    <div class="dark-box">
+        {% if SUPPORT_LANGUAGES %}
+            <div class="lang-selector">
+                {% for LANG in SUPPORT_LANGUAGES %}
+                    <a href="#" data-language-name="{{ LANG }}">{{ LANG }}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <!-- dark-box -->
+</div>
+<!-- page-wrapper -->
+
+
 </body>
 </html>

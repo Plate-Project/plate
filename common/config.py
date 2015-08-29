@@ -5,7 +5,7 @@ Created on 2014. 12. 03
 '''
 
  
-class JsonObject(object): 
+class Config(object):
 
     def __init__(self, result):
         vars(self).update(result)

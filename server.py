@@ -4,11 +4,9 @@ Created on 2014. 12. 03
 @author: AhnSeongHyun
 '''
 
-import os
 import sys
-import json
-import traceback
-import optparse
+
+
 try:
     reload(sys)
     sys.setdefaultencoding('utf-8')
