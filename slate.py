@@ -26,14 +26,15 @@ from bs4 import BeautifulSoup
 from common import ALogger
 from common import conv_md2html
 from common import syntax_highlight
-from common import Config
 
 import watchdocs
 import server
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
-g_config = None
+from common.config import Config
+app.config.from_object(Config.load_conf('config.json'))
+
 g_doc_index = None
 g_docs = None
 s_dtq = None
@@ -43,7 +44,6 @@ TITLE_TAGS = ['h1', 'h2', 'h3', 'h4']
 
 @app.route('/')
 def index():
-    global g_config
     global g_docs
     global s_dtq
 
@@ -51,33 +51,28 @@ def index():
         total_reload_docs()
         s_dtq.clear()
 
-    temp = list()
-    [temp.append(str(lang)) for lang in g_config.SUPPORT_LANG]
-    g_config.SUPPORT_LANG = temp
+    temp = [str(lang) for lang in app.config['SUPPORT_LANG']]
+    app.config['SUPPORT_LANG'] = temp
 
     logo_title = None
     logo_img = None
 
-    if 'LOGO_IMG' in g_config.__dict__:
-        logo_img = g_config.LOGO_IMG
+    if 'LOGO_IMG' in app.config:
+        logo_img = app.config['LOGO_IMG']
 
-    if 'LOGO_TITLE' in g_config.__dict__:
-        logo_title = g_config.LOGO_TITLE
+    if 'LOGO_TITLE' in app.config:
+        logo_title = app.config['LOGO_TITLE']
 
     return render_template("index.html",
-        API_TITLE = g_config.TITLE,
-        IS_SEARCH = g_config.SEARCH_ON,
-        LOGO_TITLE = logo_title,
-        LOGO_IMG = logo_img,
-        SUPPORT_LANGUAGES=g_config.SUPPORT_LANG,
-        DOCS = g_docs.values(),
-        COPYRIGHT = g_config.COPYRIGHT
-        )
+                           API_TITLE=app.config['TITLE'],
+                           IS_SEARCH=app.config['SEARCH_ON'],
+                           LOGO_TITLE=logo_title,
+                           LOGO_IMG=logo_img,
+                           SUPPORT_LANGUAGES=app.config['SUPPORT_LANG'],
+                           DOCS=g_docs.values(),
+                           COPYRIGHT=app.config['COPYRIGHT']
+                           )
 
-
-def read_conf(config_path=None):
-    with open(config_path, 'r') as f:
-        return json.loads(f.read(), object_hook=Config)
 
 
 def read_conf_with_order(config_path=None):
@@ -104,10 +99,9 @@ def reordering(html):
 
 def create_api_docs():
     global g_doc_index
-    global g_config 
     docs = OrderedDict()
     for doc_file in g_doc_index["ORDER"]:
-        doc_file = os.path.join(g_config.API_DOC_PATH, doc_file)
+        doc_file = os.path.join(app.config['API_DOC_PATH'], doc_file)
         with open(doc_file, 'r') as f:
             html = conv_md2html(f.read())
             docs[os.path.split(doc_file)[1]] = (modify_html(highlight_syntax(reordering(html))))
@@ -147,11 +141,11 @@ def highlight_syntax(soup):
 def total_reload_docs():
     ALogger.INFO("total_reload_docs")
     global g_doc_index
-    global g_config
     global g_docs
 
     g_doc_index = None
-    g_doc_index = read_conf_with_order(os.path.join(g_config.API_DOC_PATH, g_config.API_DOC_INDEX_PATH))
+    g_doc_index = read_conf_with_order(os.path.join(app.config['API_DOC_PATH'],
+                                                    app.config['API_DOC_INDEX_PATH']))
 
     g_docs = None
     g_docs = create_api_docs()
@@ -162,12 +156,11 @@ def partial_reload_docs(file_name):
 
     global g_docs
     global g_doc_index
-    global g_config
 
     for doc_file in g_doc_index["ORDER"]:
         if file_name == os.path.split(doc_file)[1]:
 
-            doc_file = os.path.join(g_config.API_DOC_PATH, doc_file)
+            doc_file = os.path.join(app.config['API_DOC_PATH'], doc_file)
             with open(doc_file, 'r') as f:
                 html = conv_md2html(f.read())
                 g_docs[file_name] = modify_html(highlight_syntax(reordering(html)))
@@ -176,7 +169,7 @@ def partial_reload_docs(file_name):
 def watch_doc_start():
     global s_dtq
     s_dtq = watchdocs.DocumentTraceQueue()
-    watchdocs.start_watch(g_config.API_DOC_PATH, g_config.API_DOC_INDEX_PATH, g_doc_index["ORDER"])
+    watchdocs.start_watch(app.config['API_DOC_PATH'], app.config['API_DOC_INDEX_PATH'], g_doc_index["ORDER"])
 
 
 def start_test_server(port=5000):
@@ -198,10 +191,6 @@ if __name__ == '__main__':
     p.add_option('-m', dest='mode', type='string')
     options, args = p.parse_args()
 
-    # read config.json
-    ALogger.INFO("read config.json")
-    g_config = read_conf('config.json')
-
     # create documents
     total_reload_docs()
 
@@ -209,6 +198,6 @@ if __name__ == '__main__':
     watch_doc_start()
 
     if options.mode == 'test':
-        start_test_server(g_config.PORT)
+        start_test_server(app.config['PORT'])
     else:
-        start_service_server(g_config.PORT)
+        start_service_server(app.config['PORT'])
