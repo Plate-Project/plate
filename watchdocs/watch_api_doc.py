@@ -20,6 +20,7 @@ from .document_trace_handler import DocumentTraceHandler
 
 g_observer = None
 
+#todo : 클래스로 변경
 
 def start_watch(doc_path, doc_index_path, filter_docs):
     global g_observer

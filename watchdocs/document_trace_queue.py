@@ -34,7 +34,7 @@ class DocumentTraceQueue(object):
             return None
         else:
             event = copy.deepcopy(self.eventQueue[0])
-            self.eventQueue.remove(self.eventQueue[0])
+            self.eventQueue.remove(event)
             return
 
     def clear(self):
