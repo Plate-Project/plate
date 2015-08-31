@@ -4,30 +4,30 @@ Created on 2014. 12. 03
 @author: AhnSeongHyun
 '''
 
-import os
-import sys
-import json
-import traceback
-import optparse
 try:
+    import sys
     reload(sys)
     sys.setdefaultencoding('utf-8')
 except NameError:
     pass
 
+
+import logging
+logger = logging.getLogger('logger.server')
+
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop 
-from common.alogger import ALogger
+
 
 
 def start(app, port=8080):
-    ALogger.INFO('Server Start..' + str(port))
+    logger.info('Server Start..' + str(port))
     http_server = HTTPServer(WSGIContainer(app))
     http_server.listen(port)
     IOLoop.instance().start()
 
 
 def stop():
-    ALogger.INFO('Server Stop..')
+    logger.info('Server Stop..')
     IOLoop.instance().stop()

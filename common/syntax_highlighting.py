@@ -5,7 +5,15 @@ Created on 2014. 12. 03
 '''
 
 from pygments import highlight
-from pygments.lexers import *
+from pygments.lexers import PythonLexer
+from pygments.lexers import BashLexer
+from pygments.lexers import CSharpAspxLexer
+from pygments.lexers import CSharpLexer
+from pygments.lexers import RubyLexer
+from pygments.lexers import JsonLexer
+from pygments.lexers import JavascriptLexer
+from pygments.lexers import ObjectiveCLexer
+from pygments.lexers import JavaLexer
 from pygments.formatters import HtmlFormatter
 
 
@@ -37,13 +45,14 @@ def syntax_highlight(lang, code):
     elif lang.lower() == 'objective-c':
         highlighted = highlight(code, ObjectiveCLexer(), HtmlFormatter())
 
-
+    elif lang.lower() == 'java':
+        highlighted = highlight(code, JavaLexer(), HtmlFormatter())
 
     splitted = highlighted.split('"highlight')
     highlighted = splitted[0] + '"highlight '+lang + splitted[1]
 
-    highlighted = highlighted.replace("<pre>","")
-    highlighted = highlighted.replace("</pre>","")
-    highlighted = highlighted.replace("div","pre")
+    highlighted = highlighted.replace("<pre>", "")
+    highlighted = highlighted.replace("</pre>", "")
+    highlighted = highlighted.replace("div", "pre")
 
     return highlighted

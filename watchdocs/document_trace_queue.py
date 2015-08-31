@@ -1,14 +1,11 @@
 # -*- coding:utf-8 -*-
 '''
-Created on 2014. 12. 03
+Created on 2015. 08. 03
 @author: AhnSeongHyun
 '''
 
-import sys
-import copy
-
-
 try:
+    import sys
     reload(sys)
     sys.setdefaultencoding('utf-8')
     sys.path.append('../common')
@@ -16,31 +13,31 @@ except NameError:
     pass
 
 
-from watchdog.observers import Observer
-from watchdog.observers.api import EventQueue 
-
-from common import Singleton
-
 class DocumentTraceQueue(object):
+    from common import Singleton
     __metaclass__ = Singleton
-    eventQueue = list()
+    trace_queue = []
 
     def empty(self):
-        if len(self.eventQueue) > 0:
+        if len(self.trace_queue) > 0:
             return False
         else:
             return True
 
+    def count(self):
+        return len(self.trace_queue)
+
     def enqueue(self, event, is_index_file):
-        self.eventQueue.append((event, is_index_file)) 
+        self.trace_queue.append((event, is_index_file)) 
 
     def dequeue(self):
         if self.empty():
             return None
         else:
-            event = copy.deepcopy(self.eventQueue[0])
-            self.eventQueue.remove(self.eventQueue[0])
+            import copy
+            event = copy.deepcopy(self.trace_queue[0])
+            self.trace_queue.remove(event)
             return
 
     def clear(self):
-         self.eventQueue = []
+        self.trace_queue = []
