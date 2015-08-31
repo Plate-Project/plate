@@ -4,10 +4,8 @@ Created on 2014. 12. 03
 @author: AhnSeongHyun
 '''
 
-import sys
-
-
 try:
+    import sys
     reload(sys)
     sys.setdefaultencoding('utf-8')
 except NameError:

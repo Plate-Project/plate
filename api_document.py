@@ -11,8 +11,6 @@ from common import syntax_highlight
 
 class APIDocument(object):
 
-
-
     def __init__(self, doc_path, index_file):
         from os.path import join
         self.doc_path = doc_path

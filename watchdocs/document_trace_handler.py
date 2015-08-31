@@ -14,8 +14,7 @@ except NameError:
     pass
 
 from watchdog.events import FileSystemEventHandler
-from .document_trace_queue import DocumentTraceQueue
- 
+
 
 class DocumentTraceHandler(FileSystemEventHandler):
 
@@ -28,13 +27,14 @@ class DocumentTraceHandler(FileSystemEventHandler):
             self.filter_files.append(os.path.split(doc)[1])
         self.filter_files.append(os.path.split(doc_index_path)[1])
 
-    def on_modified(self, event): 
-        s_dtq = DocumentTraceQueue() 
+    def on_modified(self, event):
+        from .document_trace_queue import DocumentTraceQueue
+        document_trace_queue = DocumentTraceQueue()
 
         modified_file = os.path.split(event.src_path)[1]
 
         if self.is_filtering(modified_file): 
-                s_dtq.enqueue(event, self.is_index_file(modified_file)) 
+                document_trace_queue.enqueue(event, self.is_index_file(modified_file))
 
     def is_index_file(self, file_name):
         last = len(self.filter_files)-1

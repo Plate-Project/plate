@@ -4,10 +4,8 @@ Created on 2014. 12. 03
 @author: AhnSeongHyun
 '''
 
-import sys
-import time
-
 try:
+    import sys
     reload(sys)
     sys.setdefaultencoding('utf-8')
     sys.path.append('../common')
@@ -16,28 +14,31 @@ except NameError:
 
 from common import ALogger
 from watchdog.observers import Observer
-from .document_trace_handler import DocumentTraceHandler
 
-g_observer = None
 
-#todo : 클래스로 변경
+_g_observer = None
+
+# todo : CONVERT TO CLASS
+
 
 def start_watch(doc_path, doc_index_path, filter_docs):
-    global g_observer
+    global _g_observer
+
+    from .document_trace_handler import DocumentTraceHandler
     event_handler = DocumentTraceHandler(doc_index_path, filter_docs)
 
-    if g_observer:
+    if _g_observer:
         stop_watch()
 
-    g_observer = Observer()
-    g_observer.schedule(event_handler, doc_path, recursive=True)
-    g_observer.start()
+    _g_observer = Observer()
+    _g_observer.schedule(event_handler, doc_path, recursive=True)
+    _g_observer.start()
     ALogger.INFO("Start watchdocs..")
 
 
 def stop_watch():
-    global g_observer
-    ALogger.INFO("Stop watchdocs..")
-    g_observer.stop()
-    g_observer.join()
-    g_observer = None
+    global _g_observer
+    _g_observer.INFO("Stop watchdocs..")
+    _g_observer.stop()
+    _g_observer.join()
+    _g_observer = None

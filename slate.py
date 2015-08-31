@@ -4,12 +4,9 @@ Created on 2014. 12. 03
 @author: AhnSeongHyun
 '''
 
-import sys
-import optparse
-
 try:
+    import sys
     reload(sys)
-
     sys.setdefaultencoding('utf-8')
     sys.path.append('./common')
     sys.path.append('./watchdocs')
@@ -30,19 +27,14 @@ from common.config import Config
 app.config.from_object(Config.load_conf('config.json'))
 
 
-#todo : 이름 변경 하기
-s_dtq = None # watch_doc_queue
-
-
-
-
 @app.route('/')
 def index():
-    # global s_dtq
-    #
-    # if not s_dtq.empty():
-    #     api_doc.total_reload_docs()
-    #     s_dtq.clear()
+
+    document_trace_queue = watchdocs.DocumentTraceQueue()
+
+    if not document_trace_queue.empty():
+        api_doc.total_reload_docs()
+        document_trace_queue.clear()
 
     temp = [str(lang) for lang in app.config['SUPPORT_LANG']]
     app.config['SUPPORT_LANG'] = temp
@@ -66,36 +58,8 @@ def index():
                            COPYRIGHT=app.config['COPYRIGHT']
                            )
 
-
-
-
-
-
-
-# def partial_reload_docs(file_name):
-#     ALogger.INFO("partial_reload_docs")
-#
-#     global g_docs
-#     global g_doc_index
-#
-#     for doc_file in g_doc_index["ORDER"]:
-#         if file_name == os.path.split(doc_file)[1]:
-#
-#             from os.path import join
-#             doc_file = join(app.config['API_DOC_PATH'], doc_file)
-#             with open(doc_file, 'r') as f:
-#                 html = conv_md2html(f.read())
-#                 g_docs[file_name] = modify_html(highlight_syntax(reordering(html)))
-
-
-def watch_doc_start():
-    pass
-    # global s_dtq
-    # s_dtq = watchdocs.DocumentTraceQueue()
-    # watchdocs.start_watch(app.config['API_DOC_PATH'], app.config['API_DOC_INDEX_PATH'], g_doc_index["ORDER"])
-
-
 if __name__ == '__main__':
+    import optparse
     p = optparse.OptionParser('-m [test] or [run]')
     p.add_option('-m', dest='mode', type='string')
     options, args = p.parse_args()
@@ -104,7 +68,9 @@ if __name__ == '__main__':
     api_doc = APIDocument(app.config['API_DOC_PATH'], app.config['API_DOC_INDEX_PATH'])
 
     # start watch docs
-    watch_doc_start()
+    watchdocs.start_watch(app.config['API_DOC_PATH'],
+                          app.config['API_DOC_INDEX_PATH'],
+                          api_doc.toc['ORDER'])
 
 
     def start_test_server(port=5000):
