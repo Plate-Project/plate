@@ -12,9 +12,9 @@ try:
 except NameError:
     pass
 
-from common import ALogger
+import logging
+logger = logging.getLogger('logger.wachdoc')
 from watchdog.observers import Observer
-
 
 _g_observer = None
 
@@ -33,12 +33,12 @@ def start_watch(doc_path, doc_index_path, filter_docs):
     _g_observer = Observer()
     _g_observer.schedule(event_handler, doc_path, recursive=True)
     _g_observer.start()
-    ALogger.INFO("Start watchdocs..")
+    logger.info("Start watchdocs..")
 
 
 def stop_watch():
     global _g_observer
-    _g_observer.INFO("Stop watchdocs..")
     _g_observer.stop()
     _g_observer.join()
     _g_observer = None
+    logger.info("Stop watchdocs..")

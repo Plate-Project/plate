@@ -4,7 +4,9 @@ Created on 2015. 08. 31
 @author: AhnSeongHyun
 '''
 
-from common import ALogger
+import logging
+logger = logging.getLogger('logger')
+
 from common import conv_md2html
 from common import syntax_highlight
 
@@ -19,7 +21,7 @@ class APIDocument(object):
         self.contents = self.create_api_docs()
 
     def total_reload_docs(self):
-        ALogger.INFO("total_reload_docs")
+        logger.info("total_reload_docs")
         self.toc = self.read_index(self.index_file_path)
         self.contents = self.create_api_docs()
 
