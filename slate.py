@@ -83,13 +83,11 @@ if __name__ == '__main__':
                           app.config['API_DOC_INDEX_PATH'],
                           _g_api_doc.toc['ORDER'])
 
-
     def start_test_server(port=5000):
         try:
             app.run(debug=True, host='0.0.0.0', port=port)
         except KeyboardInterrupt:
             watchdocs.stop_watch()
-
 
     def start_service_server(port=8080):
         try:

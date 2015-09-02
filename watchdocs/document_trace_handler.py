@@ -33,7 +33,7 @@ class DocumentTraceHandler(FileSystemEventHandler):
 
         modified_file = os.path.split(event.src_path)[1]
 
-        if self.is_filtering(modified_file): 
+        if self.is_filtering(modified_file):
                 document_trace_queue.enqueue(event, self.is_index_file(modified_file))
 
     def is_index_file(self, file_name):
@@ -43,7 +43,7 @@ class DocumentTraceHandler(FileSystemEventHandler):
         else:
             return False
 
-    def is_filtering(self, file_name): 
+    def is_filtering(self, file_name):
         if file_name in self.filter_files:
             return True
         else:

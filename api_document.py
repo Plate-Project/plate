@@ -7,7 +7,6 @@ Created on 2015. 08. 31
 import logging
 logger = logging.getLogger('logger')
 
-from common import conv_md2html
 from common import syntax_highlight
 
 
@@ -46,7 +45,6 @@ class APIDocument(object):
 
         return docs.values()
 
-
     def reordering(self, html):
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(html)
@@ -65,7 +63,6 @@ class APIDocument(object):
                     break
         return soup
 
-
     def highlight_syntax(self, soup):
         code_tags = soup.find_all('code')
 
@@ -78,7 +75,6 @@ class APIDocument(object):
                 code.parent.replaceWith(syntax_highlight(lang[0], code.string))
 
         return soup
-
 
     def modify_html(self, soup):
         tags = []

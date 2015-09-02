@@ -28,7 +28,7 @@ class DocumentTraceQueue(object):
         return len(self.trace_queue)
 
     def enqueue(self, event, is_index_file):
-        self.trace_queue.append((event, is_index_file)) 
+        self.trace_queue.append((event, is_index_file))
 
     def dequeue(self):
         if self.empty():

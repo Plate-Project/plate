@@ -18,7 +18,7 @@ from pygments.formatters import HtmlFormatter
 
 
 def syntax_highlight(lang, code):
-    #print "lang : " + lang +"    code : " + code
+    # print "lang : " + lang +"    code : " + code
     highlighted = None
 
     if lang.lower() == 'python':
@@ -38,10 +38,10 @@ def syntax_highlight(lang, code):
 
     elif lang.lower() == 'json':
         highlighted = highlight(code, JsonLexer(), HtmlFormatter())
-        
+
     elif lang.lower() == 'js':
         highlighted = highlight(code, JavascriptLexer(), HtmlFormatter())
-    
+
     elif lang.lower() == 'objective-c':
         highlighted = highlight(code, ObjectiveCLexer(), HtmlFormatter())
 
