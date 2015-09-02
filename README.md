@@ -1,13 +1,10 @@
 slate-flask 
 ========
 
-[![Join the chat at https://gitter.im/AhnSeongHyun/slate-flask](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AhnSeongHyun/slate-flask?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Github Releases (by Release)](https://img.shields.io/github/downloads/AhnSeongHyun/slate-flask/v0.2/total.svg)](https://github.com/AhnSeongHyun/slate-flask/releases/tag/v0.2) [![GitHub commits](https://img.shields.io/github/commits-since/AhnSeongHyun/slate-flask/v0.2.svg)](https://github.com/AhnSeongHyun/slate-flask) [![Dependency Status](https://gemnasium.com/AhnSeongHyun/slate-flask.svg)](https://gemnasium.com/AhnSeongHyun/slate-flask) [![Join the chat at https://gitter.im/AhnSeongHyun/slate-flask](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AhnSeongHyun/slate-flask?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![Gemnasium](https://img.shields.io/gemnasium/mathiasbynens/he.svg)](https://github.com/AhnSeongHyun/slate-flask)
 
-[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/AhnSeongHyun/slate-flask)
 
-[![GitHub commits](https://img.shields.io/github/commits-since/SubtitleEdit/subtitleedit/3.4.7.svg)](https://github.com/AhnSeongHyun/slate-flask)
   
 slate-flask is the converting [Slate](http://tripit.github.io/slate) based on Ruby to Python-Flask base. And add some different functions for usages. 
   
