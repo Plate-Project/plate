@@ -323,6 +323,7 @@ table {
 
 .content aside.notice:before {
     content: "\e602";
+    font-weight: bold;
 }
 
 .content aside.success:before {
@@ -700,7 +701,7 @@ html,body {
 
 .content h2 {
     font-size: 20px;
-    margin-top: 4em;
+    margin-top: 2em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
