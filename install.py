@@ -6,12 +6,9 @@ Created on 2014. 12. 03
 
 import os
 import shutil
-import platform
-is_windows = False
-if str.lower(platform.uname()[0]) == "windows":
-    is_windows = True
+import platform 
 
-print("\nWelcome slate-flask v0.1.")
+print("\nWelcome slate-flask v0.2")
 print("Start your API Document system.")
 
 project_name = None

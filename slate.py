@@ -22,7 +22,6 @@ logger = logging.getLogger('logger')
 logger.setLevel(logging.DEBUG)
 logger.addHandler(loggin_handler)
 
-
 from flask import Flask
 from flask import render_template
 from api_document import  APIDocument
@@ -76,20 +75,19 @@ if __name__ == '__main__':
     options, args = p.parse_args()
 
     # create documents
-    _g_api_doc = APIDocument(app.config['API_DOC_PATH'], app.config['API_DOC_INDEX_PATH'])
+    _g_api_doc = APIDocument(app.config['API_DOC_PATH'], 
+                             app.config['API_DOC_INDEX_PATH'])
 
     # start watch docs
     watchdocs.start_watch(app.config['API_DOC_PATH'],
                           app.config['API_DOC_INDEX_PATH'],
                           _g_api_doc.toc['ORDER'])
 
-
     def start_test_server(port=5000):
         try:
             app.run(debug=True, host='0.0.0.0', port=port)
         except KeyboardInterrupt:
             watchdocs.stop_watch()
-
 
     def start_service_server(port=8080):
         try:

@@ -4,7 +4,7 @@ Created on 2014. 12. 03
 @author: AhnSeongHyun
 '''
 
- 
+
 class Config(object):
     # reading config file
     def __init__(self, result):
