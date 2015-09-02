@@ -1,7 +1,7 @@
 slate-flask 
 ========
 
-[![Github Releases (by Release)](https://img.shields.io/github/downloads/AhnSeongHyun/slate-flask/v0.2/total.svg)](https://github.com/AhnSeongHyun/slate-flask/releases/tag/v0.2) [![GitHub commits](https://img.shields.io/github/commits-since/AhnSeongHyun/slate-flask/v0.2.svg)](https://github.com/AhnSeongHyun/slate-flask) [![Dependency Status](https://gemnasium.com/AhnSeongHyun/slate-flask.svg)](https://gemnasium.com/AhnSeongHyun/slate-flask) [![Join the chat at https://gitter.im/AhnSeongHyun/slate-flask](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AhnSeongHyun/slate-flask?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Github Releases (by Release)](https://img.shields.io/github/downloads/AhnSeongHyun/slate-flask/v0.2/total.svg)](https://github.com/AhnSeongHyun/slate-flask/releases/tag/v0.2) [![GitHub commits](https://img.shields.io/github/commits-since/AhnSeongHyun/slate-flask/v0.2.svg)](https://github.com/AhnSeongHyun/slate-flask) [![Dependency Status](https://gemnasium.com/AhnSeongHyun/slate-flask.svg)](https://gemnasium.com/AhnSeongHyun/slate-flask) 
 
 
 
@@ -52,7 +52,7 @@ Getting Start
     > cd slate-flask 
     > python install.py 
     ...
-    Welcome slate-flask v0.1. 
+    Welcome slate-flask v0.2
     Start your API Document system.
     
     Typing API document name :<Typing your project>
@@ -97,7 +97,7 @@ Contributor
 --------------------
 slate-flask was built by [@sh84ahn](https://twitter.com/sh84ahn) using [Slate](http://tripit.github.io/slate)
 
-Contributing(Bugs/New Features)
+Contributing(Bugs/New Features) [![Join the chat at https://gitter.im/AhnSeongHyun/slate-flask](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AhnSeongHyun/slate-flask?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 --------------------
 Any suggestions [submit a issue](https://github.com/AhnSeongHyun/slate-flask/issues). 
 

@@ -7,6 +7,12 @@ Created on 2014. 12. 03
 import os
 import shutil
 import platform 
+'''   _       _              __ _           _    
+  ___| | __ _| |_ ___       / _| | __ _ ___| | __
+ / __| |/ _` | __/ _ \_____| |_| |/ _` / __| |/ /
+ \__ \ | (_| | ||  __/_____|  _| | (_| \__ \   < 
+ |___/_|\__,_|\__\___|     |_| |_|\__,_|___/_|\_\
+'''                                                 
 
 print("\nWelcome slate-flask v0.2")
 print("Start your API Document system.")
@@ -19,8 +25,8 @@ except NameError:
     #  python3.x
     project_name = str(input('\nTyping API document name :'))
 
+# rename project 
 print("what is API document name? is" + "\"" + project_name + "\"" + ".")
-
 project_path = "../" + project_name
 
 print("Rename slate-flask to  " + "\"" + project_name + "\"" + "...")
@@ -28,6 +34,7 @@ current_dir = os.path.abspath("./")
 dest_dir = os.path.join(os.path.dirname(current_dir), project_name)
 shutil.move(current_dir, dest_dir)
 
+# setup requirements.txt 
 from pip.req import parse_requirements
 import pip
 print("Install requirements.txt")
