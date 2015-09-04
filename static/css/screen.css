@@ -1,5 +1,7 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
 /*! normalize.css v2.0.1 | MIT License | git.io/normalize */
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary {
     display: block;
@@ -19,7 +21,7 @@ audio:not([controls]) {
 }
 
 html {
-    font-family: sans-serif;
+    font-family: 'Ubuntu', 'Nanum Gothic', sans-serif;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
@@ -58,7 +60,7 @@ mark {
 }
 
 code,kbd,pre,samp {
-    font-family: monospace, serif;
+    font-family: Hack, Consolas;
     font-size: 1em;
 }
 
@@ -115,7 +117,7 @@ legend {
 }
 
 button,input,select,textarea {
-    font-family: inherit;
+    font-family: 'Ubuntu', 'Nanum Gothic', sans-serif;
     font-size: 100%;
     margin: 0;
 }
@@ -165,8 +167,8 @@ table {
 }
 
 .content h1,.content h2,.content h3,.content h4,.content h5,.content h6,html,body {
-    font-family:  Arial, sans-serif;
-    font-size: 13px; 
+    font-family: 'Ubuntu', 'Nanum Gothic';
+    font-size: 14px; 
 }
 
 .content h1,.content h2,.content h3,.content h4,.content h5,.content h6 {
@@ -174,7 +176,7 @@ table {
 }
 
 .content code,.content pre {
-    font-family: Monaco,Consolas,"Lucida Console",monospace;
+    font-family: Hack, Consolas
     font-size: 12px;
 }
 
