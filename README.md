@@ -1,7 +1,7 @@
 slate-flask 
 ========
-
-[![Github Releases (by Release)](https://img.shields.io/github/downloads/AhnSeongHyun/slate-flask/v0.2/total.svg)](https://github.com/AhnSeongHyun/slate-flask/releases/tag/v0.2) [![GitHub commits](https://img.shields.io/github/commits-since/AhnSeongHyun/slate-flask/v0.2.svg)](https://github.com/AhnSeongHyun/slate-flask) [![Dependency Status](https://gemnasium.com/AhnSeongHyun/slate-flask.svg)](https://gemnasium.com/AhnSeongHyun/slate-flask) 
+ 
+[![Pyhton2.7](https://img.shields.io/badge/python-2.7-brightgreen.svg)](https://github.com/AhnSeongHyun/slate-flask)  [![Pyhton3.4](https://img.shields.io/badge/python-3.4-red.svg)](https://github.com/AhnSeongHyun/slate-flask) [![GitHub commits](https://img.shields.io/github/commits-since/AhnSeongHyun/slate-flask/v0.2.svg)](https://github.com/AhnSeongHyun/slate-flask) [![Dependency Status](https://gemnasium.com/AhnSeongHyun/slate-flask.svg)](https://gemnasium.com/AhnSeongHyun/slate-flask) 
 
 
 

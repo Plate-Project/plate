@@ -3,7 +3,9 @@
     [
         "Introduction.md",
         "Signup.md",
-        "Signin.md"
+        "Signin.md", 
+        "Notice.md"
+
     ]
 }
 
