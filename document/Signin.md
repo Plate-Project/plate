@@ -2,6 +2,9 @@
 #Signin API#
 - Signin the service using id, password
 
+![Signin](https://farm1.staticflickr.com/642/20891211720_09e70f97c7.jpg)
+
+
 ##Resource URL##
 - [http://127.0.0.1/api/signin]( http://127.0.0.1/api/signin )
 
@@ -12,6 +15,9 @@
 | id              | string          | O         | email          |
 | password        | string          | O         |                | 
 
+<aside class="warning">
+Must encrypt password using a key. 
+</aside>
 
   
 > Example
@@ -30,12 +36,7 @@ HttpClient httpclient = new DefaultHttpClient();
 HttpGet httpget = new HttpGet("http://127.0.0.1/api/signin?id=test@gmail.com&password=1234");
 HttpResponse response = httpclient.execute(httpget);
 ```
-
-
-
-
-
-
+ 
 
 ##Response(JSON)##
  

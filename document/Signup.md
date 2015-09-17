@@ -2,6 +2,10 @@
 #Signup API#
 - Sign up the service using id, password
 
+![Signup](https://farm6.staticflickr.com/5658/20891390438_0f5e639451.jpg)
+
+
+
 ##Resource URL##
 - [http://127.0.0.1/api/signup]( http://127.0.0.1/api/signup )
      
@@ -40,10 +44,14 @@ r = requests.post("http://127.0.0.1/api/signup", data=payload)
 | msg        | string  | O         | HTTP Status Message                 |
  
 
-**** No mandatory parameter, return 400 Invalid Parameter ***
+<aside class="notice">
+No mandatory parameter, return 400 Invalid Parameter 
+</aside>
 
 
-**** If already signup, return 500 Internal Server Error  ***
+<aside class="notice">
+If already signup, return 500 Internal Server Error
+</aside>
 
 
 > Response 200 OK
