@@ -1,14 +1,14 @@
-slate-flask 
+Plate
 ========
  
-[![Pyhton2.7](https://img.shields.io/badge/python-2.7-brightgreen.svg)](https://github.com/AhnSeongHyun/slate-flask)  [![Pyhton3.4](https://img.shields.io/badge/python-3.4-red.svg)](https://github.com/AhnSeongHyun/slate-flask) [![GitHub commits](https://img.shields.io/github/commits-since/AhnSeongHyun/slate-flask/v0.2.svg)](https://github.com/AhnSeongHyun/slate-flask) [![Dependency Status](https://gemnasium.com/AhnSeongHyun/slate-flask.svg)](https://gemnasium.com/AhnSeongHyun/slate-flask) 
+[![Pyhton2.7](https://img.shields.io/badge/python-2.7-brightgreen.svg)](https://github.com/AhnSeongHyun/plate)  [![Pyhton3.4](https://img.shields.io/badge/python-3.4-red.svg)](https://github.com/AhnSeongHyun/plate) [![GitHub commits](https://img.shields.io/github/commits-since/AhnSeongHyun/plate/v0.2.svg)](https://github.com/AhnSeongHyun/plate) [![Dependency Status](https://gemnasium.com/AhnSeongHyun/plate.svg)](https://gemnasium.com/AhnSeongHyun/plate) 
 
 
 
   
-slate-flask is the converting [Slate](http://tripit.github.io/slate) based on Ruby to Python-Flask base. And add some different functions for usages. 
+plate is the converting [Slate](http://tripit.github.io/slate) based on Ruby to Python-Flask base. And add some different functions for usages. 
   
-![slate-flask](https://farm9.staticflickr.com/8562/15916154516_b5aacc6790_c.jpg) 
+![plate](https://farm9.staticflickr.com/8562/15916154516_b5aacc6790_c.jpg) 
  
 Example site is [here](http://ash84.net:8888)
 
@@ -22,10 +22,10 @@ Features
 : Set title, programming language for example codes using config.json base on JSON Format. Also set the path of the API documents and TOC(Table of contents).
 
 - **Support Multi-API documents**
-: Original [Slate](http://tripit.github.io/slate) support one API document based on Markdown format. But [slate-flask](https://github.com/AhnSeongHyun/slate-flask) support multi-API documents for efficient management and amount of documents using TOC(index.json).
+: Original [Slate](http://tripit.github.io/slate) support one API document based on Markdown format. But [plate](https://github.com/AhnSeongHyun/plate) support multi-API documents for efficient management and amount of documents using TOC(index.json).
 
 - **Support dynamic changes of documents**
-: You can reflect the changes of API documents without restarting server. When web page refresh, if exist changes, [slate-flask](https://github.com/AhnSeongHyun/slate-flask) reload API documents. Users only focus on writing API documents.
+: You can reflect the changes of API documents without restarting server. When web page refresh, if exist changes, [plate](https://github.com/AhnSeongHyun/plate) reload API documents. Users only focus on writing API documents.
  
 
 Getting Start
@@ -37,28 +37,28 @@ Getting Start
 
 ### Prerequisites
  
- - **requirements.txt** have all libraries for running slate-flask
+ - **requirements.txt** have all libraries for running plate
  - If you install using `install.py`, automatically install all librarys. 
 
 ### QuickStart 
 
- 1. Clone slate-flask to your hard drive with `git clonehttps://github.com/AhnSeongHyun/slate-flask.git`
- 2. `cd slate-flask`
+ 1. Clone plate to your hard drive with `git clonehttps://github.com/AhnSeongHyun/plate.git`
+ 2. `cd plate`
  4. Install your API document webpagse using `install.py`. 
  5. Start the server: `python slate.py`
 
     ```shell
-    > git clone https://github.com/AhnSeongHyun/slate-flask.git
-    > cd slate-flask 
+    > git clone https://github.com/AhnSeongHyun/plate.git
+    > cd plate 
     > python install.py 
     ...
-    Welcome slate-flask v0.2
+    Welcome plate v0.2
     Start your API Document system.
     
     Typing API document name :<Typing your project>
     what is API document name? is "<yout project>"
     
-    Rename slate-flask to  "<yout project>" ...
+    Rename plate to  "<yout project>" ...
     Complete. Enjoy developing.
     
     > cd ../<yout project>
@@ -76,7 +76,7 @@ Getting Start
     "SUPPORT_LANG"       : ["shell", "python"],
     "API_DOC_PATH"       : "./document",
     "API_DOC_INDEX_PATH" : "index.json",
-    "COPYRIGHT"          : "© 2014 slate-flask"
+    "COPYRIGHT"          : "© 2014 plate"
 }
 ```
 
@@ -95,19 +95,8 @@ Getting Start
 
 Contributor
 --------------------
-slate-flask was built by [@sh84ahn](https://twitter.com/sh84ahn) using [Slate](http://tripit.github.io/slate)
+plate was built by [@sh84ahn](https://twitter.com/sh84ahn) using [Slate](http://tripit.github.io/slate)
 
-Contributing(Bugs/New Features) [![Join the chat at https://gitter.im/AhnSeongHyun/slate-flask](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AhnSeongHyun/slate-flask?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Contributing(Bugs/New Features) [![Join the chat at https://gitter.im/AhnSeongHyun/plate](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AhnSeongHyun/plate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 --------------------
-Any suggestions [submit a issue](https://github.com/AhnSeongHyun/slate-flask/issues). 
-
-License
---------------------
-Copyright 2008-2013 Concur Technologies, Inc.  
-modified by AhnSeongHyun(All python codes)
-
-Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
-
-
-**If any problems related license, contact [@sh84ahn](https://twitter.com/sh84ahn).**
-
+Any suggestions [submit a issue](https://github.com/AhnSeongHyun/plate/issues). 

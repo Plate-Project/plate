@@ -7,14 +7,16 @@ Created on 2014. 12. 03
 import os
 import shutil
 import platform 
-'''   _       _              __ _           _    
-  ___| | __ _| |_ ___       / _| | __ _ ___| | __
- / __| |/ _` | __/ _ \_____| |_| |/ _` / __| |/ /
- \__ \ | (_| | ||  __/_____|  _| | (_| \__ \   < 
- |___/_|\__,_|\__\___|     |_| |_|\__,_|___/_|\_\
-'''                                                 
+'''
+ ____   _       _
+ |  _ \| | __ _| |_ ___
+ | |_) | |/ _` | __/ _ \
+ |  __/| | (_| | ||  __/
+ |_|   |_|\__,_|\__\___|
 
-print("\nWelcome slate-flask v0.2")
+'''
+
+print("\nWelcome Plate v0.2")
 print("Start your API Document system.")
 
 project_name = None
