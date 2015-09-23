@@ -100,3 +100,4 @@ plate was built by [@sh84ahn](https://twitter.com/sh84ahn) using [Slate](http://
 Contributing(Bugs/New Features)
 --------------------
 Any suggestions [submit a issue](https://github.com/Plate-Project/plate/issues).
+Show me the pull requests.
