@@ -1,7 +1,7 @@
 Plate
 ========
  
-[![Pyhton2.7](https://img.shields.io/badge/python-2.7-brightgreen.svg)](https://github.com/AhnSeongHyun/plate)  [![Pyhton3.4](https://img.shields.io/badge/python-3.4-red.svg)](https://github.com/AhnSeongHyun/plate) [![GitHub commits](https://img.shields.io/github/commits-since/AhnSeongHyun/plate/v0.2.svg)](https://github.com/AhnSeongHyun/plate) [![Dependency Status](https://gemnasium.com/AhnSeongHyun/plate.svg)](https://gemnasium.com/AhnSeongHyun/plate) 
+[![Pyhton2.7](https://img.shields.io/badge/python-2.7-brightgreen.svg)](https://github.com/Plate-Project/plate)  [![Pyhton3.4](https://img.shields.io/badge/python-3.4-red.svg)](https://github.com/Plate-Project/plate.git)
 
 
 
@@ -22,10 +22,10 @@ Features
 : Set title, programming language for example codes using config.json base on JSON Format. Also set the path of the API documents and TOC(Table of contents).
 
 - **Support Multi-API documents**
-: Original [Slate](http://tripit.github.io/slate) support one API document based on Markdown format. But [plate](https://github.com/AhnSeongHyun/plate) support multi-API documents for efficient management and amount of documents using TOC(index.json).
+: Original [Slate](http://tripit.github.io/slate) support one API document based on Markdown format. But [plate](https://github.com/Plate-Project/plate) support multi-API documents for efficient management and amount of documents using TOC(index.json).
 
 - **Support dynamic changes of documents**
-: You can reflect the changes of API documents without restarting server. When web page refresh, if exist changes, [plate](https://github.com/AhnSeongHyun/plate) reload API documents. Users only focus on writing API documents.
+: You can reflect the changes of API documents without restarting server. When web page refresh, if exist changes, [plate](https://github.com/Plate-Project/plate) reload API documents. Users only focus on writing API documents.
  
 
 Getting Start
@@ -42,13 +42,13 @@ Getting Start
 
 ### QuickStart 
 
- 1. Clone plate to your hard drive with `git clonehttps://github.com/AhnSeongHyun/plate.git`
+ 1. Clone plate to your hard drive with `git clone https://github.com/Plate-Project/plate.git`
  2. `cd plate`
  4. Install your API document webpagse using `install.py`. 
  5. Start the server: `python slate.py`
 
     ```shell
-    > git clone https://github.com/AhnSeongHyun/plate.git
+    > git clone https://github.com/Plate-Project/plate.git
     > cd plate 
     > python install.py 
     ...
@@ -62,7 +62,7 @@ Getting Start
     Complete. Enjoy developing.
     
     > cd ../<yout project>
-    > python slate.py 
+    > python plate.py
     ```
 
 ### config.json(configuration file)
@@ -97,6 +97,7 @@ Contributor
 --------------------
 plate was built by [@sh84ahn](https://twitter.com/sh84ahn) using [Slate](http://tripit.github.io/slate)
 
-Contributing(Bugs/New Features) [![Join the chat at https://gitter.im/AhnSeongHyun/plate](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AhnSeongHyun/plate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Contributing(Bugs/New Features)
 --------------------
-Any suggestions [submit a issue](https://github.com/AhnSeongHyun/plate/issues). 
+Any suggestions [submit a issue](https://github.com/Plate-Project/plate/issues).
+Show me the pull requests.
