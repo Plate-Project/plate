@@ -1,7 +1,7 @@
 Plate
 ========
  
-[![Pyhton2.7](https://img.shields.io/badge/python-2.7-brightgreen.svg)](https://github.com/Plate-Project/plate)  [![Pyhton3.4](https://img.shields.io/badge/python-3.4-red.svg)](https://github.com/AhnSeongHyun/plate) [![GitHub commits](https://img.shields.io/github/commits-since/AhnSeongHyun/plate/v0.2.svg)](https://github.com/Plate-Project/plate) [![Dependency Status](https://gemnasium.com/AhnSeongHyun/plate.svg)](https://github.com/Plate-Project/plate)
+[![Pyhton2.7](https://img.shields.io/badge/python-2.7-brightgreen.svg)](https://github.com/Plate-Project/plate)  [![Pyhton3.4](https://img.shields.io/badge/python-3.4-red.svg)](https://github.com/Plate-Project/plate.git)
 
 
 
@@ -42,13 +42,13 @@ Getting Start
 
 ### QuickStart 
 
- 1. Clone plate to your hard drive with `git clonehttps://github.com/AhnSeongHyun/plate.git`
+ 1. Clone plate to your hard drive with `git clone https://github.com/Plate-Project/plate.git`
  2. `cd plate`
  4. Install your API document webpagse using `install.py`. 
  5. Start the server: `python slate.py`
 
     ```shell
-    > git clone https://github.com/AhnSeongHyun/plate.git
+    > git clone https://github.com/Plate-Project/plate.git
     > cd plate 
     > python install.py 
     ...
