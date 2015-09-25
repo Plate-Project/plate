@@ -42,10 +42,11 @@
     <div id="toc">
     </div>
 
-
-    <ul class="toc-footer">
-        <li> {{COPYRIGHT}}</li>
-    </ul>
+    {%  if COPYRIGHT  %}
+        <ul class="toc-footer">
+            <li> {{COPYRIGHT}}</li>
+        </ul>
+    {% endif %}
 </div>
 
 <div class="page-wrapper">
