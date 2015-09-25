@@ -38,14 +38,14 @@ Getting Start
 ### Prerequisites
  
  - **requirements.txt** have all libraries for running plate
- - If you install using `install.py`, automatically install all librarys. 
+ - If you install using `install.py`, automatically install all libraries.
 
 ### QuickStart 
 
  1. Clone plate to your hard drive with `git clone https://github.com/Plate-Project/plate.git`
  2. `cd plate`
- 4. Install your API document webpagse using `install.py`. 
- 5. Start the server: `python slate.py`
+ 4. Install your API document web pages using `install.py`.
+ 5. Start the server: `python plate.py`
 
     ```shell
     > git clone https://github.com/Plate-Project/plate.git
@@ -56,12 +56,12 @@ Getting Start
     Start your API Document system.
     
     Typing API document name :<Typing your project>
-    what is API document name? is "<yout project>"
+    what is API document name? is "<your project>"
     
-    Rename plate to  "<yout project>" ...
+    Rename plate to  "<your project>" ...
     Complete. Enjoy developing.
     
-    > cd ../<yout project>
+    > cd ../<your project>
     > python plate.py
     ```
 
