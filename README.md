@@ -8,7 +8,7 @@ Plate
   
 plate is the converting [Slate](http://tripit.github.io/slate) based on Ruby to Python-Flask base. And add some different functions for usages. 
   
-![plate](https://farm6.staticflickr.com/5671/21680180212_452ab46750_b.jpg)
+![plate](https://farm6.staticflickr.com/5820/21503977290_41beb38dcd_b.jpg)
 
 Example site is [here](http://ash84.net:8888)
 
