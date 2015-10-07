@@ -16,27 +16,22 @@ except NameError:
 
 import logging
 from logging import Formatter
-loggin_handler = logging.StreamHandler()
-loggin_handler.setFormatter(Formatter("[%(asctime)s] : %(message)s [in %(filename)s:%(lineno)d]"))
+logging_handler = logging.StreamHandler()
+logging_handler.setFormatter(Formatter("[%(asctime)s] : %(message)s [in %(filename)s:%(lineno)d]"))
 logger = logging.getLogger('logger')
 logger.setLevel(logging.DEBUG)
-logger.addHandler(loggin_handler)
+logger.addHandler(logging_handler)
 
 from flask import Flask
 from flask import render_template
-from api_document import  APIDocument
+from api_document import APIDocument
 import watchdocs
 import server
 
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
-
 _g_api_doc = None
-
-from common.config import Config
-app.config.from_object(Config.load_conf('config.json'))
-
 
 @app.route('/')
 def index():
@@ -58,6 +53,7 @@ def index():
     if 'LOGO_TITLE' in app.config:
         logo_title = app.config['LOGO_TITLE']
 
+    from datetime import datetime
     return render_template("index.html",
                            API_TITLE=app.config['TITLE'],
                            IS_SEARCH=app.config['SEARCH_ON'],
@@ -65,23 +61,32 @@ def index():
                            LOGO_IMG=logo_img,
                            SUPPORT_LANGUAGES=app.config['SUPPORT_LANG'],
                            DOCS=_g_api_doc.contents,
-                           COPYRIGHT=app.config['COPYRIGHT']
+                           COPYRIGHT=app.config['COPYRIGHT'],
+                           timestamp=datetime.now().strftime("%Y%m%d%H%M%S")
                            )
+
+
+def local_url_for(endpoint, **values):
+    from os.path import split
+    from os.path import join
+
+    dir, file = split(values['filename'])
+    dirname = split(dir)[1]
+    return join(join("./", dirname), file)
+
 
 if __name__ == '__main__':
     import optparse
-    p = optparse.OptionParser('-m [test] or [run]')
-    p.add_option('-m', dest='mode', type='string')
+    p = optparse.OptionParser('-m [test] or [run] or [convert]')
+    p.add_option('-m', dest='mode', type='string', default='run')
     options, args = p.parse_args()
 
-    # create documents
-    _g_api_doc = APIDocument(app.config['API_DOC_PATH'], 
-                             app.config['API_DOC_INDEX_PATH'])
+    from common.config import Config
+    config = Config.load_conf('config.json')
 
-    # start watch docs
-    watchdocs.start_watch(app.config['API_DOC_PATH'],
-                          app.config['API_DOC_INDEX_PATH'],
-                          _g_api_doc.toc['ORDER'])
+    # create documents
+    _g_api_doc = APIDocument(config.API_DOC_PATH,
+                             config.API_DOC_INDEX_PATH)
 
     def start_test_server(port=5000):
         try:
@@ -97,6 +102,67 @@ if __name__ == '__main__':
             server.stop()
 
     if options.mode == 'test':
+        app.config.from_object(config)
+        # start watch docs
+        watchdocs.start_watch(app.config['API_DOC_PATH'],
+                              app.config['API_DOC_INDEX_PATH'],
+                              _g_api_doc.toc['ORDER'])
         start_test_server(app.config['PORT'])
-    else:
+    elif options.mode == 'run':
+        app.config.from_object(config)
+        # start watch docs
+        watchdocs.start_watch(app.config['API_DOC_PATH'],
+                              app.config['API_DOC_INDEX_PATH'],
+                              _g_api_doc.toc['ORDER'])
         start_service_server(app.config['PORT'])
+
+    elif options.mode == 'convert':
+
+        from jinja2 import Environment
+        from jinja2 import PackageLoader
+        env = Environment(loader=PackageLoader('plate', 'templates'),
+                          autoescape=False,
+                          extensions=['jinja2.ext.autoescape'])
+
+        t = env.get_template('index.html')
+        config.SUPPORT_LANG = [str(lang) for lang in config.SUPPORT_LANG]
+
+        if config.exist('LOGO_IMG'):
+            logo_img = config.LOGO_IMG
+        else:
+            logo_img = None
+
+        if config.exist('LOGO_TITLE'):
+            logo_title = config.LOGO_TITLE
+        else:
+            logo_title = None
+
+        rendered_template = t.render(API_TITLE=config.TITLE,
+                                     IS_SEARCH=config.SEARCH_ON,
+                                     LOGO_TITLE=logo_title,
+                                     LOGO_IMG=logo_img,
+                                     SUPPORT_LANGUAGES=config.SUPPORT_LANG,
+                                     DOCS=_g_api_doc.contents,
+                                     COPYRIGHT=config.COPYRIGHT,
+                                     url_for=local_url_for)
+
+
+        from os.path import join
+        from os.path import isdir
+        import os
+        import shutil
+        path = "./static"
+        dirs = os.listdir(path)
+
+        if not isdir(config.STATIC.DIR):
+            os.mkdir(config.STATIC.DIR)
+
+        for d in dirs:
+            src_dir = join(path, d)
+            dst_dir = join(config.STATIC.DIR, d)
+            if isdir(dst_dir):
+                shutil.rmtree(dst_dir)
+            shutil.copytree(src_dir, dst_dir)
+
+        with open(join(config.STATIC.DIR, config.STATIC.HTML), 'w') as f:
+            f.write(rendered_template)

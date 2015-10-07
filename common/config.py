@@ -13,6 +13,12 @@ class Config(object):
     def __repr__(self):
         return str(self.__dict__)
 
+    def exist(self, var):
+        if var in self.__dict__:
+            return True
+        else:
+            return False 
+
     @staticmethod
     def load_conf(conf_file_path):
         import json
@@ -21,3 +27,5 @@ class Config(object):
             conf = json.loads(f.read(), object_hook=Config)
 
         return conf
+
+

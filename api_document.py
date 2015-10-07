@@ -54,7 +54,6 @@ class APIDocument(object):
 
             if 'name' in up_tag and up_tag.name in ['pre', 'blockquote']:
                 up_tags.append(up_tag)
-            
 
         up_tags = reversed(up_tags)
 

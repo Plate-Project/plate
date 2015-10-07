@@ -6,5 +6,9 @@
     "SUPPORT_LANG"       : ["shell", "python", "java"],
     "API_DOC_PATH"       : "./document",
     "API_DOC_INDEX_PATH" : "index.json",
-    "COPYRIGHT"          : "© 2015 plate"
+    "COPYRIGHT"          : "© 2015 plate",
+    "STATIC" : {
+        "DIR" : "./plate",
+        "HTML" : "plate.html"
+    }
 }
