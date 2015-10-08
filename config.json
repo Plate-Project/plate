@@ -1,5 +1,5 @@
 {
-    "PORT"               : 8080,
+    "PORT"               : 7777,
     "TITLE"              : "API Document", 
     "LOGO_TITLE"         : "API Document",
     "SEARCH_ON"          : true, 
@@ -8,7 +8,7 @@
     "API_DOC_INDEX_PATH" : "index.json",
     "COPYRIGHT"          : "© 2015 plate",
     "STATIC" : {
-        "DIR" : "./plate",
-        "HTML" : "plate.html"
+        "DIR" : "./plate_static",
+        "HTML" : "index.html"
     }
 }

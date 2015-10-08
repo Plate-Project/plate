@@ -66,14 +66,6 @@ def index():
                            )
 
 
-def local_url_for(endpoint, **values):
-    from os.path import split
-    from os.path import join
-
-    dir, file = split(values['filename'])
-    dirname = split(dir)[1]
-    return join(join("./", dirname), file)
-
 
 if __name__ == '__main__':
     import optparse
@@ -118,51 +110,35 @@ if __name__ == '__main__':
 
     elif options.mode == 'convert':
 
-        from jinja2 import Environment
-        from jinja2 import PackageLoader
-        env = Environment(loader=PackageLoader('plate', 'templates'),
-                          autoescape=False,
-                          extensions=['jinja2.ext.autoescape'])
+        try:
 
-        t = env.get_template('index.html')
-        config.SUPPORT_LANG = [str(lang) for lang in config.SUPPORT_LANG]
+            from common import convert_static_html
+            rendered_template = convert_static_html(config=config, contents=_g_api_doc.contents)
 
-        if config.exist('LOGO_IMG'):
-            logo_img = config.LOGO_IMG
-        else:
-            logo_img = None
+            from os.path import join
+            from os.path import isdir
+            import os
+            import shutil
+            path = "./static"
+            dirs = os.listdir(path)
 
-        if config.exist('LOGO_TITLE'):
-            logo_title = config.LOGO_TITLE
-        else:
-            logo_title = None
+            if not isdir(config.STATIC.DIR):
+                os.mkdir(config.STATIC.DIR)
 
-        rendered_template = t.render(API_TITLE=config.TITLE,
-                                     IS_SEARCH=config.SEARCH_ON,
-                                     LOGO_TITLE=logo_title,
-                                     LOGO_IMG=logo_img,
-                                     SUPPORT_LANGUAGES=config.SUPPORT_LANG,
-                                     DOCS=_g_api_doc.contents,
-                                     COPYRIGHT=config.COPYRIGHT,
-                                     url_for=local_url_for)
+            for d in dirs:
+                src_dir = join(path, d)
+                dst_dir = join(config.STATIC.DIR, d)
+                if isdir(dst_dir):
+                    shutil.rmtree(dst_dir)
+                shutil.copytree(src_dir, dst_dir)
 
+            with open(join(config.STATIC.DIR, config.STATIC.HTML), 'w') as f:
+                f.write(rendered_template)
+                
+        except Exception as e:
 
-        from os.path import join
-        from os.path import isdir
-        import os
-        import shutil
-        path = "./static"
-        dirs = os.listdir(path)
+            if isdir(config.STATIC.DIR):
+                shutil.rmtree(config.STATIC.DIR)
 
-        if not isdir(config.STATIC.DIR):
-            os.mkdir(config.STATIC.DIR)
-
-        for d in dirs:
-            src_dir = join(path, d)
-            dst_dir = join(config.STATIC.DIR, d)
-            if isdir(dst_dir):
-                shutil.rmtree(dst_dir)
-            shutil.copytree(src_dir, dst_dir)
-
-        with open(join(config.STATIC.DIR, config.STATIC.HTML), 'w') as f:
-            f.write(rendered_template)
+            import traceback
+            print traceback.format_exc()
