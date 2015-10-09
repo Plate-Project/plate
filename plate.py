@@ -66,7 +66,6 @@ def index():
                            )
 
 
-
 if __name__ == '__main__':
     import optparse
     p = optparse.OptionParser('-m [test] or [run] or [convert]')
@@ -134,11 +133,11 @@ if __name__ == '__main__':
 
             with open(join(config.STATIC.DIR, config.STATIC.HTML), 'w') as f:
                 f.write(rendered_template)
-                
+
         except Exception as e:
 
             if isdir(config.STATIC.DIR):
                 shutil.rmtree(config.STATIC.DIR)
 
             import traceback
-            print traceback.format_exc()
+            logger.error(traceback.format_exc())
