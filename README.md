@@ -26,7 +26,9 @@ Features
 
 - **Support dynamic changes of documents**
 : You can reflect the changes of API documents without restarting server. When web page refresh, if exist changes, [plate](https://github.com/Plate-Project/plate) reload API documents. Users only focus on writing API documents.
- 
+
+- **Make Static HTML**
+: Convert Markdown(md) to Static HTML using [jinja2 template!](http://jinja.pocoo.org/).
 
 Getting Start
 ------------------------------
@@ -76,7 +78,11 @@ Getting Start
     "SUPPORT_LANG"       : ["shell", "python"],
     "API_DOC_PATH"       : "./document",
     "API_DOC_INDEX_PATH" : "index.json",
-    "COPYRIGHT"          : "© 2014 plate"
+    "COPYRIGHT"          : "© 2014 plate",
+    "STATIC" : {
+        "DIR" : "./plate_static",
+        "HTML" : "index.html"
+    }
 }
 ```
 

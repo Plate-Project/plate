@@ -54,9 +54,11 @@
     <div class="content">
 
         {% for DOC in DOCS %}
+
         {% autoescape false %}
         {{ DOC }}
         {% endautoescape  %}
+
         {% endfor %}
 
     </div>
@@ -66,7 +68,7 @@
         {% if SUPPORT_LANGUAGES %}
             <div class="lang-selector">
                 {% for LANG in SUPPORT_LANGUAGES %}
-                    <a href="#" data-language-name="{{ LANG }}">{{ LANG }}</a>
+                    <a href="#{{ LANG }}" data-language-name="{{ LANG }}">{{ LANG }}</a>
                 {% endfor %}
             </div>
         {% endif %}
