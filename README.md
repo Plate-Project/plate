@@ -77,6 +77,7 @@ Getting Start
     "API_DOC_PATH"       : "./document",
     "API_DOC_INDEX_PATH" : "index.json",
     "COPYRIGHT"          : "© 2014 plate",
+    "FAVICON"            : "favicon.ico",
     "STATIC" : {
         "DIR" : "./plate_static",
         "HTML" : "index.html"

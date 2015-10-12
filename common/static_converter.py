@@ -42,6 +42,7 @@ def convert_static_html(config, contents):
                                      SUPPORT_LANGUAGES=config.SUPPORT_LANG,
                                      DOCS=contents,
                                      COPYRIGHT=config.COPYRIGHT,
+                                     FAVICON=config.FAVICON,
                                      url_for=local_url_for)
         return rendered_template
 
