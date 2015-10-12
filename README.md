@@ -6,20 +6,18 @@ Plate
 
 
   
-plate is the converting [Slate](http://tripit.github.io/slate) based on Ruby to Python-Flask base. And add some different functions for usages. 
+Plate is the converting [Slate](http://tripit.github.io/slate) based on Ruby to Python-Flask base. And add some different functions for usages. 
   
 ![plate](https://farm6.staticflickr.com/5820/21503977290_41beb38dcd_b.jpg)
 
-Example site is [here](http://ash84.net:8888)
+Example site is [plate-project.github.io](http://plate-project.github.io/)
 
 
 Features
 ------------
-(It's only differences from original [Slate](http://tripit.github.io/slate), confirm the original features at [Slate](http://tripit.github.io/slate))
-
 
 - **Configuration File(config.json)**
-: Set title, programming language for example codes using config.json base on JSON Format. Also set the path of the API documents and TOC(Table of contents).
+: Set title, programming language for example codes using <code>config.json</code> base on JSON Format. Also set the path of the API documents and TOC(Table of contents).
 
 - **Support Multi-API documents**
 : Original [Slate](http://tripit.github.io/slate) support one API document based on Markdown format. But [plate](https://github.com/Plate-Project/plate) support multi-API documents for efficient management and amount of documents using TOC(index.json).
@@ -28,7 +26,7 @@ Features
 : You can reflect the changes of API documents without restarting server. When web page refresh, if exist changes, [plate](https://github.com/Plate-Project/plate) reload API documents. Users only focus on writing API documents.
 
 - **Make Static HTML**
-: Convert Markdown(md) to Static HTML using [jinja2 template!](http://jinja.pocoo.org/).
+: Convert Markdown(md) to Static HTML using [jinja2 template](http://jinja.pocoo.org/).
 
 Getting Start
 ------------------------------
@@ -98,6 +96,11 @@ Getting Start
     ]
 }
 ```
+
+
+Wiki
+------------------------------
+More information is in the [wiki](https://github.com/Plate-Project/plate/wiki).
 
 Contributor
 --------------------
