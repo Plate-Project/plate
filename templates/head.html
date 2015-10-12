@@ -6,6 +6,11 @@
 <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='/css/hack-extended.min.css') }}">
 <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='/css/screen.css') }}">
 
+{% if FAVICON  %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='/images/favicon.ico') }}" type="image/x-icon">
+{% endif  %}
+
 
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <script src="{{ url_for('static', filename='/js/energize.min.js') }}" type="text/javascript"></script>

@@ -62,6 +62,7 @@ def index():
                            SUPPORT_LANGUAGES=app.config['SUPPORT_LANG'],
                            DOCS=_g_api_doc.contents,
                            COPYRIGHT=app.config['COPYRIGHT'],
+                           FAVICON=app.config['FAVICON'],
                            timestamp=datetime.now().strftime("%Y%m%d%H%M%S")
                            )
 
