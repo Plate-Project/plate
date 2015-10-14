@@ -109,16 +109,16 @@ if __name__ == '__main__':
         start_service_server(app.config['PORT'])
 
     elif options.mode == 'convert':
+        from os.path import join
+        from os.path import isdir
+        import os
+        import shutil
 
         try:
-
             from common import convert_static_html
             rendered_template = convert_static_html(config=config, contents=_g_api_doc.contents)
 
-            from os.path import join
-            from os.path import isdir
-            import os
-            import shutil
+         
             path = "./static"
             dirs = os.listdir(path)
 
@@ -136,7 +136,7 @@ if __name__ == '__main__':
                 f.write(rendered_template)
 
         except Exception as e:
-
+            logger.exception(e) 
             if isdir(config.STATIC.DIR):
                 shutil.rmtree(config.STATIC.DIR)
 

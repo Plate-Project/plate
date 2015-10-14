@@ -44,7 +44,9 @@ def convert_static_html(config, contents):
                                      COPYRIGHT=config.COPYRIGHT,
                                      FAVICON=config.FAVICON,
                                      url_for=local_url_for)
-        return rendered_template
+        import bs4 
+        soup = bs4.BeautifulSoup(rendered_template)
+        return soup.prettify()
 
     except Exception as e:
         raise e
