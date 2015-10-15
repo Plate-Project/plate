@@ -1,4 +1,4 @@
 
 #Introduction#
 
-- This is example page for slate-flask mark down represetation. 
+- This is the example page for markdown represetation. 

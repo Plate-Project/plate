@@ -8,9 +8,9 @@ Created on 2015. 10. 08
 def local_url_for(endpoint, **values):
     from os.path import split
     from os.path import join
-    dir, file = split(values['filename'])
-    dirname = split(dir)[1]
-    return join(join("./", dirname), file)
+    dir_path, file_path = split(values['filename'])
+    dir_path = dir_path[0].replace("/","./")+ dir_path[1:]
+    return join(dir_path, file_path)
 
 
 def convert_static_html(config, contents):

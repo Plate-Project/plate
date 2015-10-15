@@ -18,7 +18,7 @@ http://qlemon.net:8000/fcal/api/notice
 | :------------------------- |:---------------|:---|------------------------| 
 | page                     | int    | option | Page Number, default(1)  |
  
- <aside class="notice">
+<aside class="notice">
 If page is zero(0), internally set page to 1. 
 </aside>
 
@@ -44,7 +44,7 @@ HttpResponse response = httpclient.execute(httpget);
 
 
 
-##Response(JSON)##
+##Response - JSON##
 
 | name            | type            | mandatory | memo           | 
 | :------------------------- |:---------------|:---|------------------------| 

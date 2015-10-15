@@ -34,7 +34,7 @@ r = requests.post("http://127.0.0.1/api/signup", data=payload)
 
 
 
-##Response(JSON)##
+##Response - JSON##
  
 
 | name       | type    | mandatory | memo                                |
