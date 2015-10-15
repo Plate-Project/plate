@@ -4,8 +4,8 @@
         "Introduction.md",
         "Signup.md",
         "Signin.md", 
-        "Notice.md"
-
+        "Notice.md", 
+        "Notice.jp.md", 
+        "Notice.fr.md"
     ]
 }
-

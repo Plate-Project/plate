@@ -38,7 +38,7 @@ HttpResponse response = httpclient.execute(httpget);
 ```
  
 
-##Response(JSON)##
+##Response - JSON##
  
 
 | name       | type    | mandatory | memo                                |
