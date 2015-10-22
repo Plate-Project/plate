@@ -5,8 +5,7 @@ Plate
 
 
 
-  
-Plate is the converting [Slate](http://tripit.github.io/slate) based on Ruby to Python-Flask base. And add some different functions for usages. 
+Plate is API Documentations Tool based on Markdown(md). Convert [Slate](http://tripit.github.io/slate) based on Ruby-Middleman to Python-Flask based. And add some different functions for usages. 
   
 ![plate](https://farm6.staticflickr.com/5820/21503977290_41beb38dcd_b.jpg)
 
@@ -17,7 +16,7 @@ Features
 ------------
 
 - **Configuration File(config.json)**
-: Set title, programming language for example codes using <code>config.json</code> base on JSON Format. Also set the path of the API documents and TOC(Table of contents).
+: Set a title, programming languagesa for example codes using `config.json` based on JSON Format. Also set the path of the API documents and TOC(Table of contents).
 
 - **Support Multi-API documents**
 : Original [Slate](http://tripit.github.io/slate) support one API document based on Markdown format. But [plate](https://github.com/Plate-Project/plate) support multi-API documents for efficient management and amount of documents using TOC(index.json).
@@ -26,7 +25,11 @@ Features
 : You can reflect the changes of API documents without restarting server. When web page refresh, if exist changes, [plate](https://github.com/Plate-Project/plate) reload API documents. Users only focus on writing API documents.
 
 - **Make Static HTML**
-: Convert Markdown(md) to Static HTML using [jinja2 template](http://jinja.pocoo.org/).
+: Convert Markdown(md) to Static HTML using [jinja2 template](http://jinja.pocoo.org/). Use this on github.io and static html service. 
+
+- **Multi-Languages Searching**
+: Support multi-languages searching. Use [lunr-languages](https://github.com/MihaiValentin/lunr-languages) for supporting various languages such as Japanese, French, German etc. 
+
 
 Getting Start
 ------------------------------
@@ -40,12 +43,12 @@ Getting Start
  - **requirements.txt** have all libraries for running plate
  - If you install using `install.py`, automatically install all libraries.
 
-### QuickStart 
+### Quick Start with Server 
 
  1. Clone plate to your hard drive with `git clone https://github.com/Plate-Project/plate.git`
  2. `cd plate`
  4. Install your API document web pages using `install.py`.
- 5. Start the server: `python plate.py`
+ 5. Start with server: `python plate.py`
 
     ```shell
     > git clone https://github.com/Plate-Project/plate.git
@@ -63,6 +66,13 @@ Getting Start
     
     > cd ../<your project>
     > python plate.py
+    ```
+
+### Quick Start with Static HTML 
+
+    Start with static html: `python plate.py -m convert`
+    ```shell
+    > python plate.py -m convert
     ```
 
 ### config.json(configuration file)
