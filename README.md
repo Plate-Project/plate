@@ -71,6 +71,7 @@ Getting Start
 ### Quick Start with Static HTML 
 
     Start with static html: `python plate.py -m convert`
+    
     ```shell
     > python plate.py -m convert
     ```
