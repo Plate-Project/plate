@@ -33,6 +33,7 @@ app = Flask(__name__, static_url_path="", static_folder="static")
 
 _g_api_doc = None
 
+
 @app.route('/')
 def index():
 
@@ -118,7 +119,6 @@ if __name__ == '__main__':
             from common import convert_static_html
             rendered_template = convert_static_html(config=config, contents=_g_api_doc.contents)
 
-         
             path = "./static"
             dirs = os.listdir(path)
 
