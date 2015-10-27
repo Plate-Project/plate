@@ -12,10 +12,11 @@ from common import syntax_highlight
 
 class APIDocument(object):
 
-    def __init__(self, doc_path, index_file):
+    def __init__(self, config):
         from os.path import join
-        self.doc_path = doc_path
-        self.index_file_path = join(doc_path, index_file)
+
+        self.config = config 
+        self.index_file_path = join(self.config.API_DOC_PATH, self.config.API_DOC_INDEX_PATH)
         self.toc = self.read_index(self.index_file_path)
         self.contents = self.create_api_docs()
 
@@ -37,7 +38,7 @@ class APIDocument(object):
         docs = OrderedDict()
         for doc_file in self.toc["ORDER"]:
 
-            doc_file = join(self.doc_path, doc_file)
+            doc_file = join(self.config.API_DOC_PATH, doc_file)
             from common import conv_md2html
             with open(doc_file, 'r') as f:
                 html = conv_md2html(f.read())
@@ -67,13 +68,20 @@ class APIDocument(object):
     def highlight_syntax(self, soup):
         code_tags = soup.find_all('code')
 
-        for code in code_tags:
+        for code in code_tags: 
             if code.has_attr('class'):
                 lang = code['class']
                 code.parent['class'] = "highlight " + lang[0]
                 del code['class']
                 code.name = "span"
-                code.parent.replaceWith(syntax_highlight(lang[0], code.string))
+
+                in_pre_code = syntax_highlight(lang[0], code.string)
+                if self.config.CLIPBOARD:
+                    print code.string
+                    in_pre_code+='<blockquote class="highlight ' + lang[0] + '"><p><a href="#" class="clipboard" data-clipboard-text="'+code.string+'"  data-clipboard-action="copy">copy</a></p></blockquote>'
+
+                
+                code.parent.replaceWith(in_pre_code)
 
         return soup
 
@@ -89,5 +97,27 @@ class APIDocument(object):
 
             if len(splitted) > 0:
                 tag['id'] = '-'.join(splitted)
+ 
 
         return soup.prettify(formatter=None)
+
+
+
+
+
+
+# <blockquote>
+# <p>
+# <a>
+
+
+# soup = BeautifulSoup("<blockquote></blockquote>")
+# blockquote = soup.blockquote
+# blockquote['class'] = 'highlight ' + lang[0]
+# p = soup.new_tag('p')
+# a = soup.new_tag('a', href="#")
+# a.attrs("")
+
+
+
+# blockquote.

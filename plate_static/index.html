@@ -583,9 +583,8 @@
     <pre class="highlight java"><span class="n">HttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultHttpClient</span><span class="o">();</span>
 <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HttpGet</span><span class="o">(</span><span class="s">"http://127.0.0.1/notice?page=1"</span><span class="o">);</span>
 <span class="n">HttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">httpclient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget</span><span class="o">);</span>
-<br/>
-<button class="btn" data-clipboard-text="Ju"  data-clipboard-action="copy">copy</button>
 </pre>
+<blockquote ><p><a href="#" class="clipboard" data-clipboard-text="Judfd33333"  data-clipboard-action="copy">copy</a></p></blockquote>
         <h2 id="response---json">
             Response - JSON
         </h2>
@@ -1516,6 +1515,27 @@
     </div>
     <!-- dark-box -->
 </div>
+<script>
+var clipboard = new Clipboard('.clipboard');
+
+clipboard.on('success', function(e) {
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+
+    e.clearSelection();
+});
+
+clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+});
+
+$(".clipboard").click(function(e){
+    e.preventDefault();
+});
+
+</script>
 <!-- page-wrapper -->
 </body>
 </html>

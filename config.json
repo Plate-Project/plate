@@ -8,6 +8,7 @@
     "API_DOC_INDEX_PATH" : "index.json",
     "COPYRIGHT"          : "© 2015 plate",
     "FAVICON"            : "favicon.ico",
+    "CLIPBOARD"          : true, 
     "STATIC" : {
         "DIR" : "./plate_static",
         "HTML" : "index.html"
