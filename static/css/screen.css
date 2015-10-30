@@ -856,6 +856,10 @@ html,body {
     border-bottom: dashed 1px #ccc;
 }
 
+.content pre a,.content blockquote .clipboard{
+    border-bottom: none;
+}
+
 .content blockquote>p {
     background-color: #1c1c1c;
     border-radius: 5px;
