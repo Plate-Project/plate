@@ -16,20 +16,22 @@ Features
 ------------
 
 - **Configuration File(config.json)**
-: Set a title, programming languagesa for example codes using `config.json` based on JSON Format. Also set the path of the API documents and TOC(Table of contents).
+: Set a title, programming languages for example codes using `config.json` based on JSON Format. Also set the path of the API documents and TOC(Table of contents).
 
 - **Support Multi-API documents**
 : Original [Slate](http://tripit.github.io/slate) support one API document based on Markdown format. But [plate](https://github.com/Plate-Project/plate) support multi-API documents for efficient management and amount of documents using TOC(index.json).
 
 - **Support dynamic changes of documents**
-: You can reflect the changes of API documents without restarting server. When web page refresh, if exist changes, [plate](https://github.com/Plate-Project/plate) reload API documents. Users only focus on writing API documents.
+: You can update the changes of API documents without restarting server. When web page refresh, if exist changes, [plate](https://github.com/Plate-Project/plate) reload API documents. Users only focus on writing API documents.
 
 - **Make Static HTML**
-: Convert Markdown(md) to Static HTML using [jinja2 template](http://jinja.pocoo.org/). Use this on github.io and static html service. 
+: Convert Markdown(md) to Static HTML using [jinja2 template](http://jinja.pocoo.org/). Use this on github.io and static html service or offline.
 
 - **Multi-Languages Searching**
-: Support multi-languages searching. Use [lunr-languages](https://github.com/MihaiValentin/lunr-languages) for supporting various languages such as Japanese, French, German etc. 
+: Support multi-languages searching. Use [lunr-languages](https://github.com/MihaiValentin/lunr-languages) for [supporting various languages](https://github.com/Plate-Project/plate/wiki/Multi-Language-Search) such as Japanese, French, German etc.
 
+- **Code Copy**
+: If set <code>CLIPBOARD</code> in `config.json`, can copy codes using clicking copy link with out mouse drag and copy.
 
 Getting Start
 ------------------------------
@@ -47,8 +49,8 @@ Getting Start
 
  1. Clone plate to your hard drive with `git clone https://github.com/Plate-Project/plate.git`
  2. `cd plate`
- 4. Install your API document web pages using `install.py`.
- 5. Start with server: `python plate.py`
+ 3. Install your API document web pages using `install.py`.
+ 4. Start with server: `python plate.py`
 
     ```shell
     > git clone https://github.com/Plate-Project/plate.git
@@ -89,6 +91,7 @@ Getting Start
     "API_DOC_INDEX_PATH" : "index.json",
     "COPYRIGHT"          : "© 2014 plate",
     "FAVICON"            : "favicon.ico",
+    "CLIPBOARD"          : true,
     "STATIC" : {
         "DIR" : "./plate_static",
         "HTML" : "index.html"
