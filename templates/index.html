@@ -52,15 +52,11 @@
 <div class="page-wrapper">
     <div class="dark-box"></div>
     <div class="content">
-
         {% for DOC in DOCS %}
-
         {% autoescape false %}
         {{ DOC }}
         {% endautoescape  %}
-
         {% endfor %}
-
     </div>
     <!-- content -->
 
@@ -76,7 +72,25 @@
     <!-- dark-box -->
 </div>
 <!-- page-wrapper -->
+<script>
+    var clipboard = new Clipboard('.clipboard');
 
+    clipboard.on('success', function(e) {
+
+        $(e.trigger).text('copied');
+        e.clearSelection();
+    });
+
+    clipboard.on('error', function(e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+    });
+
+    $(".clipboard").click(function(e){
+        e.preventDefault();
+    });
+
+</script>
 
 </body>
 </html>

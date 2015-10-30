@@ -78,8 +78,7 @@ if __name__ == '__main__':
     config = Config.load_conf('config.json')
 
     # create documents
-    _g_api_doc = APIDocument(config.API_DOC_PATH,
-                             config.API_DOC_INDEX_PATH)
+    _g_api_doc = APIDocument(config)
 
     def start_test_server(port=5000):
         try:
