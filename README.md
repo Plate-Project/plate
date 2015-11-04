@@ -43,13 +43,13 @@ Getting Start
 ### Prerequisites
  
  - **requirements.txt** have all libraries for running plate
- - If you install using `install.py`, automatically install all libraries.
+ - If you install using `quick-start.py`, automatically install all libraries.
 
 ### Quick Start with Server 
 
  1. Clone plate to your hard drive with `git clone https://github.com/Plate-Project/plate.git`
  2. `cd plate`
- 3. Install your API document web pages using `install.py`.
+ 3. Install your API document web pages using `quick-start.py`.
  4. Start with server: `python plate.py`
 
     ```shell
@@ -112,16 +112,26 @@ Getting Start
 }
 ```
 
-
-Wiki
-------------------------------
-More information is in the [wiki](https://github.com/Plate-Project/plate/wiki).
-
-Contributor
---------------------
-plate was built by [@sh84ahn](https://twitter.com/sh84ahn) using [Slate](http://tripit.github.io/slate)
-
-Contributing(Bugs/New Features)
+Contributing
 --------------------
 Any suggestions [submit a issue](https://github.com/Plate-Project/plate/issues).
 Show me the pull requests.
+
+
+License
+------------
+
+Copyright 2015 Plate
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+

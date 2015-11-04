@@ -1,18 +1,23 @@
 # -*- coding:utf-8 -*-
-'''
-Created on 2015. 08. 31
-@author: AhnSeongHyun
-'''
 
 import logging
 logger = logging.getLogger('logger')
-
 from common import syntax_highlight
 
 
 class APIDocument(object):
+    """
+    Making API Document
+    """
 
     def __init__(self, config):
+        """
+        Construct of ``APIDocument``
+
+        :param config: ``common.config.Config`` instance.
+        :return: ``APIDocument`` instance, ``_g_api_doc``.
+        """
+
         from os.path import join
 
         self.config = config 
@@ -21,18 +26,30 @@ class APIDocument(object):
         self.contents = self.create_api_docs()
 
     def total_reload_docs(self):
+        """
+        Reload all API Document files.
+        """
+
         logger.info("total_reload_docs")
         self.toc = self.read_index(self.index_file_path)
         self.contents = self.create_api_docs()
 
-
     def read_index(self, index_file_path):
+        """
+        Read API Document index file such as ``index.json``.
+
+        :param index_file_path: index file path
+        :return: JSON of index file(``index.json``)
+        """
         import json
         from collections import OrderedDict
         return json.load(open(index_file_path), object_pairs_hook=OrderedDict)
 
-
     def create_api_docs(self):
+        """
+        Convert API Document to HTML.
+        :return: ``OrderedDict`` instance.
+        """
         from os.path import join
         from os.path import split
         from collections import OrderedDict
@@ -68,6 +85,12 @@ class APIDocument(object):
         return soup
 
     def highlight_syntax(self, soup):
+        """
+        Highlight code syntax.
+
+        :param soup: bs4 instance
+        :return: bs4 instance
+        """
         from bs4 import BeautifulSoup
         code_tags = soup.find_all('code')
 
@@ -98,8 +121,13 @@ class APIDocument(object):
 
         return soup
 
-
     def modify_html(self, soup):
+        """
+        Modify HTML
+
+        :param soup: bs4 instance
+        :return: HTML
+        """
         tags = []
         title_tags = ['h1', 'h2', 'h3', 'h4']
         [tags.extend(soup.find_all(title_tag)) for title_tag in title_tags]
