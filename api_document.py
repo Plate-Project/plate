@@ -48,6 +48,7 @@ class APIDocument(object):
     def create_api_docs(self):
         """
         Convert API Document to HTML.
+
         :return: ``OrderedDict`` instance.
         """
         from os.path import join
