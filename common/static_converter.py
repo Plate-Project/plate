@@ -1,21 +1,24 @@
 # -*- coding:utf-8 -*-
-'''
-Created on 2015. 10. 08
-@author: AhnSeongHyun
-'''
-
 
 def local_url_for(endpoint, **values):
     from os.path import split
     from os.path import join
     dir_path, file_path = split(values['filename'])
-    dir_path = dir_path[0].replace("/","./")+ dir_path[1:]
+    dir_path = dir_path[0].replace("/", "./") + dir_path[1:]
     return join(dir_path, file_path)
 
 
 def convert_static_html(config, contents):
-    try:
+    """
+    Render plate template to HTML
 
+    In case of ``python plate.py -m convert`` use this method.
+
+    :param config: config instance
+    :param contents: converted html from markdown
+    :return: rendered html
+    """
+    try:
         from jinja2 import Environment
         from jinja2 import PackageLoader
         env = Environment(loader=PackageLoader('plate', 'templates'),

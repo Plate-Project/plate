@@ -1,8 +1,4 @@
 # -*- coding:utf-8 -*-
-'''
-Created on 2014. 12. 03
-@author: AhnSeongHyun
-'''
 
 try:
     import sys
@@ -38,7 +34,7 @@ _g_api_doc = None
 def index():
 
     document_trace_queue = watchdocs.DocumentTraceQueue()
-    if not document_trace_queue.empty():
+    if not document_trace_queue.is_empty():
         _g_api_doc.total_reload_docs()
         document_trace_queue.clear()
 

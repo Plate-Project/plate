@@ -1,8 +1,4 @@
 # -*- coding:utf-8 -*-
-'''
-Created on 2014. 12. 03
-@author: AhnSeongHyun
-'''
 
 from pygments import highlight
 from pygments.lexers import PythonLexer
@@ -14,14 +10,18 @@ from pygments.lexers import JsonLexer
 from pygments.lexers import JavascriptLexer
 from pygments.lexers import ObjectiveCLexer
 from pygments.lexers import JavaLexer
-
 from pygments.formatters import HtmlFormatter
 
 
-
-
 def syntax_highlight(lang, code):
-    # print "lang : " + lang +"    code : " + code
+    """
+    code highlighting HTML Format
+
+    :param lang: programming language
+    :param code: code
+    :return: highlighted code
+    """
+
     highlighted = None
 
     if lang.lower() == 'python':

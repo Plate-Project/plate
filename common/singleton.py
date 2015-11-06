@@ -1,12 +1,16 @@
 # -*- coding:utf-8 -*-
 
-'''
-Created on 2014. 12. 03
-@author: AhnSeongHyun
-'''
-
-
 class Singleton(type):
+    """
+    Singleton Base Class
+
+    Example: ::
+
+        class DocumentTraceQueue(object):
+            from common import Singleton
+            __metaclass__ = Singleton
+
+    """
     _instances = {}
 
     def __call__(cls, *args, **kwargs):

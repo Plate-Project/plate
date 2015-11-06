@@ -1,12 +1,8 @@
 # -*- coding:utf-8 -*-
-'''
-Created on 2014. 12. 03
-@author: AhnSeongHyun
-'''
 
 import os
 import shutil
-import platform 
+
 '''
  ____   _       _
  |  _ \| | __ _| |_ ___
