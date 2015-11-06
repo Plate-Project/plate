@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Internal &mdash; Plate 0.2 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Plate 0.2 documentation" href="index.html"/>
+        <link rel="next" title="Advanced" href="advanced.html"/>
+        <link rel="prev" title="Plate" href="readme.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Plate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Plate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#getting-start">Getting Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#usage">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Internal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-structure">Basic Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#realtime-monitoring-api-document">Realtime monitoring API Document</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Plate</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Internal</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/internal.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="internal">
+<h1>Internal<a class="headerlink" href="#internal" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basic-structure">
+<h2>Basic Structure<a class="headerlink" href="#basic-structure" title="Permalink to this headline">¶</a></h2>
+<img alt="https://farm6.staticflickr.com/5775/22399136477_19138464b0_b.jpg" src="https://farm6.staticflickr.com/5775/22399136477_19138464b0_b.jpg" />
+<p>Internally, Plate have <strong>3 steps</strong> :</p>
+<ul class="simple">
+<li>Get API Document</li>
+<li>Convert markdown to HTML</li>
+<li>Highlight code according to programming languages</li>
+</ul>
+<p><strong>1. Get API Document</strong></p>
+<ul class="simple">
+<li>Read markdown from API Document based on markdown format using <code class="docutils literal"><span class="pre">API_DOC_PATH</span></code> and <code class="docutils literal"><span class="pre">API_DOC_INDEX_PATH</span></code> in <code class="docutils literal"><span class="pre">config.json</span></code>.</li>
+<li>Sort by <code class="docutils literal"><span class="pre">index.json</span></code> of <code class="docutils literal"><span class="pre">API_DOC_INDEX_PATH</span></code>.</li>
+</ul>
+<p><strong>2. Convert markdown to HTML</strong></p>
+<ul class="simple">
+<li>Convert markdown to HTML using <a class="reference external" href="https://pypi.python.org/pypi/Markdown">markdown python module</a></li>
+<li>Use markdown extensions :
+- fence_codes : markdown code block to html pre tag
+- tables : markdown table syntax to html table tag</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">conv_md2html</span><span class="p">(</span><span class="n">md_text</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">markdown</span>
+    <span class="k">return</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">md_text</span><span class="p">,</span> <span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;fenced_code&quot;</span><span class="p">,</span> <span class="s">&quot;tables&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>3. Highlight code according to programming languages</strong></p>
+<ul class="simple">
+<li>Use <a class="reference external" href="http://pygments.org/">pygemnts</a> for highlighting codes</li>
+<li>Support various programming languages and markup.</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">PythonLexer</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">JavaLexer</span>
+<span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">HtmlFormatter</span>
+
+<span class="n">highlighted</span> <span class="o">=</span> <span class="n">highlight</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">PythonLexer</span><span class="p">(),</span> <span class="n">HtmlFormatter</span><span class="p">())</span>
+<span class="n">highlighted</span> <span class="o">=</span> <span class="n">highlight</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">JavaLexer</span><span class="p">(),</span> <span class="n">HtmlFormatter</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="realtime-monitoring-api-document">
+<h2>Realtime monitoring API Document<a class="headerlink" href="#realtime-monitoring-api-document" title="Permalink to this headline">¶</a></h2>
+<img alt="https://farm6.staticflickr.com/5740/22089514844_4088d51454_o.png" src="https://farm6.staticflickr.com/5740/22089514844_4088d51454_o.png" />
+<p>For monitoring the modification of API Documents, use <a class="reference external" href="https://pypi.python.org/pypi/watchdog">wachdog</a> .
+After the server start, the watchdog start and monitor all documents in <code class="docutils literal"><span class="pre">API_DOC_PATH</span></code> of <code class="docutils literal"><span class="pre">config.json</span></code> .
+When the server stop, also the watchdog stop. In this process, use method <code class="docutils literal"><span class="pre">watchdocs.watch_api_doc.start_watch</span></code> and <code class="docutils literal"><span class="pre">watchdocs.watch_api_doc.stop_watch</span></code> .</p>
+<p>If raise any modification fo files, run <code class="docutils literal"><span class="pre">watchdocs.document_trace_handler.on_modified</span></code> method.
+In this method, enqueue a event about the modification of any file to <code class="docutils literal"><span class="pre">document_trace_queue</span></code> .
+It is a instance of <code class="docutils literal"><span class="pre">DocumentTraceQueue</span></code> singleton class.</p>
+<p>And then, receive new request from user, Plate check <code class="docutils literal"><span class="pre">document_trace_queue</span></code> whether a event exist or not.
+If any event in queue, Plate load all API Documents and convert to html.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="advanced.html" class="btn btn-neutral float-right" title="Advanced" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="readme.html" class="btn btn-neutral" title="Plate" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, ash84.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
