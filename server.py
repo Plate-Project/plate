@@ -1,8 +1,4 @@
 # -*- coding:utf-8 -*-
-'''
-Created on 2014. 12. 03
-@author: AhnSeongHyun
-'''
 
 try:
     import sys

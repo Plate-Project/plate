@@ -118,6 +118,15 @@ Any suggestions [submit a issue](https://github.com/Plate-Project/plate/issues).
 Show me the pull requests.
 
 
+Version 0.2.4
+--------------------
+
+### Change Log
+
+- v0.2.4
+    - Apply Sphinx
+
+
 License
 ------------
 

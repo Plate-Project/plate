@@ -7,7 +7,7 @@ Internal
 Basic Structure
 ---------------
 
-.. image:: https://farm1.staticflickr.com/766/22723449391_5d8b94111a_o.png
+.. image:: https://farm6.staticflickr.com/5775/22399136477_19138464b0_b.jpg
 
 Internally, Plate have **3 steps** :
 
@@ -56,3 +56,16 @@ Realtime monitoring API Document
 --------------------------------
 
 .. image:: https://farm6.staticflickr.com/5740/22089514844_4088d51454_o.png
+
+
+For monitoring the modification of API Documents, use `wachdog <https://pypi.python.org/pypi/watchdog>`_ .
+After the server start, the watchdog start and monitor all documents in ``API_DOC_PATH`` of ``config.json`` .
+When the server stop, also the watchdog stop. In this process, use method ``watchdocs.watch_api_doc.start_watch`` and ``watchdocs.watch_api_doc.stop_watch`` .
+
+
+If raise any modification fo files, run ``watchdocs.document_trace_handler.on_modified`` method.
+In this method, enqueue a event about the modification of any file to ``document_trace_queue`` .
+It is a instance of ``DocumentTraceQueue`` singleton class.
+
+And then, receive new request from user, Plate check ``document_trace_queue`` whether a event exist or not.
+If any event in queue, Plate load all API Documents and convert to html.
