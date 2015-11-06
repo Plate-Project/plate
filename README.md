@@ -9,7 +9,7 @@ Plate is API Documentations Tool based on Markdown(md). Convert [Slate](http://t
   
 ![plate](https://farm6.staticflickr.com/5820/21503977290_41beb38dcd_b.jpg)
 
-Example site is [plate-project.github.io](http://plate-project.github.io/)
+Example site is [plate-project.github.io](http://plate-project.github.io/). Plate document is [plate.readthedocs.org](http://plate.readthedocs.org/en/latest/index.html).
 
 
 Features
@@ -115,10 +115,13 @@ Getting Start
 Version v0.2.4
 --------------------
 
-### Change Log
-
 - v0.2.4
     - Apply Sphinx documentation
+
+
+More Info
+--------------------
+More Information such as example, usage, internal, advanced is here. [plate.readthedocs.org](http://plate.readthedocs.org/en/latest/index.html)
 
 
 
