@@ -55,10 +55,10 @@ If already signup, return 500 Internal Server Error
 
 
 > Response 200 OK
-```
+```json
 {
   "meta": {
-    "status" : 200 
+    "status" : 200,
     "msg": "OK"
   }
 }
@@ -66,10 +66,10 @@ If already signup, return 500 Internal Server Error
 ```
  
 > Response 500 Internal Server Error
-```
+```json
 {
   "meta": {
-    "status" : 500 
+    "status" : 500, 
     "msg": "Internal Server Error"
   }
 }

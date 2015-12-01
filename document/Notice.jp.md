@@ -65,7 +65,7 @@ HttpResponse response = httpclient.execute(httpget);
  
  
 > Response paramter Example:
-```
+```json
 {
   "data": {
     "count": 1,
