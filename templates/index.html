@@ -14,9 +14,12 @@
 
     <a class="api-title" href="/">
         {% if LOGO_IMG %}
-            <img src="{{ url_for('static', filename='/images/') }}{{ LOGO_IMG }}" />
+            {% if IS_LOGO_ABSOLUTE_URL == True%}
+                <img src="{{ LOGO_IMG }}" />
+            {% else %}
+                <img src="{{ url_for('static', filename='/images/') }}{{ LOGO_IMG }}" />
+            {%  endif %}
         {% elif LOGO_TITLE %}
-
             <h2> {{ LOGO_TITLE }} </h2>
         {% else %}
             <h2> API Document </h2>

@@ -51,11 +51,13 @@ def index():
         logo_title = app.config['LOGO_TITLE']
 
     from datetime import datetime
+    from common.utils import is_absolute
     return render_template("index.html",
                            API_TITLE=app.config['TITLE'],
                            IS_SEARCH=app.config['SEARCH_ON'],
                            LOGO_TITLE=logo_title,
                            LOGO_IMG=logo_img,
+                           IS_LOGO_ABSOLUTE_URL=is_absolute(logo_img),
                            SUPPORT_LANGUAGES=app.config['SUPPORT_LANG'],
                            DOCS=_g_api_doc.contents,
                            COPYRIGHT=app.config['COPYRIGHT'],
