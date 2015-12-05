@@ -38,10 +38,12 @@ def convert_static_html(config, contents):
         else:
             logo_title = None
 
+        from common.utils import is_absolute
         rendered_template = t.render(API_TITLE=config.TITLE,
                                      IS_SEARCH=config.SEARCH_ON,
                                      LOGO_TITLE=logo_title,
                                      LOGO_IMG=logo_img,
+                                     IS_LOGO_ABSOLUTE_URL=is_absolute(logo_img),
                                      SUPPORT_LANGUAGES=config.SUPPORT_LANG,
                                      DOCS=contents,
                                      COPYRIGHT=config.COPYRIGHT,
