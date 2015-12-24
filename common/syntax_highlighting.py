@@ -24,38 +24,41 @@ def syntax_highlight(lang, code):
 
     highlighted = None
 
-    if lang.lower() == 'python':
-        highlighted = highlight(code, PythonLexer(), HtmlFormatter())
+    try:
+        if lang.lower() == 'python':
+            highlighted = highlight(code, PythonLexer(), HtmlFormatter())
 
-    elif lang.lower() == 'shell':
-        highlighted = highlight(code, BashLexer(), HtmlFormatter())
+        elif lang.lower() == 'shell':
+            highlighted = highlight(code, BashLexer(), HtmlFormatter())
 
-    elif lang.lower() == 'asp':
-        highlighted = highlight(code, CSharpAspxLexer(), HtmlFormatter())
+        elif lang.lower() == 'asp':
+            highlighted = highlight(code, CSharpAspxLexer(), HtmlFormatter())
 
-    elif lang.lower() == 'csharp':
-        highlighted = highlight(code, CSharpLexer(), HtmlFormatter())
+        elif lang.lower() == 'csharp':
+            highlighted = highlight(code, CSharpLexer(), HtmlFormatter())
 
-    elif lang.lower() == 'ruby':
-        highlighted = highlight(code, RubyLexer(), HtmlFormatter())
+        elif lang.lower() == 'ruby':
+            highlighted = highlight(code, RubyLexer(), HtmlFormatter())
 
-    elif lang.lower() == 'json':
-        highlighted = highlight(code, JsonLexer(), HtmlFormatter())
+        elif lang.lower() == 'json':
+            highlighted = highlight(code, JsonLexer(), HtmlFormatter())
 
-    elif lang.lower() == 'js':
-        highlighted = highlight(code, JavascriptLexer(), HtmlFormatter())
+        elif lang.lower() == 'js':
+            highlighted = highlight(code, JavascriptLexer(), HtmlFormatter())
 
-    elif lang.lower() == 'objective-c':
-        highlighted = highlight(code, ObjectiveCLexer(), HtmlFormatter())
+        elif lang.lower() == 'objective-c':
+            highlighted = highlight(code, ObjectiveCLexer(), HtmlFormatter())
 
-    elif lang.lower() == 'java':
-        highlighted = highlight(code, JavaLexer(), HtmlFormatter())
+        elif lang.lower() == 'java':
+            highlighted = highlight(code, JavaLexer(), HtmlFormatter())
 
-    splitted = highlighted.split('"highlight')
-    highlighted = splitted[0] + '"highlight '+lang + splitted[1]
+        splitted = highlighted.split('"highlight')
+        highlighted = splitted[0] + '"highlight '+lang + splitted[1]
 
-    highlighted = highlighted.replace("<pre>", "")
-    highlighted = highlighted.replace("</pre>", "")
-    highlighted = highlighted.replace("div", "pre")
+        highlighted = highlighted.replace("<pre>", "")
+        highlighted = highlighted.replace("</pre>", "")
+        highlighted = highlighted.replace("div", "pre")
 
-    return highlighted
+        return highlighted
+    except Exception as e:
+        raise e

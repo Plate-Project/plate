@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+
 def local_url_for(endpoint, **values):
     from os.path import split
     from os.path import join

@@ -39,8 +39,7 @@ Getting Start
 
 Support Python Version
 ----------------------
-- **Python, version 2.7**
-- **Python, version 3.4 or newer**
+- **Python, version 2.7 ~ 3.4**
 
 Prerequisites
 -------------
