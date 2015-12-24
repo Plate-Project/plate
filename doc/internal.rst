@@ -31,7 +31,7 @@ Internally, Plate have **3 steps** :
 
 .. code-block:: python
 
-    def conv_md2html(md_text):
+    def conv_md_to_html(md_text):
         import markdown
         return markdown.markdown(md_text, extensions=["fenced_code", "tables"])
 

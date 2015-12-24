@@ -2,6 +2,7 @@ Plate
 ========
  
 [![Pyhton2.7](https://img.shields.io/badge/python-2.7-brightgreen.svg)](https://github.com/Plate-Project/plate)  [![Pyhton3.4](https://img.shields.io/badge/python-3.4-red.svg)](https://github.com/Plate-Project/plate.git)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/b6ab9d0d52ee42a8b2bca2c3ce5bea28)](https://www.codacy.com/app/sh84ahn/plate)
 
 
 
