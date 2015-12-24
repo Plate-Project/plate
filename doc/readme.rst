@@ -155,3 +155,34 @@ If you set both, ``LOGO_IMG`` only display.
         "LOGO_TITLE"         : "Management API",
         "LOGO_IMG"           : "logo.png"
     }
+
+
+Emphasis Syntax
+---------------
+- You can the emphasis syntax for using ``<aside class="CLASSNAME">``.
+- ``CLASSNAME`` is ``success`` or ``notice`` or ``warning``.
+
+.. code-block:: html
+
+    <aside class="warning">
+        Must encrypt password using a key.
+    </aside>
+
+.. image:: https://farm1.staticflickr.com/752/23746756075_beff560049.jpg
+
+.. code-block:: html
+
+    <aside class="notice">
+        No mandatory parameter, return 400 Invalid Parameter
+    </aside>
+
+.. image:: https://farm6.staticflickr.com/5623/23450886360_6b8b556766.jpg
+
+
+.. code-block:: html
+
+    <aside class="success">
+        Success, return HTTP Status code 200 OK.
+    </aside>
+
+.. image:: https://farm6.staticflickr.com/5835/23378773719_56684cabe6.jpg

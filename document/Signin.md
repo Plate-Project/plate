@@ -47,6 +47,9 @@ HttpResponse response = httpclient.execute(httpget);
 | status     | int     | O         | HTTP Status Code                    |
 | msg        | string  | O         | HTTP Status Message                 |
  
+<aside class="success">
+Success, return HTTP Status code 200 OK.  
+</aside>
 
 > Response 200 OK
 ```json
