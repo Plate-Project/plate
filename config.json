@@ -1,7 +1,7 @@
 {
     "PORT"               : 7777,
     "TITLE"              : "API Document", 
-    "LOGO_IMG"           : "API Document",
+    "LOGO_IMG"           : "logo.png",
     "SEARCH_ON"          : true, 
     "SUPPORT_LANG"       : ["shell", "python", "java"],
     "API_DOC_PATH"       : "./document",
