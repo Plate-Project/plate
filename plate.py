@@ -22,8 +22,6 @@ from flask import Flask
 from flask import render_template
 from api_document import APIDocument
 import watchdocs
-import server
-
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
@@ -66,11 +64,34 @@ def index():
                            )
 
 
-if __name__ == '__main__':
+def parse_argument():
     import optparse
     p = optparse.OptionParser('-m [test] or [run] or [convert]')
-    p.add_option('-m', dest='mode', type='string', default='run')
-    options, args = p.parse_args()
+    try:
+        p.add_option('-m', dest='mode', type='string', default='run')
+        options, args = p.parse_args()
+        return options.mode
+    except:
+        print(p.get_usage())
+        sys.exit()
+
+
+def start_test_server(port=5000):
+    try:
+        app.run(debug=True, host='0.0.0.0', port=port)
+    except KeyboardInterrupt:
+        watchdocs.stop_watch()
+
+def start_service_server(port=8080):
+    import server
+    try:
+        server.start(app, port=port)
+    except KeyboardInterrupt:
+        watchdocs.stop_watch()
+        server.stop()
+
+if __name__ == '__main__':
+    m = parse_argument()
 
     from common.config import Config
     config = Config.load_conf('config.json')
@@ -78,27 +99,14 @@ if __name__ == '__main__':
     # create documents
     _g_api_doc = APIDocument(config)
 
-    def start_test_server(port=5000):
-        try:
-            app.run(debug=True, host='0.0.0.0', port=port)
-        except KeyboardInterrupt:
-            watchdocs.stop_watch()
-
-    def start_service_server(port=8080):
-        try:
-            server.start(app, port=port)
-        except KeyboardInterrupt:
-            watchdocs.stop_watch()
-            server.stop()
-
-    if options.mode == 'test':
+    if m == 'test':
         app.config.from_object(config)
         # start watch docs
         watchdocs.start_watch(app.config['API_DOC_PATH'],
                               app.config['API_DOC_INDEX_PATH'],
                               _g_api_doc.toc['ORDER'])
         start_test_server(app.config['PORT'])
-    elif options.mode == 'run':
+    elif m == 'run':
         app.config.from_object(config)
         # start watch docs
         watchdocs.start_watch(app.config['API_DOC_PATH'],
@@ -106,7 +114,7 @@ if __name__ == '__main__':
                               _g_api_doc.toc['ORDER'])
         start_service_server(app.config['PORT'])
 
-    elif options.mode == 'convert':
+    elif m == 'convert':
         from os.path import join
         from os.path import isdir
         import os
