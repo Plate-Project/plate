@@ -39,7 +39,7 @@ def convert_static_html(config, contents):
         else:
             logo_title = None
 
-        from common.utils import is_absolute
+        from common import is_absolute
         rendered_template = t.render(API_TITLE=config.TITLE,
                                      IS_SEARCH=config.SEARCH_ON,
                                      LOGO_TITLE=logo_title,

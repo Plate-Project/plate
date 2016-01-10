@@ -7,13 +7,14 @@ try:
 except NameError:
     pass
 
+from common import SingletonMeta
+from future.utils import with_metaclass
 
-class DocumentTraceQueue(object):
+class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
     """
     Queue of modification, inserted, deleted document.
     """
-    from common import Singleton
-    __metaclass__ = Singleton
+
     trace_queue = []
 
     def is_empty(self):

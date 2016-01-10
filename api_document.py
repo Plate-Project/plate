@@ -1,16 +1,20 @@
 # -*- coding:utf-8 -*-
 
-import logging
-logger = logging.getLogger('logger')
+from common import logger
 from common import syntax_highlight
 
+from common import SingletonMeta
+from future.utils import with_metaclass
 
-class APIDocument(object):
+class APIDocument(with_metaclass(SingletonMeta, object)):
     """
     Making API Document
     """
 
-    def __init__(self, config):
+
+    trace_queue = []
+
+    def __init__(self, config=None):
         """
         Construct of ``APIDocument``
 
@@ -18,12 +22,13 @@ class APIDocument(object):
         :return: ``APIDocument`` instance, ``_g_api_doc``.
         """
 
-        from os.path import join
 
-        self.config = config 
-        self.index_file_path = join(self.config.API_DOC_PATH, self.config.API_DOC_INDEX_PATH)
-        self.toc = self.read_index(self.index_file_path)
-        self.contents = self.create_api_docs()
+        from os.path import join
+        if config:
+            self.config = config
+            self.index_file_path = join(self.config.API_DOC_PATH, self.config.API_DOC_INDEX_PATH)
+            self.toc = self.read_index(self.index_file_path)
+            self.contents = self.create_api_docs()
 
     def total_reload_docs(self):
         """

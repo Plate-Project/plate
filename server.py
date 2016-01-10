@@ -7,10 +7,7 @@ try:
 except NameError:
     pass
 
-
-import logging
-logger = logging.getLogger('logger.server')
-
+from common import logger
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop 

@@ -8,8 +8,7 @@ try:
 except NameError:
     pass
 
-import logging
-logger = logging.getLogger('logger.wachdoc')
+from common import logger
 from watchdog.observers import Observer
 
 _g_observer = None

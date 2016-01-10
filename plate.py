@@ -4,65 +4,29 @@ try:
     import sys
     reload(sys)
     sys.setdefaultencoding('utf-8')
-    sys.path.append('./common')
-    sys.path.append('./watchdocs')
 except NameError:
     pass
 
 
-import logging
-from logging import Formatter
-logging_handler = logging.StreamHandler()
-logging_handler.setFormatter(Formatter("[%(asctime)s] : %(message)s [in %(filename)s:%(lineno)d]"))
-logger = logging.getLogger('logger')
-logger.setLevel(logging.DEBUG)
-logger.addHandler(logging_handler)
-
+from common import logger
 from flask import Flask
-from flask import render_template
+from views import views_blueprint
 from api_document import APIDocument
-import watchdocs
-
-app = Flask(__name__, static_url_path="", static_folder="static")
-
-_g_api_doc = None
 
 
-@app.route('/')
-def index():
+def create_app(config=None, blueprints=None):
+    app = Flask(__name__, static_url_path="", static_folder="static")
+    configure_app(app, config)
+    configure_blueprints(app, blueprints)
+    return app
 
-    document_trace_queue = watchdocs.DocumentTraceQueue()
-    if not document_trace_queue.is_empty():
-        _g_api_doc.total_reload_docs()
-        document_trace_queue.clear()
+def configure_app(app, config=None):
+    if config:
+        app.config.from_object(config)
 
-    temp = [str(lang) for lang in app.config['SUPPORT_LANG']]
-    app.config['SUPPORT_LANG'] = temp
-
-    logo_title = None
-    logo_img = None
-
-    if 'LOGO_IMG' in app.config:
-        logo_img = app.config['LOGO_IMG']
-
-    if 'LOGO_TITLE' in app.config:
-        logo_title = app.config['LOGO_TITLE']
-
-    from datetime import datetime
-    from common.utils import is_absolute
-    return render_template("index.html",
-                           API_TITLE=app.config['TITLE'],
-                           IS_SEARCH=app.config['SEARCH_ON'],
-                           LOGO_TITLE=logo_title,
-                           LOGO_IMG=logo_img,
-                           IS_LOGO_ABSOLUTE_URL=is_absolute(logo_img),
-                           SUPPORT_LANGUAGES=app.config['SUPPORT_LANG'],
-                           DOCS=_g_api_doc.contents,
-                           COPYRIGHT=app.config['COPYRIGHT'],
-                           FAVICON=app.config['FAVICON'],
-                           timestamp=datetime.now().strftime("%Y%m%d%H%M%S")
-                           )
-
+def configure_blueprints(app, blueprints):
+    for blueprint in blueprints:
+        app.register_blueprint(blueprint)
 
 def parse_argument():
     import optparse
@@ -75,19 +39,20 @@ def parse_argument():
         print(p.get_usage())
         sys.exit()
 
-
 def start_test_server(port=5000):
     try:
         app.run(debug=True, host='0.0.0.0', port=port)
     except KeyboardInterrupt:
-        watchdocs.stop_watch()
+        from watchdocs import stop_watch
+        stop_watch()
 
 def start_service_server(port=8080):
     import server
     try:
         server.start(app, port=port)
     except KeyboardInterrupt:
-        watchdocs.stop_watch()
+        from watchdocs import stop_watch
+        stop_watch()
         server.stop()
 
 if __name__ == '__main__':
@@ -97,21 +62,23 @@ if __name__ == '__main__':
     config = Config.load_conf('config.json')
 
     # create documents
-    _g_api_doc = APIDocument(config)
+    api_doc = APIDocument(config)
 
     if m == 'test':
-        app.config.from_object(config)
+        from watchdocs import start_watch
+        app = create_app(config=config, blueprints=[views_blueprint])
         # start watch docs
-        watchdocs.start_watch(app.config['API_DOC_PATH'],
-                              app.config['API_DOC_INDEX_PATH'],
-                              _g_api_doc.toc['ORDER'])
+        start_watch(app.config['API_DOC_PATH'],
+                    app.config['API_DOC_INDEX_PATH'],
+                    api_doc.toc['ORDER'])
         start_test_server(app.config['PORT'])
     elif m == 'run':
-        app.config.from_object(config)
+        from watchdocs import start_watch
+        app = create_app(config=config, blueprints=[views_blueprint])
         # start watch docs
-        watchdocs.start_watch(app.config['API_DOC_PATH'],
-                              app.config['API_DOC_INDEX_PATH'],
-                              _g_api_doc.toc['ORDER'])
+        start_watch(app.config['API_DOC_PATH'],
+                    app.config['API_DOC_INDEX_PATH'],
+                    api_doc.toc['ORDER'])
         start_service_server(app.config['PORT'])
 
     elif m == 'convert':
@@ -122,7 +89,7 @@ if __name__ == '__main__':
 
         try:
             from common import convert_static_html
-            rendered_template = convert_static_html(config=config, contents=_g_api_doc.contents)
+            rendered_template = convert_static_html(config=config, contents=api_doc.contents)
 
             path = "./static"
             dirs = os.listdir(path)
@@ -141,7 +108,7 @@ if __name__ == '__main__':
                 f.write(rendered_template)
 
         except Exception as e:
-            logger.exception(e) 
+            logger.exception(e)
             if isdir(config.STATIC.DIR):
                 shutil.rmtree(config.STATIC.DIR)
 
