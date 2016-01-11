@@ -20,13 +20,16 @@ def create_app(config=None, blueprints=None):
     configure_blueprints(app, blueprints)
     return app
 
+
 def configure_app(app, config=None):
     if config:
         app.config.from_object(config)
 
+
 def configure_blueprints(app, blueprints):
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
+
 
 def parse_argument():
     import optparse
