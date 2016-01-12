@@ -7,8 +7,9 @@ try:
 except NameError:
     pass
 
-from common import SingletonMeta
 from future.utils import with_metaclass
+
+from common import SingletonMeta
 
 
 class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
@@ -21,6 +22,7 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
     def is_empty(self):
         """
         Is empty trace_queue?
+
         :return: True or False
         """
 
@@ -32,6 +34,7 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
     def count(self):
         """
         Count of trace_queue
+
         :return: count
         """
         return len(self.trace_queue)
@@ -63,6 +66,5 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
     def clear(self):
         """
         Remove all trace_queue
-        :return:
         """
         self.trace_queue = []

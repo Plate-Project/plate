@@ -7,9 +7,9 @@ try:
 except NameError:
     pass
 
+from flask import Flask
 
 from common import logger
-from flask import Flask
 from views import views_blueprint
 
 

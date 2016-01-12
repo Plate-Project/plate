@@ -31,7 +31,7 @@ class ConverterMDtoHTMLTest(unittest.TestCase):
 
     def test_conv_md_to_html(self):
         try:
-            from common import conv_md_to_html
+            from plate.common import conv_md_to_html
 
             for fc in self.test_file_contents:
                 conv_md_to_html(fc)
@@ -50,7 +50,7 @@ class APIDocumentTest(unittest.TestCase):
     def setUp(self):
         self.testing_codes = []
 
-        from common.config import Config
+        from plate.common import Config
         self.config = Config.load_conf('./config.json')
 
     def tearDown(self):
@@ -59,7 +59,7 @@ class APIDocumentTest(unittest.TestCase):
     def test_api_doc(self):
         try:
             # create documents
-            from api_document import APIDocument
+            from plate.api_document import APIDocument
             api_doc = APIDocument(self.config)
             if api_doc.contents:
                 pass

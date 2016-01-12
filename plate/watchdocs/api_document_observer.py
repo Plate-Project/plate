@@ -8,13 +8,16 @@ try:
 except NameError:
     pass
 
-from common import logger
-from common import SingletonMeta
 from future.utils import with_metaclass
+
+from common import SingletonMeta
+from common import logger
 
 
 class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
-
+    """
+    ``APIDocumentObserver`` is observer of API Documents.
+    """
     def __init__(self, doc_path=None, doc_index_path=None, filter_docs=None):
         """
         Construct method of ``APIDocumentObserver``.
@@ -25,7 +28,7 @@ class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
         :return:  APIDocumentObserver Singleton instance
         """
         from watchdog.observers import Observer
-        from .document_trace_handler import DocumentTraceHandler
+        from document_trace_handler import DocumentTraceHandler
 
         if doc_path and doc_index_path:
             event_handler = DocumentTraceHandler(doc_index_path, filter_docs)
@@ -38,7 +41,6 @@ class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
         """
 
         if self.observer:
-            self.stop_watch()
             self.observer.start()
             logger.info("Start watchdocs..")
         else:
