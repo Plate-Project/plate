@@ -1,17 +1,18 @@
 
 # -*- coding: utf-8 -*-
 
-from common import logger
-from flask import Blueprint, current_app, render_template
+from flask import Blueprint
+from flask import current_app
+from flask import render_template
 
 views_blueprint = Blueprint('views', __name__, url_prefix='/')
 
 
 @views_blueprint.route('/')
 def index():
-    import watchdocs
+    from watchdocs import DocumentTraceQueue
     from api_document import APIDocument
-    document_trace_queue = watchdocs.DocumentTraceQueue()
+    document_trace_queue = DocumentTraceQueue()
     api_doc = APIDocument()
     if not document_trace_queue.is_empty():
         api_doc.total_reload_docs()

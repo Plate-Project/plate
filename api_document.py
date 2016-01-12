@@ -6,11 +6,11 @@ from common import syntax_highlight
 from common import SingletonMeta
 from future.utils import with_metaclass
 
+
 class APIDocument(with_metaclass(SingletonMeta, object)):
     """
     Making API Document
     """
-
 
     trace_queue = []
 
@@ -21,7 +21,6 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
         :param config: ``common.config.Config`` instance.
         :return: ``APIDocument`` instance, ``_g_api_doc``.
         """
-
 
         from os.path import join
         if config:
@@ -127,6 +126,7 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
                 code.parent.replaceWith(in_pre_code)
 
         return soup
+
 
     def modify_html(self, soup):
         """

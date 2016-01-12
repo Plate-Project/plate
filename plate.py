@@ -11,7 +11,6 @@ except NameError:
 from common import logger
 from flask import Flask
 from views import views_blueprint
-from api_document import APIDocument
 
 
 def create_app(config=None, blueprints=None):
@@ -42,21 +41,43 @@ def parse_argument():
         print(p.get_usage())
         sys.exit()
 
-def start_test_server(port=5000):
+
+def start_test_server(app, port=5000):
     try:
         app.run(debug=True, host='0.0.0.0', port=port)
     except KeyboardInterrupt:
-        from watchdocs import stop_watch
-        stop_watch()
+        from watchdocs import APIDocumentObserver
+        APIDocumentObserver().stop_watch()
 
-def start_service_server(port=8080):
+
+def start_service_server(app, port=8080):
     import server
     try:
         server.start(app, port=port)
     except KeyboardInterrupt:
-        from watchdocs import stop_watch
-        stop_watch()
+        from watchdocs import APIDocumentObserver
+        APIDocumentObserver().stop_watch()
         server.stop()
+
+
+def test_mode(config):
+    app = create_app(config=config, blueprints=[views_blueprint])
+    from watchdocs import APIDocumentObserver
+    api_doc_observer = APIDocumentObserver(doc_path=app.config['API_DOC_PATH'],
+                                           doc_index_path=app.config['API_DOC_INDEX_PATH'],
+                                           filter_docs=api_doc.toc['ORDER'])
+    api_doc_observer.start_watch()
+    start_test_server(app=app, port=app.config['PORT'])
+
+
+def service_mode(config):
+    app = create_app(config=config, blueprints=[views_blueprint])
+    from watchdocs import APIDocumentObserver
+    api_doc_observer = APIDocumentObserver(doc_path=app.config['API_DOC_PATH'],
+                                           doc_index_path=app.config['API_DOC_INDEX_PATH'],
+                                           filter_docs=api_doc.toc['ORDER'])
+    api_doc_observer.start_watch()
+    start_service_server(app=app, port=app.config['PORT'])
 
 if __name__ == '__main__':
     m = parse_argument()
@@ -65,25 +86,13 @@ if __name__ == '__main__':
     config = Config.load_conf('config.json')
 
     # create documents
+    from api_document import APIDocument
     api_doc = APIDocument(config)
 
     if m == 'test':
-        from watchdocs import start_watch
-        app = create_app(config=config, blueprints=[views_blueprint])
-        # start watch docs
-        start_watch(app.config['API_DOC_PATH'],
-                    app.config['API_DOC_INDEX_PATH'],
-                    api_doc.toc['ORDER'])
-        start_test_server(app.config['PORT'])
+        test_mode(config=config)
     elif m == 'run':
-        from watchdocs import start_watch
-        app = create_app(config=config, blueprints=[views_blueprint])
-        # start watch docs
-        start_watch(app.config['API_DOC_PATH'],
-                    app.config['API_DOC_INDEX_PATH'],
-                    api_doc.toc['ORDER'])
-        start_service_server(app.config['PORT'])
-
+        service_mode(config=config)
     elif m == 'convert':
         from os.path import join
         from os.path import isdir

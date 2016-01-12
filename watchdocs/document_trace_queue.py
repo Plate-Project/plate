@@ -10,6 +10,7 @@ except NameError:
 from common import SingletonMeta
 from future.utils import with_metaclass
 
+
 class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
     """
     Queue of modification, inserted, deleted document.
@@ -51,7 +52,7 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
 
         :return: event
         """
-        if self.empty():
+        if self.is_empty():
             return None
         else:
             import copy

@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+
 class SingletonMeta(type):
     """
     Singleton Base Class

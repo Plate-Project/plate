@@ -29,7 +29,7 @@ Features
 : Convert Markdown(md) to Static HTML using [jinja2 template](http://jinja.pocoo.org/). Use this on github.io and static html service or offline.
 
 - **Multi-Languages Searching**
-: Support multi-languages searching. Use [lunr-languages](https://github.com/MihaiValentin/lunr-languages) for [supporting various languages](https://github.com/Plate-Project/plate/wiki/Multi-Language-Search) such as Japanese, French, German etc.
+: Support multi-languages searching. Use [lunr-languages](https://github.com/MihaiValentin/lunr-languages) for [supporting various languages](http://plate.readthedocs.org/en/latest/advanced.html#multi-language-search) such as Japanese, French, German etc.
 
 - **Code Copy**
 : If set <code>CLIPBOARD</code> in `config.json`, can copy codes using clicking copy link with out mouse drag and copy.
@@ -109,9 +109,10 @@ Start with static html: `python plate.py -m convert`
 }
 ```
 
-Version v0.2.4
+Version v0.2.5
 --------------------
-
+- V0.2.5
+    - Change basic structures
 - v0.2.4
     - Apply Sphinx documentation
 
