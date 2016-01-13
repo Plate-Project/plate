@@ -27,7 +27,7 @@ class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
         :return:  APIDocumentObserver Singleton instance
         """
         from watchdog.observers import Observer
-        from document_trace_handler import DocumentTraceHandler
+        from .document_trace_handler import DocumentTraceHandler
 
         if doc_path and doc_index_path:
             event_handler = DocumentTraceHandler(doc_index_path, filter_docs)

@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 
-from common import logger
-from common import syntax_highlight
-from common import SingletonMeta
+from .common import logger
+from .common import syntax_highlight
+from .common import SingletonMeta
 from future.utils import with_metaclass
 
 
@@ -63,7 +63,7 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
         for doc_file in self.toc["ORDER"]:
 
             doc_file = join(self.config.API_DOC_PATH, doc_file)
-            from common import conv_md_to_html
+            from .common import conv_md_to_html
             with codecs.open(doc_file, 'r', encoding='utf-8') as f:
                 html = conv_md_to_html(f.read())
                 docs[split(doc_file)[1]] = self.modify_html(self.highlight_syntax(self.reordering(html)))

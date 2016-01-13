@@ -33,10 +33,11 @@ def start_test_server(app, port=5000):
 
 
 def start_service_server(app, port=8080):
-    import server
+    from .server import start
+    from .server import stop
     try:
-        server.start(app, port=port)
+        start(app, port=port)
     except KeyboardInterrupt:
         from plate.watchdocs import APIDocumentObserver
         APIDocumentObserver().stop_watch()
-        server.stop()
+        stop()
