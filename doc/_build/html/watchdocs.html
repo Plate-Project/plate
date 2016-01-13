@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.2.4
+                0.2.5
               </div>
             
           
@@ -187,35 +187,29 @@ If raise modify on api document file or index file such as <code class="docutils
 <dt id="watchdocs.document_trace_queue.DocumentTraceQueue">
 <em class="property">class </em><code class="descclassname">watchdocs.document_trace_queue.</code><code class="descname">DocumentTraceQueue</code><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queue of modification, inserted, deleted document.</p>
-<dl class="class">
-<dt id="watchdocs.document_trace_queue.DocumentTraceQueue.Singleton">
-<em class="property">class </em><code class="descname">Singleton</code><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.Singleton" title="Permalink to this definition">¶</a></dt>
-<dd><p>Singleton Base Class</p>
-<p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">DocumentTraceQueue</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">common</span> <span class="kn">import</span> <span class="n">Singleton</span>
-    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">Singleton</span>
-</pre></div>
-</div>
-</dd></dl>
-
 <dl class="method">
 <dt id="watchdocs.document_trace_queue.DocumentTraceQueue.clear">
-<code class="descclassname">DocumentTraceQueue.</code><code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.clear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove all trace_queue
-:return:</p>
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all trace_queue</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="watchdocs.document_trace_queue.DocumentTraceQueue.count">
-<code class="descclassname">DocumentTraceQueue.</code><code class="descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Count of trace_queue
-:return: count</p>
+<code class="descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Count of trace_queue</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">count</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="watchdocs.document_trace_queue.DocumentTraceQueue.dequeue">
-<code class="descclassname">DocumentTraceQueue.</code><code class="descname">dequeue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.dequeue" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dequeue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.dequeue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dequeue event
 Return the copy of top event in trace_queue</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -230,7 +224,7 @@ Return the copy of top event in trace_queue</p>
 
 <dl class="method">
 <dt id="watchdocs.document_trace_queue.DocumentTraceQueue.enqueue">
-<code class="descclassname">DocumentTraceQueue.</code><code class="descname">enqueue</code><span class="sig-paren">(</span><em>event</em>, <em>is_index_file</em><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.enqueue" title="Permalink to this definition">¶</a></dt>
+<code class="descname">enqueue</code><span class="sig-paren">(</span><em>event</em>, <em>is_index_file</em><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.enqueue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue event to trace_queue</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -248,36 +242,36 @@ Return the copy of top event in trace_queue</p>
 
 <dl class="method">
 <dt id="watchdocs.document_trace_queue.DocumentTraceQueue.is_empty">
-<code class="descclassname">DocumentTraceQueue.</code><code class="descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.is_empty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Is empty trace_queue?
-:return: True or False</p>
-</dd></dl>
-
-</dd></dl>
-
-<span class="target" id="module-watchdocs.watch_api_doc"></span><dl class="function">
-<dt id="watchdocs.watch_api_doc.start_watch">
-<code class="descclassname">watchdocs.watch_api_doc.</code><code class="descname">start_watch</code><span class="sig-paren">(</span><em>doc_path</em>, <em>doc_index_path</em>, <em>filter_docs</em><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.watch_api_doc.start_watch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Start watch docs</p>
+<code class="descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.document_trace_queue.DocumentTraceQueue.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is empty trace_queue?</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>doc_path</strong> &#8211; API Document Directory path</li>
-<li><strong>doc_index_path</strong> &#8211; API Document index path</li>
-<li><strong>filter_docs</strong> &#8211; Document file list <code class="docutils literal"><span class="pre">ORDER</span></code> in <code class="docutils literal"><span class="pre">index.json</span></code></li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
-<dl class="function">
-<dt id="watchdocs.watch_api_doc.stop_watch">
-<code class="descclassname">watchdocs.watch_api_doc.</code><code class="descname">stop_watch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.watch_api_doc.stop_watch" title="Permalink to this definition">¶</a></dt>
+</dd></dl>
+
+<span class="target" id="module-watchdocs.api_document_observer"></span><dl class="class">
+<dt id="watchdocs.api_document_observer.APIDocumentObserver">
+<em class="property">class </em><code class="descclassname">watchdocs.api_document_observer.</code><code class="descname">APIDocumentObserver</code><span class="sig-paren">(</span><em>doc_path=None</em>, <em>doc_index_path=None</em>, <em>filter_docs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.api_document_observer.APIDocumentObserver" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">APIDocumentObserver</span></code> is observer of API Documents.</p>
+<dl class="method">
+<dt id="watchdocs.api_document_observer.APIDocumentObserver.start_watch">
+<code class="descname">start_watch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.api_document_observer.APIDocumentObserver.start_watch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start watch docs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="watchdocs.api_document_observer.APIDocumentObserver.stop_watch">
+<code class="descname">stop_watch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#watchdocs.api_document_observer.APIDocumentObserver.stop_watch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop watch docs</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>

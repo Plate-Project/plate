@@ -2,7 +2,6 @@
 
 from common import logger
 from common import syntax_highlight
-
 from common import SingletonMeta
 from future.utils import with_metaclass
 

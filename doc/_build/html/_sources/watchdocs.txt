@@ -8,5 +8,5 @@ Watchdocs
 .. automodule:: watchdocs.document_trace_queue
    :members:
 
-.. automodule:: watchdocs.watch_api_doc
+.. automodule:: watchdocs.api_document_observer
    :members:

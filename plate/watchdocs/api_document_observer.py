@@ -4,14 +4,13 @@ try:
     import sys
     reload(sys)
     sys.setdefaultencoding('utf-8')
-    sys.path.append('../common')
 except NameError:
     pass
 
 from future.utils import with_metaclass
 
-from common import SingletonMeta
-from common import logger
+from ..common import SingletonMeta
+from ..common import logger
 
 
 class APIDocumentObserver(with_metaclass(SingletonMeta, object)):

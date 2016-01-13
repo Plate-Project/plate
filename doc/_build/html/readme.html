@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.2.4
+                0.2.5
               </div>
             
           
@@ -218,8 +218,7 @@
 <div class="section" id="support-python-version">
 <h2>Support Python Version<a class="headerlink" href="#support-python-version" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><strong>Python, version 2.7</strong></li>
-<li><strong>Python, version 3.4 or newer</strong></li>
+<li><strong>Python, version 2.7 ~ 3.4</strong></li>
 </ul>
 </div>
 <div class="section" id="prerequisites">
@@ -235,6 +234,7 @@ Werkzeug==0.9.4
 tornado==3.2.2
 watchdog==0.8.1
 beautifulsoup4==4.3.2
+future==0.15.2
 </pre></div>
 </div>
 <ul class="simple">
@@ -289,24 +289,6 @@ python plate.py
 <li>Configuration file for Plate</li>
 <li>path : <code class="docutils literal"><span class="pre">./config.json</span></code></li>
 </ul>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;PORT&quot;</span>               <span class="p">:</span> <span class="mi">7777</span><span class="p">,</span>
-    <span class="nt">&quot;TITLE&quot;</span>              <span class="p">:</span> <span class="s2">&quot;API Document&quot;</span><span class="p">,</span> 
-    <span class="nt">&quot;LOGO_IMG&quot;</span>           <span class="p">:</span> <span class="s2">&quot;API Document&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SEARCH_ON&quot;</span>          <span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
-    <span class="nt">&quot;SUPPORT_LANG&quot;</span>       <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;java&quot;</span><span class="p">],</span>
-    <span class="nt">&quot;API_DOC_PATH&quot;</span>       <span class="p">:</span> <span class="s2">&quot;./document&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;API_DOC_INDEX_PATH&quot;</span> <span class="p">:</span> <span class="s2">&quot;index.json&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;COPYRIGHT&quot;</span>          <span class="p">:</span> <span class="s2">&quot;© 2015 plate&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;FAVICON&quot;</span>            <span class="p">:</span> <span class="s2">&quot;favicon.ico&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;CLIPBOARD&quot;</span>          <span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
-    <span class="nt">&quot;STATIC&quot;</span> <span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;DIR&quot;</span> <span class="p">:</span> <span class="s2">&quot;./plate_static&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;HTML&quot;</span> <span class="p">:</span> <span class="s2">&quot;index.html&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -373,19 +355,6 @@ python plate.py
 <li>Set <code class="docutils literal"><span class="pre">API_DOC_INDEX_PATH</span></code> in <code class="docutils literal"><span class="pre">config.json</span></code>.</li>
 <li>path : <code class="docutils literal"><span class="pre">./document/index.json</span></code></li>
 </ul>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;ORDER&quot;</span><span class="p">:</span>
-    <span class="p">[</span>
-        <span class="s2">&quot;Introduction.md&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Signup.md&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Signin.md&quot;</span><span class="p">,</span> 
-        <span class="s2">&quot;Notice.md&quot;</span><span class="p">,</span> 
-        <span class="s2">&quot;Notice.jp.md&quot;</span><span class="p">,</span> 
-        <span class="s2">&quot;Notice.fr.md&quot;</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 <p>TOC(Table of content) appears as written order. If index.json path is not equal API document file(md) path, must write file path.</p>
 <img alt="https://farm1.staticflickr.com/597/21701121331_01a93bcce4.jpg" src="https://farm1.staticflickr.com/597/21701121331_01a93bcce4.jpg" />
 </div>

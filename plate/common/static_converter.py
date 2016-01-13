@@ -29,15 +29,8 @@ def convert_static_html(config, contents):
         t = env.get_template('index.html')
         config.SUPPORT_LANG = [str(lang) for lang in config.SUPPORT_LANG]
 
-        if config.exist('LOGO_IMG'):
-            logo_img = config.LOGO_IMG
-        else:
-            logo_img = None
-
-        if config.exist('LOGO_TITLE'):
-            logo_title = config.LOGO_TITLE
-        else:
-            logo_title = None
+        logo_img = config.LOGO_IMG if config.exist('LOGO_IMG') else None
+        logo_title = config.LOGO_TITLE if config.exist('LOGO_TITLE') else None
 
         from common import is_absolute
         rendered_template = t.render(API_TITLE=config.TITLE,

@@ -8,7 +8,7 @@ Common
 .. automodule:: common.convmd2html
    :members:
 
-.. automodule:: common.singleton
+.. automodule:: common.singleton_meta
    :members:
 
 .. automodule:: common.static_converter

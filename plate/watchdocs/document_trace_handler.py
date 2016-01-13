@@ -1,12 +1,4 @@
 # -*- coding:utf-8 -*-
-import os
-import sys
-
-try:
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
-except NameError:
-    pass
 
 from watchdog.events import FileSystemEventHandler
 
@@ -27,10 +19,10 @@ class DocumentTraceHandler(FileSystemEventHandler):
         :return: DocumentTraceHandler instance
         """
         self.filter_files = list()
-
+        from os.path import split
         for doc in filter_docs:
-            self.filter_files.append(os.path.split(doc)[1])
-        self.filter_files.append(os.path.split(doc_index_path)[1])
+            self.filter_files.append(split(doc)[1])
+        self.filter_files.append(split(doc_index_path)[1])
 
     def on_modified(self, event):
         """
@@ -40,8 +32,9 @@ class DocumentTraceHandler(FileSystemEventHandler):
         :param event: the event about event handler
         """
         from .document_trace_queue import DocumentTraceQueue
+        from os.path import split
         document_trace_queue = DocumentTraceQueue()
-        modified_file = os.path.split(event.src_path)[1]
+        modified_file = split(event.src_path)[1]
         document_trace_queue.enqueue(event, self.is_index_file(modified_file))
 
     def is_index_file(self, file_name):
