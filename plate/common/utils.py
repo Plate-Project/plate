@@ -2,11 +2,16 @@
 
 
 def is_absolute(url):
-    try:
-        from urlparse import urlparse
-    except ImportError as e:
-        from urllib.parse import urlparse
-    return bool(urlparse(url).netloc)
+    if url:
+        from future.moves.urllib.parse import urlparse
+        parsed_url = urlparse(url)
+        if bool(parsed_url.netloc):
+            return True
+        else:
+            from os.path import isabs
+            return isabs(parsed_url.path)
+    else:
+        return False
 
 
 import logging
