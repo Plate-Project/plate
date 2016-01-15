@@ -45,7 +45,10 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
         :param event: insert/update/del event
         :param is_index_file: True or False
         """
-        self.trace_queue.append((event, is_index_file))
+        if isinstance(is_index_file, bool):
+            self.trace_queue.append((event, is_index_file))
+        else:
+            raise Exception("is_index_file parameter is bool type.")
 
     def dequeue(self):
         """
@@ -60,7 +63,7 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
             import copy
             event = copy.deepcopy(self.trace_queue[0])
             self.trace_queue.remove(event)
-            return
+            return event
 
     def clear(self):
         """
