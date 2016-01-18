@@ -47,7 +47,31 @@ class DocumentTraceQueueTestCase(unittest.TestCase):
 
 
 class DocumentTraceHandlerTestCase(unittest.TestCase):
-    pass
+
+    def setUp(self):
+
+        self.tracing_files = []
+
+        for i in range(0, 10):
+            file_path = "./" + str(i) + "_test.txt"
+            with open(file_path, "w") as f:
+                f.write(str(i))
+                self.tracing_files.append(file_path)
+
+        self.document_handler = DocumentTraceHandler(tracing_files=self.tracing_files)
+
+    def test_on_modified(self):
+        print "test"
+
+    def test_is_index_file(self):
+        pass
+
+    def tearDown(self):
+        from os import remove
+        from os.path import exists
+        for f in self.tracing_files:
+            if exists(f):
+                remove(f)
 
 
 class APIDocumentObserverTestCase(unittest.TestCase):

@@ -10,22 +10,33 @@ class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
     """
     ``APIDocumentObserver`` is observer of API Documents.
     """
-    def __init__(self, doc_path=None, doc_index_path=None, filter_docs=None):
+    def __init__(self, doc_path=None, doc_index_path=None, doc_file_path_list=None):
         """
         Construct method of ``APIDocumentObserver``.
 
         :param doc_path: API Document Directory path
         :param doc_index_path: API Document index path
-        :param filter_docs: Document file list ``ORDER`` in ``index.json``
+        :param doc_file_path_list: Document file list ``ORDER`` in ``index.json``
         :return:  APIDocumentObserver Singleton instance
         """
         from watchdog.observers import Observer
         from .document_trace_handler import DocumentTraceHandler
+        from .document_tract_file import DocumentTraceFile
 
-        if doc_path and doc_index_path:
-            event_handler = DocumentTraceHandler(doc_index_path, filter_docs)
+        if doc_path:
+            if doc_file_path_list and isinstance(doc_file_path_list, list):
+                tracing_files = [DocumentTraceFile(tracing_file_path=f) for f in doc_file_path_list]
+            else:
+                tracing_files = list()
+
+            if doc_index_path:
+                tracing_files.append(DocumentTraceFile(tracing_file_path=doc_index_path, is_index_file=True))
+
+            event_handler = DocumentTraceHandler(tracing_files=tracing_files)
             self.observer = Observer()
             self.observer.schedule(event_handler, doc_path, recursive=True)
+        else:
+            raise Exception("doc_path is None.")
 
     def start_watch(self):
         """

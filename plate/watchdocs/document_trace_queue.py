@@ -1,13 +1,6 @@
 # -*- coding:utf-8 -*-
-try:
-    import sys
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
-except NameError:
-    pass
 
 from future.utils import with_metaclass
-
 from ..common import SingletonMeta
 
 

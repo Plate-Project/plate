@@ -19,8 +19,8 @@ class SingletonClassTestCase(unittest.TestCase):
         self.assertEqual(hex(id(api_document1)), hex(id(api_document2)))
 
     def test_api_document_observer_singleton(self):
-        observer1 = APIDocumentObserver()
-        observer2 = APIDocumentObserver()
+        observer1 = APIDocumentObserver(doc_path="./")
+        observer2 = APIDocumentObserver(doc_path="./")
         self.assertEqual(hex(id(observer1)), hex(id(observer2)))
 
     def test_document_trace_queue_singleton(self):
