@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 import unittest
 
 from plate.watchdocs import DocumentTraceQueue
@@ -7,7 +8,6 @@ from plate.watchdocs import APIDocumentObserver
 class DocumentTraceQueueTestCase(unittest.TestCase):
 
     def setUp(self):
-        print ("test.setup")
         self.docq = DocumentTraceQueue()
 
         if self.docq:

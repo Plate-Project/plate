@@ -1,5 +1,9 @@
 # -*- coding:utf-8 -*-
 
+"""
+    tests.singleton_test
+    ~~~~~~~~~~~~~~
+"""
 import unittest
 
 from plate.api_document import APIDocument

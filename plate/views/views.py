@@ -10,8 +10,8 @@ views_blueprint = Blueprint('views', __name__, url_prefix='/')
 
 @views_blueprint.route('/')
 def index():
-    from watchdocs import DocumentTraceQueue
-    from api_document import APIDocument
+    from ..watchdocs import DocumentTraceQueue
+    from ..api_document import APIDocument
     document_trace_queue = DocumentTraceQueue()
     api_doc = APIDocument()
     if not document_trace_queue.is_empty():
@@ -25,7 +25,7 @@ def index():
     logo_title = current_app.config['LOGO_TITLE'] if 'LOGO_TITLE' in current_app.config else None
 
     from datetime import datetime
-    from common import is_absolute
+    from ..common import is_absolute
     return render_template("index.html",
                            API_TITLE=current_app.config['TITLE'],
                            IS_SEARCH=current_app.config['SEARCH_ON'],

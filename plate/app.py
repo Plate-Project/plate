@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
 from flask import Flask
-from plate.common import logger
 
 
 def create_app(config=None):
@@ -39,5 +38,5 @@ def start_service_server(app, port=8080):
         start(app, port=port)
     except KeyboardInterrupt:
         from plate.watchdocs import APIDocumentObserver
-        APIDocumentObserver().stop_watch()
         stop()
+        APIDocumentObserver().stop_watch()

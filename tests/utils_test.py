@@ -1,6 +1,5 @@
+# -*- coding:utf-8 -*-
 import unittest
-
-
 class UtilsTestCase(unittest.TestCase):
     def test_is_absolute(self):
         try:
