@@ -10,6 +10,7 @@ class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
     """
     ``APIDocumentObserver`` is observer of API Documents.
     """
+
     def __init__(self, doc_path=None, doc_index_path=None, doc_file_path_list=None):
         """
         Construct method of ``APIDocumentObserver``.
@@ -49,12 +50,25 @@ class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
         else:
             pass
 
+    @property
+    def is_started(self):
+        """
+        After run ``start_watch()``, ``is_started`` is True, or False.
+
+        :return: True | False
+        """
+
+        if self.observer:
+            return self.observer.is_alive()
+        return False
+
+
     def stop_watch(self):
         """
         Stop watch docs
         """
 
-        if self.observer:
+        if self.observer and self.observer.is_alive():
             self.observer.stop()
             self.observer.join()
 

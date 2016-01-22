@@ -17,6 +17,7 @@ class DocumentTraceHandler(FileSystemEventHandler):
         :param tracing_files: Files to track
         :return: DocumentTraceHandler instance
         """
+
         if tracing_files:
             self.tracing_files = tracing_files
         else:
@@ -32,7 +33,9 @@ class DocumentTraceHandler(FileSystemEventHandler):
         from .document_trace_queue import DocumentTraceQueue
         from os.path import split
         document_trace_queue = DocumentTraceQueue()
+        print hex(id(document_trace_queue))
         modified_document_trace_file = self.get_document_trace_file(file_name=split(event.src_path)[1])
+        print (event)
 
         if modified_document_trace_file:
             document_trace_queue.enqueue(event=event,

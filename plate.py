@@ -40,6 +40,7 @@ def service_mode(config):
     api_doc_observer = APIDocumentObserver(doc_path=app.config['API_DOC_PATH'],
                                            doc_index_path=app.config['API_DOC_INDEX_PATH'],
                                            doc_file_path_list=api_doc.toc['ORDER'])
+
     api_doc_observer.start_watch()
     start_service_server(app=app, port=app.config['PORT'])
 

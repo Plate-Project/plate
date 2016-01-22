@@ -4,6 +4,7 @@ import unittest
 from plate.watchdocs import DocumentTraceQueue
 from plate.watchdocs import DocumentTraceHandler
 from plate.watchdocs import APIDocumentObserver
+from plate.watchdocs import DocumentTraceFile
 
 class DocumentTraceQueueTestCase(unittest.TestCase):
 
@@ -46,33 +47,64 @@ class DocumentTraceQueueTestCase(unittest.TestCase):
         self.assertEqual(self.docq.count(), 0)
 
 
-class DocumentTraceHandlerTestCase(unittest.TestCase):
+class APIDocumentObserverTestCase(unittest.TestCase):
 
     def setUp(self):
 
         self.tracing_files = []
 
         for i in range(0, 10):
-            file_path = "./" + str(i) + "_test.txt"
+            file_path = "./tests/" + str(i) + "_test.txt"
             with open(file_path, "w") as f:
                 f.write(str(i))
-                self.tracing_files.append(file_path)
+            self.tracing_files.append(file_path)
 
-        self.document_handler = DocumentTraceHandler(tracing_files=self.tracing_files)
+    def test_start_stop_watch(self):
+        api_doc_observer = APIDocumentObserver(doc_path="./tests/",
+                                               doc_index_path=None,
+                                               doc_file_path_list=self.tracing_files)
+
+
+        api_doc_observer.start_watch()
+        self.assertEqual(api_doc_observer.is_started, True)
+        api_doc_observer.stop_watch()
+        self.assertEqual(api_doc_observer.is_started, False)
 
     def test_on_modified(self):
-        print "test"
 
-    def test_is_index_file(self):
-        pass
+        api_doc_observer = APIDocumentObserver(doc_path="./tests/",
+                                               doc_index_path=None,
+                                               doc_file_path_list=self.tracing_files)
+        api_doc_observer.start_watch()
+        import time
+        time.sleep(5)
+
+        with open("./tests/0_test.txt", "a+") as f:
+            f.write("test")
+
+
+        time.sleep(5)
+
+        api_doc_observer.stop_watch()
+
+
+        # from os.path import exists
+        # for tf in self.tracing_files:
+        #     if exists(tf.file_path):
+        #         with open(tf.file_path, "a+") as f:
+        #             f.write("test")
+        #
+        # # todo : testing
+        #
+        # doc_queue = DocumentTraceQueue()
+        # print hex(id(doc_queue))
+        # self.assertEqual(doc_queue.count(), 10)
 
     def tearDown(self):
+        APIDocumentObserver.clear_instance()
+
         from os import remove
         from os.path import exists
-        for f in self.tracing_files:
-            if exists(f):
-                remove(f)
-
-
-class APIDocumentObserverTestCase(unittest.TestCase):
-    pass
+        for file_path in self.tracing_files:
+            if exists(file_path):
+                remove(file_path)
