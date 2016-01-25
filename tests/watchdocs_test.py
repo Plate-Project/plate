@@ -60,10 +60,10 @@ class APIDocumentObserverTestCase(unittest.TestCase):
             self.tracing_files.append(file_path)
 
     def test_start_stop_watch(self):
+        APIDocumentObserver.clear_instance()
         api_doc_observer = APIDocumentObserver(doc_path="./tests/",
                                                doc_index_path=None,
                                                doc_file_path_list=self.tracing_files)
-
 
         api_doc_observer.start_watch()
         self.assertEqual(api_doc_observer.is_started, True)
@@ -71,37 +71,24 @@ class APIDocumentObserverTestCase(unittest.TestCase):
         self.assertEqual(api_doc_observer.is_started, False)
 
     def test_on_modified(self):
-
+        APIDocumentObserver.clear_instance()
         api_doc_observer = APIDocumentObserver(doc_path="./tests/",
                                                doc_index_path=None,
                                                doc_file_path_list=self.tracing_files)
         api_doc_observer.start_watch()
         import time
-        time.sleep(5)
+        time.sleep(3)
 
         with open("./tests/0_test.txt", "a+") as f:
             f.write("test")
 
-
-        time.sleep(5)
+        time.sleep(3)
 
         api_doc_observer.stop_watch()
-
-
-        # from os.path import exists
-        # for tf in self.tracing_files:
-        #     if exists(tf.file_path):
-        #         with open(tf.file_path, "a+") as f:
-        #             f.write("test")
-        #
-        # # todo : testing
-        #
-        # doc_queue = DocumentTraceQueue()
-        # print hex(id(doc_queue))
-        # self.assertEqual(doc_queue.count(), 10)
+        doc_queue = DocumentTraceQueue()
+        self.assertEqual(doc_queue.count(), 1)
 
     def tearDown(self):
-        APIDocumentObserver.clear_instance()
 
         from os import remove
         from os.path import exists

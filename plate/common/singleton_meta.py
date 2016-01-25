@@ -20,5 +20,6 @@ class SingletonMeta(type):
         return cls.instance
 
     def clear_instance(cls):
-        del cls.instance
+        if cls.instance:
+            del cls.instance
 

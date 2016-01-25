@@ -33,9 +33,7 @@ class DocumentTraceHandler(FileSystemEventHandler):
         from .document_trace_queue import DocumentTraceQueue
         from os.path import split
         document_trace_queue = DocumentTraceQueue()
-        print hex(id(document_trace_queue))
         modified_document_trace_file = self.get_document_trace_file(file_name=split(event.src_path)[1])
-        print (event)
 
         if modified_document_trace_file:
             document_trace_queue.enqueue(event=event,
