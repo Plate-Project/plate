@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from future.utils import with_metaclass
+
 from ..common import SingletonMeta
 
 

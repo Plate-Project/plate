@@ -1,16 +1,16 @@
 # -*- coding:utf-8 -*-
 
 from pygments import highlight
-from pygments.lexers import PythonLexer
+from pygments.formatters import HtmlFormatter
 from pygments.lexers import BashLexer
 from pygments.lexers import CSharpAspxLexer
 from pygments.lexers import CSharpLexer
-from pygments.lexers import RubyLexer
-from pygments.lexers import JsonLexer
-from pygments.lexers import JavascriptLexer
-from pygments.lexers import ObjectiveCLexer
 from pygments.lexers import JavaLexer
-from pygments.formatters import HtmlFormatter
+from pygments.lexers import JavascriptLexer
+from pygments.lexers import JsonLexer
+from pygments.lexers import ObjectiveCLexer
+from pygments.lexers import PythonLexer
+from pygments.lexers import RubyLexer
 
 
 def syntax_highlight(lang, code):

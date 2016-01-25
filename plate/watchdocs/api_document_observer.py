@@ -62,7 +62,6 @@ class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
             return self.observer.is_alive()
         return False
 
-
     def stop_watch(self):
         """
         Stop watch docs

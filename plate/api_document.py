@@ -1,9 +1,10 @@
 # -*- coding:utf-8 -*-
 
+from future.utils import with_metaclass
+
+from .common import SingletonMeta
 from .common import logger
 from .common import syntax_highlight
-from .common import SingletonMeta
-from future.utils import with_metaclass
 
 
 class APIDocument(with_metaclass(SingletonMeta, object)):
@@ -125,7 +126,6 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
                 code.parent.replaceWith(in_pre_code)
 
         return soup
-
 
     def modify_html(self, soup):
         """

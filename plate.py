@@ -8,8 +8,8 @@ except NameError:
     pass
 
 from plate import create_app
-from plate import start_test_server
 from plate import start_service_server
+from plate import start_test_server
 
 
 def parse_argument():

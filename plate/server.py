@@ -7,10 +7,11 @@ try:
 except NameError:
     pass
 
-from .common import logger
-from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
-from tornado.ioloop import IOLoop 
+from tornado.ioloop import IOLoop
+from tornado.wsgi import WSGIContainer
+
+from .common import logger
 
 
 def start(app, port=8080):
