@@ -32,7 +32,7 @@ def convert_static_html(config, contents):
         logo_img = config.LOGO_IMG if config.exist('LOGO_IMG') else None
         logo_title = config.LOGO_TITLE if config.exist('LOGO_TITLE') else None
 
-        from common import is_absolute
+        from plate.common import is_absolute
         rendered_template = t.render(API_TITLE=config.TITLE,
                                      IS_SEARCH=config.SEARCH_ON,
                                      LOGO_TITLE=logo_title,
