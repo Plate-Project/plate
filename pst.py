@@ -21,9 +21,10 @@ def convert_mode(config_file_path):
     if not config_file_path:
         sys.exit()
 
+    from plate.common.config import Config
+    config = Config.load_conf(config_file_path)
+
     try:
-        from plate.common.config import Config
-        config = Config.load_conf(config_file_path)
 
         # create documents
         logger.info("Creating APIDocument")

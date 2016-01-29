@@ -6,6 +6,7 @@ from plate.watchdocs import DocumentTraceHandler
 from plate.watchdocs import APIDocumentObserver
 from plate.watchdocs import DocumentTraceFile
 
+
 class DocumentTraceQueueTestCase(unittest.TestCase):
 
     def setUp(self):
