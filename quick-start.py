@@ -12,35 +12,50 @@ import shutil
 
 '''
 
-print("\nWelcome Plate v0.2")
+def copy_dir(src, dst):
+    for item in os.listdir(src):
+        if item in ['tests', '.idea', 'doc', 'quick-start.py', '.git', 'requirements.txt']:
+            continue
+        s = os.path.join(src, item)
+        d = os.path.join(dst, item)
+        if os.path.isdir(s):
+            shutil.copytree(s, d)
+        else:
+            shutil.copy2(s, d)
+
+print("\nWelcome Plate v0.2.5")
+# todo : 버전 정보 conf.py 에서 가져오기
+
 print("Start your API Document system.")
 
 project_name = None
-try:
-    #  python2.x
-    project_name = str(raw_input('\nTyping API document name :'))
-except NameError:
-    #  python3.x
-    project_name = str(input('\nTyping API document name :'))
+from builtins import input
+project_name = str(input('\nTyping API document name :'))
 
 # rename project 
 print("what is API document name? is" + "\"" + project_name + "\"" + ".")
 project_path = "../" + project_name
 
-print("Rename slate-flask to  " + "\"" + project_name + "\"" + "...")
+print("Rename Plate to  " + "\"" + project_name + "\"" + "...")
 current_dir = os.path.abspath("./")
 dest_dir = os.path.join(os.path.dirname(current_dir), project_name)
-shutil.move(current_dir, dest_dir)
+if not os.path.exists(dest_dir):
+    os.mkdir(dest_dir)
 
-# setup requirements.txt 
-from pip.req import parse_requirements
-import pip
+copy_dir(src=current_dir, dst=dest_dir)
+
+
+# setup requirements.txt
 print("Install requirements.txt")
+os.system('sudo pip install -r ./requirements.txt')
 
-install_reqs = parse_requirements("./requirements.txt")
-reqs = [str(ir.req) for ir in install_reqs]
-for req in reqs:
-    pip.main(["install", req])
-    pip.logger.consumers = []
-
+# todo : 함수화
+from builtins import input
+is_delete_plate = str(input('Delete plate director?(move to ' + dest_dir + ') (Y|N):'))
+if is_delete_plate.upper() == 'Y':
+    # todo : shell move to dest dir
+    shutil.rmtree(current_dir)
+else:
+    # todo : shell move to dest dir
+    pass
 print("Complete. Enjoy Developing.")

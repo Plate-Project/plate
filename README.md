@@ -124,6 +124,7 @@ Version v0.2.5
 --------------------
 - V0.2.5
     - Change basic structures
+    - Add Unit Testing 
 - v0.2.4
     - Apply Sphinx documentation
 
