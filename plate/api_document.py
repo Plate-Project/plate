@@ -136,7 +136,8 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
         """
         tags = []
         title_tags = ['h1', 'h2', 'h3', 'h4']
-        [tags.extend(soup.find_all(title_tag)) for title_tag in title_tags]
+        for title_tag in title_tags:
+            tags.extend(soup.find_all(title_tag))
 
         # h1, h2 add id attribute
         for tag in tags:

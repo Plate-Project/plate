@@ -24,7 +24,6 @@ def copy_dir(src, dst):
             shutil.copy2(s, d)
 
 print("\nWelcome Plate v0.2.5")
-# todo : 버전 정보 conf.py 에서 가져오기
 
 print("Start your API Document system.")
 
@@ -49,13 +48,9 @@ copy_dir(src=current_dir, dst=dest_dir)
 print("Install requirements.txt")
 os.system('sudo pip install -r ./requirements.txt')
 
-# todo : 함수화
 from builtins import input
-is_delete_plate = str(input('Delete plate director?(move to ' + dest_dir + ') (Y|N):'))
+is_delete_plate = str(input('Delete plate directory? (Y|N):'))
 if is_delete_plate.upper() == 'Y':
-    # todo : shell move to dest dir
     shutil.rmtree(current_dir)
-else:
-    # todo : shell move to dest dir
-    pass
+
 print("Complete. Enjoy Developing.")

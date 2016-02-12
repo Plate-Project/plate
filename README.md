@@ -32,13 +32,13 @@ use one markdown file or separate markdown files by API or another criterion. Al
 Convert Markdown(md) to Static HTML using [jinja2 template](http://jinja.pocoo.org/). Use this on github.io and static html service or offline.
 
 - **Multi-Languages Searching**
-: To [support searching various languages](http://plate.readthedocs.org/en/latest/advanced.html#multi-language-search) such as Japanese, French, German, etc, use not only [lunr.js](http://lunrjs.com/) but also lunr-languages[lunr-languages](https://github.com/MihaiValentin/lunr-languages).
+: To [support searching various languages](http://plate.readthedocs.org/en/latest/advanced.html#multi-language-search) such as Japanese, French, German, etc, use not only [lunr.js](http://lunrjs.com/) but also [lunr-languages](https://github.com/MihaiValentin/lunr-languages).
 
 - **Code Copy**
 : It can be easily copy the example codes without mouse drag and drop, immediately apply this to your codes. Set <code>CLIPBOARD</code> in `config.json`, can copy codes using clicking copy link.
 
 
-Plate is very easy for any developers. First of all, follow below **Getting Start**. And then you have any problems, immediately notify(email, issue board, any yhing). Always, plate is ready for you.
+Plate is very easy for any developers. First of all, follow below **Getting Start**. And then you have any problems, immediately notify(email, issue board, anything). Always, plate is ready for you.
 
 
 Getting Start

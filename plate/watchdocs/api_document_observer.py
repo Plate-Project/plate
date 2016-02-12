@@ -22,7 +22,7 @@ class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
         """
         from watchdog.observers import Observer
         from .document_trace_handler import DocumentTraceHandler
-        from .document_tract_file import DocumentTraceFile
+        from .document_trace_file import DocumentTraceFile
 
         if doc_path:
             if doc_file_path_list and isinstance(doc_file_path_list, list):
