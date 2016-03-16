@@ -100,7 +100,7 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
         from bs4 import BeautifulSoup
         code_tags = soup.find_all('code')
 
-        for code in code_tags: 
+        for code in code_tags:
             if code.has_attr('class'):
                 lang = code['class']
                 code.parent['class'] = "highlight " + lang[0]
