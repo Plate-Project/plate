@@ -28,10 +28,13 @@ print("\nWelcome Plate v0.2.5")
 print("Start your API Document system.")
 
 project_name = None
-from builtins import input
-project_name = str(input('\nTyping API document name :'))
 
-# rename project 
+try:
+    project_name = str(raw_input('\nTyping API document name :'))
+except NameError:
+    project_name = str(input('\nTyping API document name :'))
+
+# rename project
 print("what is API document name? is" + "\"" + project_name + "\"" + ".")
 project_path = "../" + project_name
 
