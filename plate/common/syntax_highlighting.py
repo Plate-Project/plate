@@ -1,17 +1,5 @@
 # -*- coding:utf-8 -*-
 
-from pygments import highlight
-from pygments.formatters import HtmlFormatter
-from pygments.lexers import BashLexer
-from pygments.lexers import CSharpAspxLexer
-from pygments.lexers import CSharpLexer
-from pygments.lexers import JavaLexer
-from pygments.lexers import JavascriptLexer
-from pygments.lexers import JsonLexer
-from pygments.lexers import ObjectiveCLexer
-from pygments.lexers import PythonLexer
-from pygments.lexers import RubyLexer
-
 
 def syntax_highlight(lang, code):
     """
@@ -21,36 +9,13 @@ def syntax_highlight(lang, code):
     :param code: code
     :return: highlighted code
     """
-
-    highlighted = None
+    from pygments import lexers
+    from pygments import highlight
+    from pygments.formatters import HtmlFormatter
 
     try:
-        if lang.lower() == 'python':
-            highlighted = highlight(code, PythonLexer(), HtmlFormatter())
-
-        elif lang.lower() == 'shell':
-            highlighted = highlight(code, BashLexer(), HtmlFormatter())
-
-        elif lang.lower() == 'asp':
-            highlighted = highlight(code, CSharpAspxLexer(), HtmlFormatter())
-
-        elif lang.lower() == 'csharp':
-            highlighted = highlight(code, CSharpLexer(), HtmlFormatter())
-
-        elif lang.lower() == 'ruby':
-            highlighted = highlight(code, RubyLexer(), HtmlFormatter())
-
-        elif lang.lower() == 'json':
-            highlighted = highlight(code, JsonLexer(), HtmlFormatter())
-
-        elif lang.lower() == 'js':
-            highlighted = highlight(code, JavascriptLexer(), HtmlFormatter())
-
-        elif lang.lower() == 'objective-c':
-            highlighted = highlight(code, ObjectiveCLexer(), HtmlFormatter())
-
-        elif lang.lower() == 'java':
-            highlighted = highlight(code, JavaLexer(), HtmlFormatter())
+        lexer = lexers.get_lexer_by_name(lang.lower())
+        highlighted = highlight(code, lexer, HtmlFormatter())
 
         splitted = highlighted.split('"highlight')
         highlighted = splitted[0] + '"highlight '+lang + splitted[1]
