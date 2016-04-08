@@ -27,7 +27,7 @@ Si la page est zéro (0), définie en interne page 1.
 > Demande Exemple:
 
 
-```shell
+```bash
 curl http://127.0.0.1/notice?page=1
 ```
  

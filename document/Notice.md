@@ -12,7 +12,7 @@ http://qlemon.net:8000/fcal/api/notice
 ```   
  
      
-##Request Parmeters##
+##Request Parameters##
 
 | name            | type            | mandatory | memo           | 
 | :------------------------- |:---------------|:---|------------------------| 
@@ -27,7 +27,7 @@ If page is zero(0), internally set page to 1.
 > Request Example:
 
 
-```shell
+```bash
 curl http://127.0.0.1/notice?page=1
 ```
  

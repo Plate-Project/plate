@@ -21,7 +21,7 @@
   
 > Example
 
-```shell
+```bash
 curl http://127.0.0.1/api/signin?id=test@gmail.com&password=1234 
 ```
 

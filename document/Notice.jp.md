@@ -3,7 +3,8 @@
 - 通知データベースからの通知を取得します。
 
 ##リソースのURL##
-- [http://qlemon.net:8000/fcal/api/notice]（http://qlemon.net:8000/fcal/api/notice）
+- [http://qlemon.net:8000/fcal/api/notice]( http://qlemon.net:8000/fcal/api/notice)
+
 
 > APIエンドポイント
 ```
@@ -11,7 +12,7 @@ http://qlemon.net:8000/fcal/api/notice
 ```
  
      
-##リクエストParmeters##
+##リクエストParameters##
 
 |名前|タイプ|必須|メモ|
 | :------------------------- |:---------------|:---|------------------------| 
@@ -27,7 +28,7 @@ http://qlemon.net:8000/fcal/api/notice
 >リクエスト例：
 
 
-```shell
+```bash
 curl http://127.0.0.1/notice?page=1
 ```
  
