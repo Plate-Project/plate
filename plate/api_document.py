@@ -28,6 +28,7 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
             self.index_file_path = join(self.config.API_DOC_PATH, self.config.API_DOC_INDEX_PATH)
             self.toc = self.read_index(self.index_file_path)
             self.contents = self.create_api_docs()
+            self.contents_toc = self.create_api_toc()
 
     def total_reload_docs(self):
         """
@@ -62,12 +63,15 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
 
         docs = OrderedDict()
         for doc_file in self.toc["ORDER"]:
-
-            doc_file = join(self.config.API_DOC_PATH, doc_file)
+            doc_file_path = join(self.config.API_DOC_PATH, doc_file)
             from .common import conv_md_to_html
-            with codecs.open(doc_file, 'r', encoding='utf-8') as f:
+            with codecs.open(doc_file_path, 'r', encoding='utf-8') as f:
                 html = conv_md_to_html(f.read())
-                docs[split(doc_file)[1]] = self.modify_html(self.highlight_syntax(self.reordering(html)))
+                doc_file_name = split(doc_file_path)[1]
+                docs[doc_file_name] = self.modify_html(self.highlight_syntax(self.reordering(html)))
+                """
+                docs['Introduction.md'] = '<div>...</div>'
+                """
 
         return docs.values()
 
@@ -148,3 +152,13 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
                 tag['id'] = '-'.join(splitted)
 
         return soup.prettify(formatter=None)
+
+    def create_api_toc(self):
+        # todo : implementation
+
+        """
+        html 가지고 h1, h2 에 대해서 목차 계층도를 구성한다.
+        만든 목차 계층도를 가지고 return 하고, 해당 부분에 대한 이벤트 등의 다른 부분은 js에서 구성한다. 
+        :return:
+        """
+        pass

@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 
 from flask import Blueprint
@@ -12,6 +11,7 @@ views_blueprint = Blueprint('views', __name__, url_prefix='/')
 def index():
     from ..watchdocs import DocumentTraceQueue
     from ..api_document import APIDocument
+
     document_trace_queue = DocumentTraceQueue()
     api_doc = APIDocument()
     if not document_trace_queue.is_empty():
