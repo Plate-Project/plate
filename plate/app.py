@@ -14,7 +14,8 @@ def create_app(config=None):
 
 
 def configure_app(app, config=None):
-    if config:
+    from plate.common.config import Config
+    if isinstance(config, Config):
         app.config.from_object(config)
 
 
