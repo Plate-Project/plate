@@ -3,10 +3,7 @@ import unittest
 
 from plate.app import configure_app
 from plate.app import configure_blueprints
-from plate.app import start_test_server
-from plate.app import start_service_server
 
-import requests
 
 class AppTestCase(unittest.TestCase):
 
@@ -43,22 +40,6 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(app.blueprints['page1'], page1)
         self.assertEqual(app.blueprints['page2'], page2)
         self.assertEqual(app.blueprints['page3'], page3)
-
-    def test_start_test_server(self):
-        from flask import Flask
-        app = Flask(__name__, static_url_path="", static_folder="static")
-
-        start_test_server(app)
-        r = requests.get('http://localhost:5000')
-        self.assertEqual(r.status_code, 200)
-
-    def test_start_service_server(self):
-        from flask import Flask
-        app = Flask(__name__, static_url_path="", static_folder="static")
-
-        start_service_server(app)
-        r = requests.get('http://localhost:8080')
-        self.assertEqual(r.status_code, 200)
 
     def tearDown(self):
         from os.path import exists
