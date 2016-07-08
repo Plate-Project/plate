@@ -12,7 +12,7 @@ class AppTestCase(unittest.TestCase):
 
     def test_configure_app(self):
 
-        test_conf = {'KEY': 1234, 'db': 'localhost:3306//mc.dbo'}
+        test_conf = {'KEY': 1234, 'DB': 'localhost:3306//mc.dbo'}
         import json
         with open("./test.conf", 'w') as f:
             f.write(json.dumps(test_conf))
@@ -25,7 +25,7 @@ class AppTestCase(unittest.TestCase):
 
         self.assertNotEqual(app, None)
         self.assertEqual(app.config['KEY'], 1234)
-        self.assertEqual(app.config['db'], 'localhost:3306//mc.dbo')
+        self.assertEqual(app.config['DB'], 'localhost:3306//mc.dbo')
 
     def test_configure_buleprints(self):
         from flask import Flask, Blueprint
