@@ -58,8 +58,8 @@ class ConfigtartTestCase(unittest.TestCase):
         if os.path.exists(self.default_json_file_path):
             os.remove(self.default_json_file_path)
 
-        if os.path.exists(self.default_json_file_path):
-            os.remove(self.default_json_file_path)
+        if os.path.exists(self.basic_json_file_path):
+            os.remove(self.basic_json_file_path)
 
         if os.path.exists(self.not_exist_json_file_path):
             os.remove(self.not_exist_json_file_path)
