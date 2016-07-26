@@ -18,7 +18,7 @@ def syntax_highlight(lang, code):
         highlighted = highlight(code, lexer, HtmlFormatter())
 
         splitted = highlighted.split('"highlight')
-        highlighted = splitted[0] + '"highlight '+lang + splitted[1]
+        highlighted = splitted[0] + '"highlight ' + lang + splitted[1]
 
         highlighted = highlighted.replace("<pre>", "")
         highlighted = highlighted.replace("</pre>", "")

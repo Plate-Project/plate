@@ -13,7 +13,7 @@ install:
 script:
   - nosetests --with-coverage --cover-package=plate
 before_script:
-  - flake8 --count --exclude ./tests, ./doc
+    - flake8 --count --exclude ./tests,./doc --ignore E402,F401
 
 after_success:
   - coveralls

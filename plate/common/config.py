@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+
 class Config(object):
     """
     Read JSON Format config file.
@@ -28,7 +29,4 @@ class Config(object):
         import json
         with open(conf_file_path, 'r') as f:
             conf = json.loads(f.read(), object_hook=Config)
-
         return conf
-
-

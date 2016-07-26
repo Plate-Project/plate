@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+
 def is_absolute(url):
     try:
         from urllib.parse import urlparse, urlencode

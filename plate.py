@@ -27,6 +27,7 @@ def parse_argument():
 def test_mode(app):
     start_test_server(app=app, port=app.config['PORT'])
 
+
 def service_mode(app):
     start_service_server(app=app, port=app.config['PORT'])
 
@@ -40,7 +41,7 @@ if __name__ == '__main__':
     # create documents
     from plate.api_document import APIDocument
     api_doc = APIDocument(config)
- 
+
     app = create_app(config=config)
     from plate.watchdocs import APIDocumentObserver
     api_doc_observer = APIDocumentObserver(doc_path=app.config['API_DOC_PATH'],
