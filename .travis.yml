@@ -6,11 +6,14 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip install flake8
+  - pip install nose
   - pip install coveralls
 
 script:
   - nosetests --with-coverage --cover-package=plate
-
+before_script:
+  - flake8 --count --exclude ./tests. ./doc
 
 after_success:
   - coveralls
