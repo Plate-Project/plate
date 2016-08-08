@@ -42,13 +42,9 @@ class DocumentTraceHandler(FileSystemEventHandler):
     def get_document_trace_file(self, file_name):
         from os.path import split
         tf_file = None
-        if self.tracing_files:
-            for tf in self.tracing_files:
-                tf_file_name = split(tf.file_path)[1]
-                if tf_file_name == file_name:
-                    tf_file = tf
-                    break
-
-            return tf_file
-        else:
-            return None
+        for tf in self.tracing_files:
+            tf_file_name = split(tf.file_path)[1]
+            if tf_file_name == file_name:
+                tf_file = tf
+                break
+        return tf_file

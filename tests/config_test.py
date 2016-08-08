@@ -52,6 +52,16 @@ class ConfigtartTestCase(unittest.TestCase):
         self.assertEqual(config.STATIC.DIR, "./plate_static")
         self.assertEqual(config.SUPPORT_LANG, ["shell", "python", "java"])
 
+    def test_config_repr(self):
+        config = Config.load_conf(self.basic_json_file_path)
+        self.assertEqual(config.__repr__(), basestring)
+
+    def test_config_exist(self):
+        config = Config.load_conf(self.basic_json_file_path)
+        self.assertEqual(config.exist('TITLE'), True)
+        self.assertEqual(config.exist('STATIC'), True)
+        self.assertEqual(config.exist('SUPPORT_LANG'), True)
+
     def tearDown(self):
         import os
 

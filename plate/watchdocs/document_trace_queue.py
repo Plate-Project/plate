@@ -2,8 +2,8 @@
 
 from future.utils import with_metaclass
 
-from ..common import SingletonMeta
-
+from plate.common import SingletonMeta
+from watchdog.events import FileSystemEvent
 
 class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
     """
@@ -39,10 +39,10 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
         :param event: insert/update/del event
         :param is_index_file: True or False
         """
-        if isinstance(is_index_file, bool):
+        if isinstance(event, FileSystemEvent) and isinstance(is_index_file, bool):
             self.trace_queue.append((event, is_index_file))
         else:
-            raise Exception("is_index_file parameter is bool type.")
+            raise TypeError('event of is_index_file type error.')
 
     def dequeue(self):
         """
