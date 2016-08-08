@@ -5,6 +5,7 @@ from future.utils import with_metaclass
 from plate.common import SingletonMeta
 from watchdog.events import FileSystemEvent
 
+
 class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
     """
     Queue of modification, inserted, deleted document.
