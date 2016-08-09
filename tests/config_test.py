@@ -4,7 +4,7 @@ import unittest
 from plate.common import Config
 
 
-class ConfigtartTestCase(unittest.TestCase):
+class ConfigTestCase(unittest.TestCase):
 
     def setUp(self):
         basic_json = {
@@ -54,7 +54,7 @@ class ConfigtartTestCase(unittest.TestCase):
 
     def test_config_repr(self):
         config = Config.load_conf(self.basic_json_file_path)
-        self.assertEqual(config.__repr__(), basestring)
+        self.assertEqual( isinstance(config.__repr__(), str), True)
 
     def test_config_exist(self):
         config = Config.load_conf(self.basic_json_file_path)
