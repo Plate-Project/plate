@@ -1,14 +1,22 @@
 # -*- coding:utf-8 -*-
 import unittest
 
+from plate.app import create_app
 from plate.app import configure_app
 from plate.app import configure_blueprints
+from plate.app import start_service_server
+from plate.app import start_test_server
 
 
 class AppTestCase(unittest.TestCase):
 
     def setUp(self):
         pass
+
+    def test_create_app(self):
+        from flask import app
+        app1 = create_app(config=None)
+        self.assertEqual(app1.__class__, app.Flask)
 
     def test_configure_app(self):
 
@@ -40,6 +48,14 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(app.blueprints['page1'], page1)
         self.assertEqual(app.blueprints['page2'], page2)
         self.assertEqual(app.blueprints['page3'], page3)
+
+    def test_start_service_server(self):
+        pass
+        # TODO : TESTCASE, start server and requests call page
+
+    def test_start_test_server(self):
+        pass
+        # TODO : TESTCASE, start server and requests call page
 
     def tearDown(self):
         from os.path import exists

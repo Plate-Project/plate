@@ -2,5 +2,6 @@
 import unittest
 
 
-class SyntasHighlightingTestCase(unittest.TestCase):
+class SyntaxHighlightingTestCase(unittest.TestCase):
     pass
+    # TODO : TESTCASE
