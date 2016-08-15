@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 
 from watchdog.events import FileSystemEventHandler
+from plate.watchdocs.document_trace_queue import DocumentTraceQueue
+from os.path import split
 
 
 class DocumentTraceHandler(FileSystemEventHandler):
@@ -30,8 +32,6 @@ class DocumentTraceHandler(FileSystemEventHandler):
 
         :param event: the event about event handler
         """
-        from .document_trace_queue import DocumentTraceQueue
-        from os.path import split
         document_trace_queue = DocumentTraceQueue()
         modified_document_trace_file = self.get_document_trace_file(file_name=split(event.src_path)[1])
 
@@ -40,7 +40,6 @@ class DocumentTraceHandler(FileSystemEventHandler):
                                          is_index_file=modified_document_trace_file.is_index_file)
 
     def get_document_trace_file(self, file_name):
-        from os.path import split
         tf_file = None
         for tf in self.tracing_files:
             tf_file_name = split(tf.file_path)[1]

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import unittest
 
-from plate.common import Config
+from plate.common.config import Config
 
 
 class ConfigTestCase(unittest.TestCase):

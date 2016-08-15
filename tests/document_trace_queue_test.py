@@ -3,7 +3,7 @@ import unittest
 
 from watchdog.events import FileModifiedEvent
 
-from plate.watchdocs import DocumentTraceQueue
+from plate.watchdocs.document_trace_queue import DocumentTraceQueue
 
 
 class DocumentTraceQueueTestCase(unittest.TestCase):

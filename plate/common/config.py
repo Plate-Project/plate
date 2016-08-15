@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 
+import json
+
 
 class Config(object):
     """
@@ -26,7 +28,6 @@ class Config(object):
         :param conf_file_path: ``.json`` file path
         :return: conf instance
         """
-        import json
         with open(conf_file_path, 'r') as f:
             conf = json.loads(f.read(), object_hook=Config)
         return conf

@@ -3,8 +3,8 @@
 import unittest
 
 from plate.api_document import APIDocument
-from plate.watchdocs import APIDocumentObserver
-from plate.watchdocs import DocumentTraceQueue
+from plate.watchdocs.api_document_observer import APIDocumentObserver
+from plate.watchdocs.document_trace_queue import DocumentTraceQueue
 
 
 class SingletonClassTestCase(unittest.TestCase):

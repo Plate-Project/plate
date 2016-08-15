@@ -1,9 +1,12 @@
 # -*- coding:utf-8 -*-
 import unittest
+
+from plate.common.utils import is_absolute
+
+
 class UtilsTestCase(unittest.TestCase):
     def test_is_absolute(self):
         try:
-            from plate.common import is_absolute
             self.assertEqual(is_absolute(None), False)
             self.assertEqual(is_absolute("../test/test.php"), False)
             self.assertEqual(is_absolute("/test/test.php"), True)

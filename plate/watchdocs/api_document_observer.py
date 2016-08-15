@@ -1,9 +1,12 @@
 # -*- coding:utf-8 -*-
 
 from future.utils import with_metaclass
+from watchdog.observers import Observer
 
-from ..common import SingletonMeta
-from ..common import logger
+from plate.common.singleton_meta import SingletonMeta
+from plate.common.logger import logger
+from plate.watchdocs.document_trace_file import DocumentTraceFile
+from plate.watchdocs.document_trace_handler import DocumentTraceHandler
 
 
 class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
@@ -20,10 +23,6 @@ class APIDocumentObserver(with_metaclass(SingletonMeta, object)):
         :param doc_file_path_list: Document file list ``ORDER`` in ``index.json``
         :return:  APIDocumentObserver Singleton instance
         """
-        from watchdog.observers import Observer
-        from .document_trace_handler import DocumentTraceHandler
-        from .document_trace_file import DocumentTraceFile
-
         if doc_path:
             if doc_file_path_list and isinstance(doc_file_path_list, list):
                 tracing_files = [DocumentTraceFile(tracing_file_path=f) for f in doc_file_path_list]

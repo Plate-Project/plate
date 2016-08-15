@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
 import unittest
+import time
 
-from plate.watchdocs import APIDocumentObserver
-from plate.watchdocs import DocumentTraceQueue
+from plate.watchdocs.api_document_observer import APIDocumentObserver
+from plate.watchdocs.document_trace_queue import DocumentTraceQueue
 
 
 class APIDocumentObserverTestCase(unittest.TestCase):
@@ -34,7 +35,6 @@ class APIDocumentObserverTestCase(unittest.TestCase):
                                                doc_index_path=None,
                                                doc_file_path_list=self.tracing_files)
         api_doc_observer.start_watch()
-        import time
         time.sleep(3)
 
         with open("./tests/0_test.txt", "a+") as f:
@@ -45,6 +45,12 @@ class APIDocumentObserverTestCase(unittest.TestCase):
         api_doc_observer.stop_watch()
         doc_queue = DocumentTraceQueue()
         self.assertEqual(doc_queue.count(), 1)
+
+    def test_doc_path_exception(self):
+
+        APIDocumentObserver.clear_instance()
+        with self.assertRaises(Exception):
+            APIDocumentObserver(doc_path=None, doc_index_path=None, doc_file_path_list=self.tracing_files)
 
     def tearDown(self):
 

@@ -1,6 +1,11 @@
 # -*- coding:utf-8 -*-
 
 
+from pygments import highlight
+from pygments import lexers
+from pygments.formatters import HtmlFormatter
+
+
 def syntax_highlight(lang, code):
     """
     code highlighting HTML Format
@@ -9,9 +14,6 @@ def syntax_highlight(lang, code):
     :param code: code
     :return: highlighted code
     """
-    from pygments import lexers
-    from pygments import highlight
-    from pygments.formatters import HtmlFormatter
 
     try:
         lexer = lexers.get_lexer_by_name(lang.lower())

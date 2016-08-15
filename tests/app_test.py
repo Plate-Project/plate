@@ -1,11 +1,16 @@
 # -*- coding:utf-8 -*-
 import unittest
+import json
 
-from plate.app import create_app
+from os import remove
+from os.path import exists
+
+from flask import Flask
+
 from plate.app import configure_app
 from plate.app import configure_blueprints
-from plate.app import start_service_server
-from plate.app import start_test_server
+from plate.app import create_app
+from plate.common.config import Config
 
 
 class AppTestCase(unittest.TestCase):
@@ -21,12 +26,9 @@ class AppTestCase(unittest.TestCase):
     def test_configure_app(self):
 
         test_conf = {'KEY': 1234, 'DB': 'localhost:3306//mc.dbo'}
-        import json
+
         with open("./test.conf", 'w') as f:
             f.write(json.dumps(test_conf))
-
-        from flask import Flask
-        from plate.common.config import Config
         config = Config.load_conf('./test.conf')
         app = Flask(__name__, static_url_path="", static_folder="static")
         configure_app(app=app, config=config)
@@ -58,8 +60,6 @@ class AppTestCase(unittest.TestCase):
         # TODO : TESTCASE, start server and requests call page
 
     def tearDown(self):
-        from os.path import exists
-        from os import remove
 
         if exists('./test.conf'):
             remove('./test.conf')

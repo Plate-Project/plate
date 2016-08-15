@@ -1,9 +1,11 @@
 # -*- coding:utf-8 -*-
 
-from future.utils import with_metaclass
+from copy import deepcopy
 
-from plate.common import SingletonMeta
+from future.utils import with_metaclass
 from watchdog.events import FileSystemEvent
+
+from plate.common.singleton_meta import SingletonMeta
 
 
 class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
@@ -55,8 +57,7 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
         if self.is_empty():
             return None
         else:
-            import copy
-            event = copy.deepcopy(self.trace_queue[0])
+            event = deepcopy(self.trace_queue[0])
             self.trace_queue.remove(event)
             return event
 

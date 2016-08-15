@@ -1,7 +1,9 @@
 # -*- coding:utf-8 -*-
 
+import markdown
 
-def conv_md_to_html(md_text):
+
+def convert_md_to_html(md_text):
     """
     Convert markdown text to HTML
 
@@ -9,7 +11,6 @@ def conv_md_to_html(md_text):
     :return: html
     """
     try:
-        import markdown
         return markdown.markdown(md_text, extensions=["fenced_code", "tables"])
     except Exception as e:
         raise e

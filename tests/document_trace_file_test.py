@@ -1,9 +1,7 @@
 # -*- coding:utf-8 -*-
 import unittest
 
-from watchdog.events import FileModifiedEvent
-
-from plate.watchdocs import DocumentTraceFile
+from plate.watchdocs.document_trace_file import DocumentTraceFile
 
 
 class DocumentTraceFileTestCase(unittest.TestCase):
