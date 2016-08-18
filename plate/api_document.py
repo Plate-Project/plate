@@ -13,6 +13,7 @@ from plate.common.convmd2html import convert_md_to_html
 from plate.common.logger import logger
 from plate.common.singleton_meta import SingletonMeta
 from plate.common.syntax_highlighting import syntax_highlight
+from plate.common.config import Config
 
 
 class APIDocument(with_metaclass(SingletonMeta, object)):
@@ -22,7 +23,7 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
 
     trace_queue = []
 
-    def __init__(self, config=None):
+    def __init__(self, config):
         """
         Construct of ``APIDocument``
 
@@ -30,11 +31,13 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
         :return: ``APIDocument`` instance, ``_g_api_doc``.
         """
 
-        if config:
+        if config and isinstance(config, Config):
             self.config = config
             self.index_file_path = join(self.config.API_DOC_PATH, self.config.API_DOC_INDEX_PATH)
             self.toc = self.read_index(self.index_file_path)
             self.contents = self.create_api_docs()
+        else:
+            raise TypeError("config parameter must Config type.")
 
     def total_reload_docs(self):
         """
