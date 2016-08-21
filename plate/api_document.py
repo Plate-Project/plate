@@ -81,7 +81,6 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
 
         up_tags = []
         for up_tag in soup.h1.next_siblings:
-
             if 'name' in up_tag and up_tag.name in ['pre', 'blockquote']:
                 up_tags.append(up_tag)
 

@@ -11,8 +11,8 @@ def syntax_highlight(lang, code):
     code highlighting HTML Format
 
     :param lang: programming language
-    :param code: code
-    :return: highlighted code
+    :param code: code(not html)
+    :return: highlighted code(html format)
     """
 
     try:
