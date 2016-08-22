@@ -16,6 +16,7 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
     trace_queue = []
 
     def is_empty(self):
+        # type: () -> object
         """
         Is empty trace_queue?
 

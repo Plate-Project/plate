@@ -40,9 +40,6 @@ class ApiDocumentTestCase(unittest.TestCase):
     def test_api_document_create(self):
         config = Config.load_conf(self.basic_json_file_path)
 
-        with self.assertRaises(TypeError):
-            APIDocument(config=None)
-
         api_document = APIDocument(config=config)
         self.assertEqual(isinstance(api_document, APIDocument), True)
 

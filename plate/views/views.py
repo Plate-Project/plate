@@ -22,11 +22,9 @@ def index():
         api_doc.total_reload_docs()
         document_trace_queue.clear()
 
-    temp = [str(lang) for lang in current_app.config['SUPPORT_LANG']]
-    current_app.config['SUPPORT_LANG'] = temp
-
-    logo_img = current_app.config['LOGO_IMG'] if 'LOGO_IMG' in current_app.config else None
-    logo_title = current_app.config['LOGO_TITLE'] if 'LOGO_TITLE' in current_app.config else None
+    current_app.config['SUPPORT_LANG'] = [str(lang) for lang in current_app.config['SUPPORT_LANG']]
+    logo_img = current_app.config.get('LOGO_IMG', None)
+    logo_title = current_app.config.get('LOGO_TITLE', None)
 
     return render_template("index.html",
                            API_TITLE=current_app.config['TITLE'],
