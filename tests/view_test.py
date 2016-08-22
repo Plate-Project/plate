@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
-import urllib2
-
+import requests
 from flask_testing import LiveServerTestCase
 
 
@@ -17,5 +16,5 @@ class ViewTestCase(LiveServerTestCase):
         return app
 
     def test_server_is_up_and_running(self):
-        response = urllib2.urlopen(self.get_server_url())
-        self.assertEqual(response.code, 200)
+        response = requests.get(self.get_server_url())
+        self.assertEqual(response.status_code, 200)
