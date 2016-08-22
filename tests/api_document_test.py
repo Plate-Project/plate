@@ -47,9 +47,6 @@ class ApiDocumentTestCase(unittest.TestCase):
 
         from collections import OrderedDict
         self.assertEqual(isinstance(api_document.toc, OrderedDict), True)
-        self.assertEqual(isinstance(api_document.contents, list), True)
-        self.assertEqual(isinstance(api_document.contents[0], basestring), True)
-
 
     def test_reordering(self):
         pass
