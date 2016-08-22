@@ -1,51 +1,9 @@
 # -*- coding:utf-8 -*-
 import unittest
+import time
 
-from plate.watchdocs import DocumentTraceQueue
-from plate.watchdocs import DocumentTraceHandler
-from plate.watchdocs import APIDocumentObserver
-from plate.watchdocs import DocumentTraceFile
-
-
-class DocumentTraceQueueTestCase(unittest.TestCase):
-
-    def setUp(self):
-        self.docq = DocumentTraceQueue()
-
-        if self.docq:
-            self.docq.clear()
-        self.docq.enqueue(event="Test", is_index_file=True)
-
-    def test_is_empty(self):
-        self.assertEqual(self.docq.is_empty(), False)
-        self.docq.clear()
-        self.assertEqual(self.docq.is_empty(), True)
-
-    def count(self):
-        self.assertEqual(self.docq.count(), 1)
-        self.docq.enqueue(event="Test", is_index_file=False)
-        self.assertEqual(self.docq.count(), 2)
-
-    def test_clear(self):
-        self.docq.clear()
-        self.assertEqual(self.docq.count(), 0)
-
-    def test_enqueue(self):
-        self.docq.enqueue(event="Test3", is_index_file=False)
-        self.assertEqual(self.docq.count(), 2)
-
-        self.assertRaises(Exception, self.docq.enqueue, ("TEST1", None))
-        self.assertRaises(Exception, self.docq.enqueue, ("TEST1", 1))
-        self.assertRaises(Exception, self.docq.enqueue, ("TEST1", "test"))
-        self.assertRaises(Exception, self.docq.enqueue, ("TEST1", True))
-        self.assertRaises(Exception, self.docq.enqueue, ("TEST1", []))
-        self.assertRaises(Exception, self.docq.enqueue, ("TEST1", {}))
-
-    def test_dequeue(self):
-        t = self.docq.dequeue()
-        self.assertEqual(t[0], "Test")
-        self.assertEqual(t[1], True)
-        self.assertEqual(self.docq.count(), 0)
+from plate.watchdocs.api_document_observer import APIDocumentObserver
+from plate.watchdocs.document_trace_queue import DocumentTraceQueue
 
 
 class APIDocumentObserverTestCase(unittest.TestCase):
@@ -77,7 +35,6 @@ class APIDocumentObserverTestCase(unittest.TestCase):
                                                doc_index_path=None,
                                                doc_file_path_list=self.tracing_files)
         api_doc_observer.start_watch()
-        import time
         time.sleep(3)
 
         with open("./tests/0_test.txt", "a+") as f:
@@ -88,6 +45,12 @@ class APIDocumentObserverTestCase(unittest.TestCase):
         api_doc_observer.stop_watch()
         doc_queue = DocumentTraceQueue()
         self.assertEqual(doc_queue.count(), 1)
+
+    def test_doc_path_exception(self):
+
+        APIDocumentObserver.clear_instance()
+        with self.assertRaises(Exception):
+            APIDocumentObserver(doc_path=None, doc_index_path=None, doc_file_path_list=self.tracing_files)
 
     def tearDown(self):
 

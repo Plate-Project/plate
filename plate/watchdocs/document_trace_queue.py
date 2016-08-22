@@ -1,8 +1,11 @@
 # -*- coding:utf-8 -*-
 
-from future.utils import with_metaclass
+from copy import deepcopy
 
-from ..common import SingletonMeta
+from future.utils import with_metaclass
+from watchdog.events import FileSystemEvent
+
+from plate.common.singleton_meta import SingletonMeta
 
 
 class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
@@ -13,6 +16,7 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
     trace_queue = []
 
     def is_empty(self):
+        # type: () -> object
         """
         Is empty trace_queue?
 
@@ -39,10 +43,10 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
         :param event: insert/update/del event
         :param is_index_file: True or False
         """
-        if isinstance(is_index_file, bool):
+        if isinstance(event, FileSystemEvent) and isinstance(is_index_file, bool):
             self.trace_queue.append((event, is_index_file))
         else:
-            raise Exception("is_index_file parameter is bool type.")
+            raise TypeError('event of is_index_file type error.')
 
     def dequeue(self):
         """
@@ -54,8 +58,7 @@ class DocumentTraceQueue(with_metaclass(SingletonMeta, object)):
         if self.is_empty():
             return None
         else:
-            import copy
-            event = copy.deepcopy(self.trace_queue[0])
+            event = deepcopy(self.trace_queue[0])
             self.trace_queue.remove(event)
             return event
 

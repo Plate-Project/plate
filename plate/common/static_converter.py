@@ -1,9 +1,17 @@
 # -*- coding:utf-8 -*-
 
 
+from os.path import join
+from os.path import split
+
+from bs4 import BeautifulSoup
+from jinja2 import Environment
+from jinja2 import PackageLoader
+
+from plate.common import is_absolute
+
+
 def local_url_for(endpoint, **values):
-    from os.path import split
-    from os.path import join
     dir_path, file_path = split(values['filename'])
     dir_path = dir_path[0].replace("/", "./") + dir_path[1:]
     return join(dir_path, file_path)
@@ -20,8 +28,6 @@ def convert_static_html(config, contents):
     :return: rendered html
     """
     try:
-        from jinja2 import Environment
-        from jinja2 import PackageLoader
         env = Environment(loader=PackageLoader('plate', 'templates'),
                           autoescape=False,
                           extensions=['jinja2.ext.autoescape'])
@@ -32,7 +38,6 @@ def convert_static_html(config, contents):
         logo_img = config.LOGO_IMG if config.exist('LOGO_IMG') else None
         logo_title = config.LOGO_TITLE if config.exist('LOGO_TITLE') else None
 
-        from plate.common import is_absolute
         rendered_template = t.render(API_TITLE=config.TITLE,
                                      IS_SEARCH=config.SEARCH_ON,
                                      LOGO_TITLE=logo_title,
@@ -43,8 +48,8 @@ def convert_static_html(config, contents):
                                      COPYRIGHT=config.COPYRIGHT,
                                      FAVICON=config.FAVICON,
                                      url_for=local_url_for)
-        import bs4 
-        soup = bs4.BeautifulSoup(rendered_template)
+
+        soup = BeautifulSoup(rendered_template)
         return soup.prettify()
 
     except Exception as e:

@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+
 class DocumentTraceFile(object):
     """
 
@@ -11,6 +12,3 @@ class DocumentTraceFile(object):
             self.is_index_file = is_index_file
         else:
             raise Exception("tracing_file_path is None.")
-
-
-

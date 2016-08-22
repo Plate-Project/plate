@@ -1,10 +1,18 @@
 # -*- coding:utf-8 -*-
 
+import codecs
+import json
+from collections import OrderedDict
+from os.path import join
+from os.path import split
+
+from bs4 import BeautifulSoup
 from future.utils import with_metaclass
 
-from .common import SingletonMeta
-from .common import logger
-from .common import syntax_highlight
+from plate.common.convmd2html import convert_md_to_html
+from plate.common.logger import logger
+from plate.common.singleton_meta import SingletonMeta
+from plate.common.syntax_highlighting import syntax_highlight
 
 
 class APIDocument(with_metaclass(SingletonMeta, object)):
@@ -22,7 +30,6 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
         :return: ``APIDocument`` instance, ``_g_api_doc``.
         """
 
-        from os.path import join
         if config:
             self.config = config
             self.index_file_path = join(self.config.API_DOC_PATH, self.config.API_DOC_INDEX_PATH)
@@ -45,8 +52,6 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
         :param index_file_path: index file path
         :return: JSON of index file(``index.json``)
         """
-        import json
-        from collections import OrderedDict
         return json.load(open(index_file_path), object_pairs_hook=OrderedDict)
 
     def create_api_docs(self):
@@ -55,29 +60,23 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
 
         :return: ``OrderedDict`` instance.
         """
-        from os.path import join
-        from os.path import split
-        from collections import OrderedDict
-        import codecs
 
         docs = OrderedDict()
         for doc_file in self.toc["ORDER"]:
 
             doc_file = join(self.config.API_DOC_PATH, doc_file)
-            from .common import conv_md_to_html
+
             with codecs.open(doc_file, 'r', encoding='utf-8') as f:
-                html = conv_md_to_html(f.read())
+                html = convert_md_to_html(f.read())
                 docs[split(doc_file)[1]] = self.modify_html(self.highlight_syntax(self.reordering(html)))
 
         return docs.values()
 
     def reordering(self, html):
-        from bs4 import BeautifulSoup
         soup = BeautifulSoup(html)
 
         up_tags = []
         for up_tag in soup.h1.next_siblings:
-
             if 'name' in up_tag and up_tag.name in ['pre', 'blockquote']:
                 up_tags.append(up_tag)
 
@@ -97,7 +96,6 @@ class APIDocument(with_metaclass(SingletonMeta, object)):
         :param soup: bs4 instance
         :return: bs4 instance
         """
-        from bs4 import BeautifulSoup
         code_tags = soup.find_all('code')
 
         for code in code_tags:

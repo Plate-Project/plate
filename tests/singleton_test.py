@@ -3,16 +3,11 @@
 import unittest
 
 from plate.api_document import APIDocument
-from plate.watchdocs import APIDocumentObserver
-from plate.watchdocs import DocumentTraceQueue
+from plate.watchdocs.api_document_observer import APIDocumentObserver
+from plate.watchdocs.document_trace_queue import DocumentTraceQueue
 
 
 class SingletonClassTestCase(unittest.TestCase):
-
-    def test_api_document_singleton(self):
-        api_document1 = APIDocument()
-        api_document2 = APIDocument()
-        self.assertEqual(hex(id(api_document1)), hex(id(api_document2)))
 
     def test_api_document_observer_singleton(self):
         observer1 = APIDocumentObserver(doc_path="./")

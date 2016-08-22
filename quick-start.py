@@ -12,6 +12,7 @@ import shutil
 
 '''
 
+
 def copy_dir(src, dst):
     for item in os.listdir(src):
         if item in ['tests', '.idea', 'doc', 'quick-start.py', '.git', 'requirements.txt']:

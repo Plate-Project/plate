@@ -22,4 +22,3 @@ class SingletonMeta(type):
     def clear_instance(cls):
         if cls.instance:
             del cls.instance
-

@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 import unittest
 
-from plate.common import Config
+from plate.common.config import Config
 
 
-class ConfigtartTestCase(unittest.TestCase):
+class ConfigTestCase(unittest.TestCase):
 
     def setUp(self):
         basic_json = {
@@ -52,19 +52,24 @@ class ConfigtartTestCase(unittest.TestCase):
         self.assertEqual(config.STATIC.DIR, "./plate_static")
         self.assertEqual(config.SUPPORT_LANG, ["shell", "python", "java"])
 
+    def test_config_repr(self):
+        config = Config.load_conf(self.basic_json_file_path)
+        self.assertEqual( isinstance(config.__repr__(), str), True)
+
+    def test_config_exist(self):
+        config = Config.load_conf(self.basic_json_file_path)
+        self.assertEqual(config.exist('TITLE'), True)
+        self.assertEqual(config.exist('STATIC'), True)
+        self.assertEqual(config.exist('SUPPORT_LANG'), True)
+
     def tearDown(self):
         import os
 
         if os.path.exists(self.default_json_file_path):
             os.remove(self.default_json_file_path)
 
-        if os.path.exists(self.default_json_file_path):
-            os.remove(self.default_json_file_path)
+        if os.path.exists(self.basic_json_file_path):
+            os.remove(self.basic_json_file_path)
 
         if os.path.exists(self.not_exist_json_file_path):
             os.remove(self.not_exist_json_file_path)
-
-
-
-
-
