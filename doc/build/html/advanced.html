@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
             
           
@@ -86,7 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="readme.html#getting-start">Getting Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="readme.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="internal.html">Internal</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Advanced</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#use-postman-collection-json">Use postman collection json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#multi-language-search">Multi Language Search</a></li>
 </ul>
@@ -117,7 +117,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -144,12 +144,12 @@
 <div class="section" id="use-postman-collection-json">
 <h2>Use postman collection json<a class="headerlink" href="#use-postman-collection-json" title="Permalink to this headline">¶</a></h2>
 <p>If use <a class="reference external" href="https://github.com/Plate-Project/postman2md">postman2md</a> library, easily convert  postman collection json for testing API to markdown. And then you can use converted markdown files as API Documents of Plate. Now must use markdown converting by <a class="reference external" href="https://github.com/Plate-Project/postman2md">postman2md</a>, future we will support postman collection json as the subject of plate. Have any interest of <a class="reference external" href="https://github.com/Plate-Project/postman2md">postman2md</a>, see  <a class="reference external" href="https://github.com/Plate-Project/postman2md">https://github.com/Plate-Project/postman2md</a> and welcome your contributions at any time, with issues.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">postman2md</span>
-<span class="c"># create multi markdown file in the directory.</span>
-<span class="n">postman2md</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">postman_file</span><span class="o">=</span><span class="s">&quot;example.json.postman_collection&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">postman2md</span>
+<span class="c1"># create multi markdown file in the directory.</span>
+<span class="n">postman2md</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">postman_file</span><span class="o">=</span><span class="s2">&quot;example.json.postman_collection&quot;</span><span class="p">)</span>
 
-<span class="c"># create merged markdown file in the directory.</span>
-<span class="n">postman2md</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">postman_file</span><span class="o">=</span><span class="s">&quot;example.json.postman_collection&quot;</span><span class="p">,</span> <span class="n">multi_file</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="c1"># create merged markdown file in the directory.</span>
+<span class="n">postman2md</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">postman_file</span><span class="o">=</span><span class="s2">&quot;example.json.postman_collection&quot;</span><span class="p">,</span> <span class="n">multi_file</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

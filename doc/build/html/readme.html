@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
             
           
@@ -82,7 +82,7 @@
             
             
                 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Plate</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Plate</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduce">Introduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
 </ul>
@@ -129,7 +129,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -232,7 +232,7 @@ And then you have any problems, immediately notify(email, issue board, anything)
 <li>If you install using <code class="docutils literal"><span class="pre">quick-start.py</span></code>, automatically install all libraries.</li>
 <li>manually, install all libraries:</li>
 </ul>
-<div class="highlight-shell"><div class="highlight"><pre>pip install -r requirements.txt
+<div class="highlight-shell"><div class="highlight"><pre><span></span>pip install -r requirements.txt
 </pre></div>
 </div>
 </div>
@@ -246,12 +246,12 @@ And then you have any problems, immediately notify(email, issue board, anything)
 <li><p class="first">Install your API document web pages using <code class="docutils literal"><span class="pre">quick-start.py</span></code> .</p>
 </li>
 <li><p class="first">Start with server: <code class="docutils literal"><span class="pre">python</span> <span class="pre">plate.py</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/Plate-Project/plate.git
+<div class="highlight-default"><div class="highlight"><pre><span></span>git clone https://github.com/Plate-Project/plate.git
 cd plate
 python install.py
 ...
 
-Welcome plate v0.2.5
+Welcome plate v0.2.6
 Start your API Document system.
 
 Typing API document name :&lt;Typing your project&gt;
@@ -271,7 +271,7 @@ python plate.py
 <h2>Quick Start with Static HTML<a class="headerlink" href="#quick-start-with-static-html" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Start with static html:<code class="docutils literal"><span class="pre">python</span> <span class="pre">pst.py</span> <span class="pre">-f</span> <span class="pre">&lt;conf</span> <span class="pre">file&gt;</span></code></p>
-<div class="highlight-shell"><div class="highlight"><pre>python pst.py -f config.json
+<div class="highlight-shell"><div class="highlight"><pre><span></span>python pst.py -f config.json
 </pre></div>
 </div>
 </div></blockquote>
@@ -361,7 +361,7 @@ python plate.py
 <img alt="https://farm6.staticflickr.com/5834/22006576161_b2824c99f7_o.png" src="https://farm6.staticflickr.com/5834/22006576161_b2824c99f7_o.png" />
 <img alt="https://farm1.staticflickr.com/563/21996746525_91c7ff8ea2_o.png" src="https://farm1.staticflickr.com/563/21996746525_91c7ff8ea2_o.png" />
 <p>If you set both, <code class="docutils literal"><span class="pre">LOGO_IMG</span></code> only display.</p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;LOGO_TITLE&quot;</span>         <span class="p">:</span> <span class="s2">&quot;Management API&quot;</span><span class="p">,</span>
     <span class="nt">&quot;LOGO_IMG&quot;</span>           <span class="p">:</span> <span class="s2">&quot;logo.png&quot;</span>
 <span class="p">}</span>
@@ -374,21 +374,21 @@ python plate.py
 <li>You can the emphasis syntax for using <code class="docutils literal"><span class="pre">&lt;aside</span> <span class="pre">class=&quot;CLASSNAME&quot;&gt;</span></code>.</li>
 <li><code class="docutils literal"><span class="pre">CLASSNAME</span></code> is <code class="docutils literal"><span class="pre">success</span></code> or <code class="docutils literal"><span class="pre">notice</span></code> or <code class="docutils literal"><span class="pre">warning</span></code>.</li>
 </ul>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;aside</span> <span class="na">class=</span><span class="s">&quot;warning&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">aside</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;warning&quot;</span><span class="p">&gt;</span>
     Must encrypt password using a key.
-<span class="nt">&lt;/aside&gt;</span>
+<span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <img alt="https://farm1.staticflickr.com/752/23746756075_beff560049.jpg" src="https://farm1.staticflickr.com/752/23746756075_beff560049.jpg" />
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;aside</span> <span class="na">class=</span><span class="s">&quot;notice&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">aside</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;notice&quot;</span><span class="p">&gt;</span>
     No mandatory parameter, return 400 Invalid Parameter
-<span class="nt">&lt;/aside&gt;</span>
+<span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <img alt="https://farm6.staticflickr.com/5623/23450886360_6b8b556766.jpg" src="https://farm6.staticflickr.com/5623/23450886360_6b8b556766.jpg" />
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;aside</span> <span class="na">class=</span><span class="s">&quot;success&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">aside</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;success&quot;</span><span class="p">&gt;</span>
     Success, return HTTP Status code 200 OK.
-<span class="nt">&lt;/aside&gt;</span>
+<span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <img alt="https://farm6.staticflickr.com/5835/23378773719_56684cabe6.jpg" src="https://farm6.staticflickr.com/5835/23378773719_56684cabe6.jpg" />

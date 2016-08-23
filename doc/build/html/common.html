@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
             
           
@@ -89,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="internal.html">Internal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module.html">Modules</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Common</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Common</a></li>
 <li class="toctree-l2"><a class="reference internal" href="apidocument.html">API Document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="watchdocs.html">Watchdocs</a></li>
 </ul>
@@ -119,7 +119,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -168,8 +168,8 @@
 </dd></dl>
 
 <span class="target" id="module-plate.common.convmd2html"></span><dl class="function">
-<dt id="plate.common.convmd2html.conv_md_to_html">
-<code class="descclassname">plate.common.convmd2html.</code><code class="descname">conv_md_to_html</code><span class="sig-paren">(</span><em>md_text</em><span class="sig-paren">)</span><a class="headerlink" href="#plate.common.convmd2html.conv_md_to_html" title="Permalink to this definition">¶</a></dt>
+<dt id="plate.common.convmd2html.convert_md_to_html">
+<code class="descclassname">plate.common.convmd2html.</code><code class="descname">convert_md_to_html</code><span class="sig-paren">(</span><em>md_text</em><span class="sig-paren">)</span><a class="headerlink" href="#plate.common.convmd2html.convert_md_to_html" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert markdown text to HTML</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -188,33 +188,11 @@
 <em class="property">class </em><code class="descclassname">plate.common.singleton_meta.</code><code class="descname">SingletonMeta</code><a class="headerlink" href="#plate.common.singleton_meta.SingletonMeta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Singleton Base Class</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">DocumentTraceQueue</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">common</span> <span class="kn">import</span> <span class="n">Singleton</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentTraceQueue</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">common</span> <span class="k">import</span> <span class="n">Singleton</span>
     <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">Singleton</span>
 </pre></div>
 </div>
-</dd></dl>
-
-<span class="target" id="module-plate.common.static_converter"></span><dl class="function">
-<dt id="plate.common.static_converter.convert_static_html">
-<code class="descclassname">plate.common.static_converter.</code><code class="descname">convert_static_html</code><span class="sig-paren">(</span><em>config</em>, <em>contents</em><span class="sig-paren">)</span><a class="headerlink" href="#plate.common.static_converter.convert_static_html" title="Permalink to this definition">¶</a></dt>
-<dd><p>Render plate template to HTML</p>
-<p>In case of <code class="docutils literal"><span class="pre">python</span> <span class="pre">plate.py</span> <span class="pre">-m</span> <span class="pre">convert</span></code> use this method.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>config</strong> &#8211; config instance</li>
-<li><strong>contents</strong> &#8211; converted html from markdown</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">rendered html</p>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <span class="target" id="module-plate.common.syntax_highlighting"></span><dl class="function">
@@ -227,11 +205,11 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>lang</strong> &#8211; programming language</li>
-<li><strong>code</strong> &#8211; code</li>
+<li><strong>code</strong> &#8211; code(not html)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">highlighted code</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">highlighted code(html format)</p>
 </td>
 </tr>
 </tbody>

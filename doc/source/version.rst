@@ -10,6 +10,9 @@ Version : |version|
 Change Log
 ----------
 
+- V0.2.6
+    - Add Test Cases.
+
 - V0.2.5
     - Change basic structures.
     - Add unit testing.

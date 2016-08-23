@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
             
           
@@ -85,7 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="readme.html">Plate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="readme.html#getting-start">Getting Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="readme.html#usage">Usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Internal</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Internal</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-structure">Basic Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#realtime-monitoring-api-document">Realtime monitoring API Document</a></li>
 </ul>
@@ -117,7 +117,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -162,9 +162,9 @@
 - fence_codes : markdown code block to html pre tag
 - tables : markdown table syntax to html table tag</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">conv_md_to_html</span><span class="p">(</span><span class="n">md_text</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">conv_md_to_html</span><span class="p">(</span><span class="n">md_text</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">markdown</span>
-    <span class="k">return</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">md_text</span><span class="p">,</span> <span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;fenced_code&quot;</span><span class="p">,</span> <span class="s">&quot;tables&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">md_text</span><span class="p">,</span> <span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fenced_code&quot;</span><span class="p">,</span> <span class="s2">&quot;tables&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p><strong>3. Highlight code according to programming languages</strong></p>
@@ -172,7 +172,7 @@
 <li>Use <a class="reference external" href="http://pygments.org/">pygemnts</a> for highlighting codes</li>
 <li>Support various programming languages and markup.</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
 <span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">PythonLexer</span>
 <span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">JavaLexer</span>
 <span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">HtmlFormatter</span>

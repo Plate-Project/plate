@@ -71,7 +71,7 @@ Quick Start with Server
     python install.py
     ...
 
-    Welcome plate v0.2.5
+    Welcome plate v0.2.6
     Start your API Document system.
 
     Typing API document name :<Typing your project>

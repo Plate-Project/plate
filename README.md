@@ -66,7 +66,7 @@ Getting Start
     > cd plate
     > python install.py
     ...
-    Welcome plate v0.2.5
+    Welcome plate v0.2.6
     Start your API Document system.
 
     Typing API document name :<Typing your project>
@@ -118,8 +118,10 @@ Start with static html: `python pst.py -f <conf file>`
 }
 ```
 
-Version v0.2.5
---------------------
+Version v0.2.6
+--------------
+- V0.2.6
+    - Add Test Cases.
 - V0.2.5
     - Change basic structures
     - Add Unit Testing
